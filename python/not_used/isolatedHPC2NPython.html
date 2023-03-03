@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isolated environments at HPC2N &mdash; Introduction to running R, Python, and Julia in HPC 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Introduction to running R, Python, and Julia in HPC
+            <img src="../../_static/logo-python-hpc-course-Jan2023.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/interactiveJulia.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../R/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/summaryR.html">Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Isolated environments at HPC2N</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/docs/blob/main/docs/python/not_used/isolatedHPC2NPython.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="isolated-environments-at-hpc2n">
+<h1>Isolated environments at HPC2N<a class="headerlink" href="#isolated-environments-at-hpc2n" title="Permalink to this headline"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Isolated environments solve a couple of problems:</p>
+<ul class="simple">
+<li><p>You can install specific, also older, versions into them.</p></li>
+<li><p>You can create one for each project and no problem if the two projects require different versions.</p></li>
+<li><p>You can remove the environment and create a new one, if not needed or with errors.</p></li>
+</ul>
+</div>
+<div class="admonition-questions questions admonition">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>How to work with isolated environments at HPC2N?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Give a introduction to isolated environments at HPC2N</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Installing with a virtual environment is the only recommended way at HPC2N!</p>
+</div>
+<section id="virtual-environment-virtualenv">
+<h2>Virtual environment - virtualenv<a class="headerlink" href="#virtual-environment-virtualenv" title="Permalink to this headline"></a></h2>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">vpyenv</span></code>. First load the python version you want to base your virtual environment on:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>python/&lt;version&gt;
+$<span class="w"> </span>virtualenv<span class="w"> </span>--system-site-packages<span class="w"> </span>vpyenv
+</pre></div>
+</div>
+<p>“vpyenv” is the name of the virtual environment. You can name it whatever you want. The directory “vpyenv” is created in the present working directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">--system-site-packages</span></code> includes the packages already installed in the loaded python and python packages modules.</p>
+</div>
+<p><strong>NOTE</strong>: since it may take up a bit of space if you are installing many Python packages to your virtual environment, we <strong>strongly</strong> recommend you place it in your project storage!</p>
+<p><strong>NOTE</strong>: if you need are for instance working with both Python 2 and 3, then you can of course create more than one virtual environment, just name them so you can easily remember which one has what.</p>
+<p>To place it in a directory below your project storage (again calling it “vpyenv”):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>virtualenv<span class="w"> </span>--system-site-packages<span class="w"> </span>/proj/nobackup/&lt;your-project-storage&gt;/vpyenv
+</pre></div>
+</div>
+<p><strong>NOTE</strong> To save space, you should load any other Python modules you will need that are system installed before installing your own packages! Remember to choose ones that are compatible with the Python version you picked!</p>
+<p><strong>Example</strong></p>
+<p>I load Python 3.9.5 and create a virtual environment called “vpyenv” in my personal project storage directory (/proj/nobackup/support-hpc2n/bbrydsoe):</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Load Python 3.9.5 and its prerequisites, then create the virtual environment</p>
+<blockquote>
+<div><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>b-an01<span class="w"> </span><span class="o">[</span>/proj/nobackup/support-hpc2n/bbrydsoe<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCCcore/10.3.0<span class="w"> </span>Python/3.9.5
+b-an01<span class="w"> </span><span class="o">[</span>/proj/nobackup/support-hpc2n/bbrydsoe<span class="o">]</span>$<span class="w"> </span>virtualenv<span class="w"> </span>--system-site-packages<span class="w"> </span>vpyenv
+<span class="w">  </span>created<span class="w"> </span>virtual<span class="w"> </span>environment<span class="w"> </span>CPython3.9.5.final.0-64<span class="w"> </span><span class="k">in</span><span class="w"> </span>6490ms
+<span class="w">  </span>creator<span class="w"> </span>CPython3Posix<span class="o">(</span><span class="nv">dest</span><span class="o">=</span>/pfs/proj/nobackup/fs/projnb10/support-hpc2n/bbrydsoe/vpyenv,<span class="w"> </span><span class="nv">clear</span><span class="o">=</span>False,<span class="w"> </span><span class="nv">no_vcs_ignore</span><span class="o">=</span>False,<span class="w"> </span><span class="nv">global</span><span class="o">=</span>True<span class="o">)</span>
+<span class="w">  </span>seeder<span class="w"> </span>FromAppData<span class="o">(</span><span class="nv">download</span><span class="o">=</span>False,<span class="w"> </span><span class="nv">pip</span><span class="o">=</span>bundle,<span class="w"> </span><span class="nv">setuptools</span><span class="o">=</span>bundle,<span class="w"> </span><span class="nv">wheel</span><span class="o">=</span>bundle,<span class="w"> </span><span class="nv">via</span><span class="o">=</span>copy,<span class="w"> </span><span class="nv">app_data_dir</span><span class="o">=</span>/pfs/stor10/users/home/b/bbrydsoe/.local/share/virtualenv<span class="o">)</span>
+<span class="w">    </span>added<span class="w"> </span>seed<span class="w"> </span>packages:<span class="w"> </span><span class="nv">pip</span><span class="o">==</span><span class="m">22</span>.1.2,<span class="w"> </span><span class="nv">setuptools</span><span class="o">==</span><span class="m">62</span>.6.0,<span class="w"> </span><span class="nv">wheel</span><span class="o">==</span><span class="m">0</span>.37.1
+<span class="w">  </span>activators<span class="w"> </span>BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+b-an01<span class="w"> </span><span class="o">[</span>/proj/nobackup/support-hpc2n/bbrydsoe<span class="o">]</span>$
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<p>Activate the environment.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>&lt;path/to/virt-environment&gt;/vpyenv/bin/activate
+</pre></div>
+</div>
+<p>Note that your prompt is changing to start with (vpyenv) to show that you are within an environment.</p>
+<section id="using-pip">
+<h3>Using pip<a class="headerlink" href="#using-pip" title="Permalink to this headline"></a></h3>
+<p>Install your packages with <code class="docutils literal notranslate"><span class="pre">pip</span></code>. While not always needed, it is often a good idea to give the correct versions you want, to ensure compatibility with other packages you use:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>vpyenv<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>--no-build-isolation<span class="w"> </span>&lt;package&gt;<span class="o">==</span>&lt;version&gt;
+</pre></div>
+</div>
+<p>The “–no-cache-dir” option is required to avoid it from reusing earlier installations from the same user in a different environment. The “–no-build-isolation” is to make sure that it uses the loaded modules from the module system when building any Cython libraries.</p>
+<p><strong>Examples</strong></p>
+<ol class="arabic simple">
+<li><p>Installing spacy. Using existing modules for numpy (in SciPy-bundle) and the vpyenv we created under Python 3.9.5. Note that you need to load Python again if you have been logged out, etc. but the virtual environment remains, of course</p></li>
+</ol>
+<div class="dropdown admonition">
+<p class="admonition-title">Load modules for Python, numpy (in SciPy-bundle), activate the environment, and install spacy on Kebnekaise at HPC2N</p>
+<blockquote>
+<div><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>b-an01<span class="w"> </span><span class="o">[</span>/proj/nobackup/support-hpc2n/bbrydsoe<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/10.3.0<span class="w"> </span>OpenMPI/4.1.1<span class="w"> </span>Python/3.9.5<span class="w"> </span>SciPy-bundle/2021.05
+b-an01<span class="w"> </span><span class="o">[</span>/proj/nobackup/support-hpc2n/bbrydsoe<span class="o">]</span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>vpyenv/bin/activate
+<span class="o">(</span>vpyenv<span class="o">)</span><span class="w"> </span>b-an01<span class="w"> </span><span class="o">[</span>/proj/nobackup/support-hpc2n/bbrydsoe<span class="o">]</span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>--no-build-isolation<span class="w"> </span>spacy
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Installing seaborn. Using existing modules for numpy (in SciPy-bundle), matplotlib, and the vpyenv we created under Python 3.9.5. Note that you need to load Python again if you have been logged out, etc. but the virtual environment remains, of course</p></li>
+</ol>
+<div class="dropdown admonition">
+<p class="admonition-title">Load modules for Python, numpy (in SciPy-bundle), matplotlib, activate the environment, and install seaborn on Kebnekaise at HPC2N</p>
+<blockquote>
+<div><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>b-an01<span class="w"> </span><span class="o">[</span>/proj/nobackup/support-hpc2n/bbrydsoe<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/10.3.0<span class="w"> </span>OpenMPI/4.1.1<span class="w"> </span>Python/3.9.5<span class="w"> </span>SciPy-bundle/2021.05<span class="w"> </span>matplotlib/3.4.2
+b-an01<span class="w"> </span><span class="o">[</span>/proj/nobackup/support-hpc2n/bbrydsoe<span class="o">]</span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>vpyenv/bin/activate
+<span class="o">(</span>vpyenv<span class="o">)</span><span class="w"> </span>b-an01<span class="w"> </span><span class="o">[</span>/proj/nobackup/support-hpc2n/bbrydsoe<span class="o">]</span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>--no-build-isolation<span class="w"> </span>seaborn
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<p>Deactivating a virtual environment.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>vpyenv<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>deactivate
+</pre></div>
+</div>
+<p>Every time you need the tools available in the virtual environment you activate it as above (after first loading the modules for Python, Python packages, and prerequisites)</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>&lt;path/to/virt-environment&gt;/vpyenv/bin/activate
+</pre></div>
+</div>
+</section>
+<section id="using-setup-py">
+<h3>Using setup.py<a class="headerlink" href="#using-setup-py" title="Permalink to this headline"></a></h3>
+<p>Some Python packages are only available as downloads, to install with setup.py. If that is the case for the package you need, this is how you do it:</p>
+<ul>
+<li><p>Pick a location for your installation (change below to fit - I am installing under a project storage)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>mkdir /proj/nobackup/mystorage/mypythonpackages</p></li>
+<li><p>cd /proj/nobackup/mystorage/mypythonpackages</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Load Python + site-installed prerequisites (SciPy-bundle, matplotlib, etc.</p></li>
+<li><p>Install any remaining prerequisites. Remember to activate your Virtualenv if installing with pip!</p></li>
+<li><p>Download Python package, place it in your chosen installation dir, then untar/unzip it</p></li>
+<li><p>cd into the source directory of the Python package</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build</span></code></p></li>
+<li><p>Then install with: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span> <span class="pre">--prefix=&lt;path</span> <span class="pre">to</span> <span class="pre">install</span> <span class="pre">dir&gt;</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Add the path to $HOME/.bash_profile (note that it will differ by Python version):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PYTHONPATH=$PYTHONPATH:&lt;path</span> <span class="pre">to</span> <span class="pre">your</span> <span class="pre">install</span> <span class="pre">directory&gt;/lib/python3.9/site-packages</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>You can use it as normal inside Python (remember to load dependent modules as well as activate virtual environment if it depends on some packages you installed with pip): <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">&lt;python-module&gt;</span></code></p>
+</section>
+<section id="using-the-self-installed-packages-in-python">
+<h3>Using the self-installed packages in Python<a class="headerlink" href="#using-the-self-installed-packages-in-python" title="Permalink to this headline"></a></h3>
+<p>To use the Python packages you have installed under your virtual environment, load your Python module + prerequisites, load any site-installed Python packages you used, and then activate the environment. Now your own packages can be accessed from within Python, just like any other Python package.</p>
+<p><strong>Example</strong></p>
+<p>Using the vpyenv created earlier and the spacy we installed under example 1) above.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Load modules for Python, numpy (in SciPy-bundle), activate the environment (on Kebnekaise at HPC2N)</p>
+<blockquote>
+<div><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>b-an01<span class="w"> </span><span class="o">[</span>/proj/nobackup/support-hpc2n/bbrydsoe<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/10.3.0<span class="w"> </span>OpenMPI/4.1.1<span class="w"> </span>Python/3.9.5<span class="w"> </span>SciPy-bundle/2021.05
+b-an01<span class="w"> </span><span class="o">[</span>/proj/nobackup/support-hpc2n/bbrydsoe<span class="o">]</span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>vpyenv/bin/activate
+<span class="o">(</span>vpyenv<span class="o">)</span><span class="w"> </span>b-an01<span class="w"> </span><span class="o">[</span>/proj/nobackup/support-hpc2n/bbrydsoe<span class="o">]</span>$<span class="w"> </span>python
+Python<span class="w"> </span><span class="m">3</span>.9.5<span class="w"> </span><span class="o">(</span>default,<span class="w"> </span>Jun<span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="m">2021</span>,<span class="w"> </span><span class="m">02</span>:53:39<span class="o">)</span>
+<span class="o">[</span>GCC<span class="w"> </span><span class="m">10</span>.3.0<span class="o">]</span><span class="w"> </span>on<span class="w"> </span>linux
+Type<span class="w"> </span><span class="s2">&quot;help&quot;</span>,<span class="w"> </span><span class="s2">&quot;copyright&quot;</span>,<span class="w"> </span><span class="s2">&quot;credits&quot;</span><span class="w"> </span>or<span class="w"> </span><span class="s2">&quot;license&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information.
+&gt;&gt;&gt;<span class="w"> </span>import<span class="w"> </span>spacy
+&gt;&gt;&gt;
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<p>To use self-installed Python packages in a batch script, you also need to load the above mentioned modules and activate the environment. An example of this will follow later in the course.</p>
+<p>To see which Python packages you, yourself, has installed, you can use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span> <span class="pre">--user</span></code> while the environement you have installed the packages in are active.</p>
+</section>
+<section id="more-info">
+<h3>More info<a class="headerlink" href="#more-info" title="Permalink to this headline"></a></h3>
+<p>HPC2N’s documentation pages about installing Python packages and virtual environments: <a class="reference external" href="https://www.hpc2n.umu.se/resources/software/user_installed/python">https://www.hpc2n.umu.se/resources/software/user_installed/python</a></p>
+<div class="admonition-keypoints keypoints admonition">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>With a virtual environment you can tailor an environment with specific versions for Python and packages, not interfering with other installed python versions and packages.</p></li>
+<li><p>Make it for each project you have for reproducibility.</p></li>
+<li><dl class="simple">
+<dt>There are different tools to create virtual environemnts.</dt><dd><ul>
+<li><p>HPC2N has virtualenv</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

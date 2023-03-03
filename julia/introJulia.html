@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction Julia &mdash; Introduction to running R, Python, and Julia in HPC 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/tabs.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Load and run Julia" href="load_runJulia.html" />
+    <link rel="prev" title="Summary" href="../python/summaryPython.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Introduction to running R, Python, and Julia in HPC
+            <img src="../_static/logo-python-hpc-course-Jan2023.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction Julia</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#preliminary-schedule">Preliminary schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-julia">What is Julia?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow-in-julia">Workflow in Julia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#features-of-julia">Features of Julia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shortcomings-of-julia">Shortcomings of Julia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-on-julia">More on Julia?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveJulia.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/summaryR.html">Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Introduction Julia</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/docs/blob/main/docs/julia/introJulia.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction-julia">
+<h1>Introduction Julia<a class="headerlink" href="#introduction-julia" title="Permalink to this headline"></a></h1>
+<dl class="simple">
+<dt><a class="reference external" href="https://uppmax.github.io/HPC-python/index.html">Welcome page and syllabus</a></dt><dd><ul class="simple">
+<li><p>Also link at House symbol 🏠 at top of page</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title"><strong>Learning outcomes</strong></p>
+<ul class="simple">
+<li><p>Load Julia modules and site-installed Julia packages</p></li>
+<li><p>Create a Julia environment</p></li>
+<li><p>Install Julia packages with <strong>Pkg</strong></p></li>
+<li><p>Write a batch script for running Julia</p></li>
+<li><p>Use Julia in parallel mode</p></li>
+<li><p>Use GPUs with Julia</p></li>
+<li><p>Use Julia for ML</p></li>
+</ul>
+</div>
+<div class="admonition-your-expectations admonition">
+<p class="admonition-title"><strong>Your expectations?</strong></p>
+<ul class="simple">
+<li><p>find best practices for using Julia at UPPMAX and HPC2N</p></li>
+<li><p>packages</p></li>
+<li><p>use the HPC performance with Julia</p></li>
+</ul>
+<p><strong>Not covered</strong></p>
+<ul class="simple">
+<li><p>improve Julia <em>coding</em> skills</p></li>
+<li><p>Other clusters</p></li>
+</ul>
+</div>
+<section id="preliminary-schedule">
+<h2>Preliminary schedule<a class="headerlink" href="#preliminary-schedule" title="Permalink to this headline"></a></h2>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">Preliminary times</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Time</p></th>
+<th class="head"><p>Topic</p></th>
+<th class="head"><p>Activity</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9:00</p></td>
+<td><p>Syllabus</p></td>
+<td><p>10m</p></td>
+</tr>
+<tr class="row-odd"><td><p>9.10</p></td>
+<td><p>Introduction</p></td>
+<td><p>Lecture 10 m</p></td>
+</tr>
+<tr class="row-even"><td><p>9.20</p></td>
+<td><p>Loading modules and running Julia codes</p></td>
+<td><p>Lecture+code along 20m</p></td>
+</tr>
+<tr class="row-odd"><td><p>9.40</p></td>
+<td><p>Packages and isolated environments</p></td>
+<td><p>Lecture+code along 20m</p></td>
+</tr>
+<tr class="row-even"><td><p>10.00</p></td>
+<td><p><strong>Coffee</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>10.15</p></td>
+<td><p>More on Packages</p></td>
+<td><p>Lecture+code along 30m</p></td>
+</tr>
+<tr class="row-even"><td><p>10.45</p></td>
+<td><p>SLURM Batch scripts for Julia jobs</p></td>
+<td><p>Lecture+code along + exercise 25m</p></td>
+</tr>
+<tr class="row-odd"><td><p>11.10</p></td>
+<td><p><strong>Short leg stretch</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>11.15</p></td>
+<td><p>Interactive work on the compute nodes</p></td>
+<td><p>Lecture+code along 15m</p></td>
+</tr>
+<tr class="row-odd"><td><p>11.30</p></td>
+<td><p>Exercises</p></td>
+<td><p>Exercises 20m</p></td>
+</tr>
+<tr class="row-even"><td><p>11.50</p></td>
+<td><p><strong>Short leg stretch</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>11.55</p></td>
+<td><p>Summary</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>12.05</p></td>
+<td><p>Q&amp;A on-demand</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>12.15</p></td>
+<td><p>END</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="what-is-julia">
+<h2>What is Julia?<a class="headerlink" href="#what-is-julia" title="Permalink to this headline"></a></h2>
+<p>Julia is a relatively new Programming language (pre-released 1.0 announced in
+1)    compared to well-known and standard languages such as Fortran, C, C++, R,
+and Python (some of them dated back to the 70’s). A common pattern in those
+well-stablished languages (traditional paradigm) is that they look after either
+productivity (fast deployment, fast prototyping) or performance (fast numerical
+computations).</p>
+<p>This pattern created the so called <strong>two-language problem</strong> where programmers
+had to choose between <strong>productivity</strong> (R, Python) or <strong>performance</strong> (Fortran, C/C++)
+and when both were needed programmers had to learn the language that offered
+the desired capability and use some interface between different languages.
+Performant languages traditionally needed to be compiled while languages focusing
+on productivity are interpreted.</p>
+<p>Among the different features of Julia, is its capability of integrating
+both aspects productivity and performance into a single language. In this way,
+Julia programmers can in principle write software without changing their
+focus to learn a new language.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/two-language.png"><img alt="../_images/two-language.png" src="../_images/two-language.png" style="width: 450px;" /></a>
+<figcaption>
+<p><span class="caption-text">Two-language problem where Julia is shown as a bridge between the languages
+in the traditional paradigms, productivity vs. performance.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="workflow-in-julia">
+<h2>Workflow in Julia<a class="headerlink" href="#workflow-in-julia" title="Permalink to this headline"></a></h2>
+<p>After loading the appropriate modules for Julia, you will have access to the
+read-eval-print-loop (REPL) command line by typing <code class="docutils literal notranslate"><span class="pre">julia</span></code>:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="go">$ ml julia/1.8.5</span>
+<span class="go">$ julia</span>
+
+<span class="go">   _       _ _(_)_     |  Documentation: https://docs.julialang.org</span>
+<span class="go">  (_)     | (_) (_)    |</span>
+<span class="go">   _ _   _| |_  __ _   |  Type &quot;?&quot; for help, &quot;]?&quot; for Pkg help.</span>
+<span class="go">  | | | | | | |/ _` |  |</span>
+<span class="go">  | | |_| | | | (_| |  |  Version 1.8.5 (2023-01-08)</span>
+<span class="go"> _/ |\__&#39;_|_|_|\__&#39;_|  |  Official https://julialang.org/ release</span>
+<span class="go">|__/                   |</span>
+
+<span class="gp">julia&gt;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="go">$ ml Julia/1.8.5-linux-x86_64</span>
+<span class="go">$ julia</span>
+
+<span class="go">   _       _ _(_)_     |  Documentation: https://docs.julialang.org</span>
+<span class="go">  (_)     | (_) (_)    |</span>
+<span class="go">   _ _   _| |_  __ _   |  Type &quot;?&quot; for help, &quot;]?&quot; for Pkg help.</span>
+<span class="go">  | | | | | | |/ _` |  |</span>
+<span class="go">  | | |_| | | | (_| |  |  Version 1.8.5 (2023-01-08)</span>
+<span class="go"> _/ |\__&#39;_|_|_|\__&#39;_|  |  Official https://julialang.org/ release</span>
+<span class="go">|__/                   |</span>
+
+<span class="gp">julia&gt;</span>
+</pre></div>
+</div>
+</div></div>
+<p>Julia has different modes, the one mentioned above is the so-called <code class="docutils literal notranslate"><span class="pre">Julian</span></code> mode
+where one can execute commands. The description for accessing these modes will be
+given in the following paragraphs. Once you are done with your work in any of the modes,
+you can return to the <code class="docutils literal notranslate"><span class="pre">Julian</span></code> mode by pressing the <code class="docutils literal notranslate"><span class="pre">backspace</span></code> key.</p>
+<p>While being on the Julian mode you can enter the <code class="docutils literal notranslate"><span class="pre">shell</span></code> mode by typing <code class="docutils literal notranslate"><span class="pre">;</span></code>:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">shell</span><span class="o">&gt;</span><span class="n">pwd</span>
+<span class="o">/</span><span class="n">current</span><span class="o">-</span><span class="n">folder</span><span class="o">-</span><span class="n">path</span>
+</pre></div>
+</div>
+<p>this will allow you to use Linux commands. Notice that the availabilty of these commands
+depend on the OS, for instance, on Windows it will depend on the terminal that you have
+installed and if it is visible to the Julia installation.</p>
+<p>Another mode available in Julia is the <code class="docutils literal notranslate"><span class="pre">package</span> <span class="pre">manager</span></code> mode, it can be accessed by typing <code class="docutils literal notranslate"><span class="pre">]</span></code> in the <code class="docutils literal notranslate"><span class="pre">Julian</span></code> mode:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="p">]</span>
+<span class="go">(v1.8) pkg&gt;</span>
+</pre></div>
+</div>
+<p>this will make your interaction with the package manager <strong>Pkg</strong> easier, for instance,
+instead of typing the complete name of <strong>Pkg</strong> commands such as <code class="docutils literal notranslate"><span class="pre">Pkg.status()</span></code> in the
+<code class="docutils literal notranslate"><span class="pre">Julian</span></code> mode, you can just type <code class="docutils literal notranslate"><span class="pre">status</span></code> in the <code class="docutils literal notranslate"><span class="pre">package</span></code> mode.</p>
+<p>The last mode is the <code class="docutils literal notranslate"><span class="pre">help</span></code> mode, you can enter this mode from the <code class="docutils literal notranslate"><span class="pre">Julian</span></code> one by
+typing <code class="docutils literal notranslate"><span class="pre">?</span></code>, then you may type some string from which you need more information:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">help?&gt;</span> ans
+<span class="gp">julia&gt;</span><span class="o">?</span>
+<span class="go">search: ans transpose transcode contains expanduser instances MathConstants readlines LinearIndices leading_ones leading_zeros</span>
+
+<span class="go">ans</span>
+
+<span class="go">A variable referring to the last computed value, automatically set at the interactive prompt.</span>
+</pre></div>
+</div>
+<p>More detailed information about the modes in Julia can be found here: <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">https://docs.julialang.org/en/v1/stdlib/REPL/</a></p>
+</section>
+<section id="features-of-julia">
+<h2>Features of Julia<a class="headerlink" href="#features-of-julia" title="Permalink to this headline"></a></h2>
+<p>According to the Julia documentation (<a class="reference external" href="https://docs.julialang.org/en/v1/">https://docs.julialang.org/en/v1/</a>) some of
+the features of this language are:</p>
+<ul class="simple">
+<li><p>Good Base library with efficiently implemented operations written in Julia itself</p></li>
+<li><p>“Good performance, approaching that of statically-compiled languages like C”</p></li>
+<li><p>Modular and self-contained approach for libraries and development</p></li>
+<li><p>“A rich language of types for constructing and describing objects”</p></li>
+<li><p>A fast growing community of users and developers</p></li>
+</ul>
+</section>
+<section id="shortcomings-of-julia">
+<h2>Shortcomings of Julia<a class="headerlink" href="#shortcomings-of-julia" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>As this is a new language, the libraries ecosystem is not as rich as in Python or R, for instance</p></li>
+<li><p>Currently, using Julia for simple tasks (for instance, opening a file and writing text, plotting) is not as
+efficient as using Linux tools (AWK, GREP) or compiled languages (Fortran, C/C++, Rust)</p></li>
+<li><p>Previous situation is more noticeable upon running simple tasks in parallel mode (MPI, Threads)</p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline"></a></h2>
+<div class="admonition-getting-familiar-with-julia-repl exercise important admonition">
+<p class="admonition-title">Getting familiar with Julia REPL</p>
+<p>Is is important in this course that you know how to navigate on the
+Julia command line. This exercise will help you to become more familiar
+with the REPL. Do the following steps:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Start a Julia session. In the <code class="docutils literal notranslate"><span class="pre">Julian</span></code> mode, compute the sum the numbers
+5 and 6</p></li>
+<li><p>Change to the <code class="docutils literal notranslate"><span class="pre">shell</span></code> mode and display the current directory</p></li>
+<li><p>Now, go to the <code class="docutils literal notranslate"><span class="pre">package</span></code> mode and list the currently installed packages</p></li>
+<li><p>Finally, display help information of the function <code class="docutils literal notranslate"><span class="pre">println</span></code> in <code class="docutils literal notranslate"><span class="pre">help</span></code> mode.</p></li>
+</ul>
+</div></blockquote>
+<div class="dropdown solution important admonition">
+<p class="admonition-title">Solution for centres</p>
+<blockquote>
+<div><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="o">$</span><span class="w"> </span><span class="n">julia</span>
+<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span>
+<span class="n">julia</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pwd</span>
+<span class="n">julia</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">status</span>
+<span class="n">julia</span><span class="o">&gt;?</span>
+<span class="n">help</span><span class="o">?&gt;</span><span class="w"> </span><span class="n">println</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</section>
+<section id="more-on-julia">
+<h2>More on Julia?<a class="headerlink" href="#more-on-julia" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Documentation at the HPC centres UPPMAX and HPC2N</dt><dd><ul>
+<li><p>UPPMAX: <a class="reference external" href="https://www.uppmax.uu.se/support/user-guides/julia-user-guide/">https://www.uppmax.uu.se/support/user-guides/julia-user-guide/</a></p></li>
+<li><p>HPC2N: <a class="reference external" href="https://www.hpc2n.umu.se/resources/software/julia">https://www.hpc2n.umu.se/resources/software/julia</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Official Julia documentation is found here: <a class="reference external" href="https://docs.julialang.org/en/v1/">https://docs.julialang.org/en/v1/</a></p></li>
+<li><p>Slack channel for Julia and instructions for joining it are found here: <a class="reference external" href="https://julialang.org/slack/">https://julialang.org/slack/</a></p></li>
+<li><p>HPC2N YouTube video on Julia in HPC: <a class="reference external" href="https://www.youtube.com/watch?v=bXHe7Kj3Xxg">https://www.youtube.com/watch?v=bXHe7Kj3Xxg</a></p></li>
+<li><p>Julia for High Performance Computing course material from ENCCS: <a class="reference external" href="https://enccs.github.io/Julia-for-HPC/">https://enccs.github.io/Julia-for-HPC/</a></p></li>
+</ul>
+<div class="admonition-keypoints keypoints admonition">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Julia is a relatively new language with several attractive features.</p></li>
+<li><p>It offers several modes that can make your workflow easier, i.e., <code class="docutils literal notranslate"><span class="pre">Julian</span></code>,
+<code class="docutils literal notranslate"><span class="pre">shell</span></code>, <code class="docutils literal notranslate"><span class="pre">package</span> <span class="pre">manager</span></code>, and <code class="docutils literal notranslate"><span class="pre">help</span></code> modes.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../python/summaryPython.html" class="btn btn-neutral float-left" title="Summary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="load_runJulia.html" class="btn btn-neutral float-right" title="Load and run Julia" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Packages &mdash; Introduction to running R, Python, and Julia in HPC 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/tabs.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Isolated environments" href="isolated.html" />
+    <link rel="prev" title="Load and run python" href="load_runPython.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Introduction to running R, Python, and Julia in HPC
+            <img src="../_static/logo-python-hpc-course-Jan2023.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#check-current-available-packages">Check current available packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-for-both-centers">General for both centers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#install-with-pip">Install with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conda">Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/summaryR.html">Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Packages</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/docs/blob/main/docs/python/packages.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="packages">
+<h1>Packages<a class="headerlink" href="#packages" title="Permalink to this headline"></a></h1>
+<div class="admonition-python-modules-aka-python-packages admonition">
+<p class="admonition-title">Python modules AKA Python packages</p>
+<ul class="simple">
+<li><p>Python <strong>packages broaden the use of python</strong> to almost infinity!</p></li>
+<li><p>Instead of writing code yourself there may be others that have done the same!</p></li>
+<li><p>Many <strong>scientific tools</strong> are distributed as <strong>python packages</strong>, making it possible to run a script in the prompt and there define files to be analysed and arguments defining exactly what to do.</p></li>
+<li><p>A nice <strong>introduction to packages</strong> can be found here: <a class="reference external" href="https://aaltoscicomp.github.io/python-for-scicomp/dependencies/">https://aaltoscicomp.github.io/python-for-scicomp/dependencies/</a></p></li>
+</ul>
+</div>
+<div class="admonition-questions questions admonition">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>How do I find which packages and versions are available?</p></li>
+<li><p>What to do if I need other packages?</p></li>
+<li><p>Are there differences between HPC2N and UPPMAX?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Show how to check for Python packages</p></li>
+<li><p>show how to install own packages on the different clusters</p></li>
+</ul>
+</div>
+<div class="admonition-there-are-two-package-installation-systems admonition">
+<p class="admonition-title">There are two package installation systems</p>
+<ul class="simple">
+<li><p><strong>PyPI</strong> (<code class="docutils literal notranslate"><span class="pre">pip</span></code>) is traditionally for Python-only packages but it is no problem to also distribute packages written in other languages as long as they provide a Python interface.</p></li>
+<li><dl class="simple">
+<dt><strong>Conda</strong> (<code class="docutils literal notranslate"><span class="pre">conda</span></code>) is more general and while it contains many Python packages and packages with a Python interface, it is often used to also distribute packages which do not contain any Python (e.g. C or C++ packages).</dt><dd><ul>
+<li><p>Creates its own environment that does not interact with other python installations</p></li>
+<li><p>At HPC2N, Conda is not recommended, and we do not support it there</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Many libraries and tools are distributed in both ecosystems.</p></li>
+</ul>
+</div>
+<section id="check-current-available-packages">
+<h2>Check current available packages<a class="headerlink" href="#check-current-available-packages" title="Permalink to this headline"></a></h2>
+<section id="general-for-both-centers">
+<h3>General for both centers<a class="headerlink" href="#general-for-both-centers" title="Permalink to this headline"></a></h3>
+<p>Some python packages are working as stand-alone tools, for instance in bioinformatics. The tool may be already installed as a module. Check if it is there by:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>spider<span class="w"> </span>&lt;tool-name<span class="w"> </span>or<span class="w"> </span>tool-name<span class="w"> </span>part&gt;
+</pre></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span></code> lets you search regardless of upper- or lowercase characters.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Check the pre-installed packages of a specific python module:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span><span class="nb">help</span><span class="w"> </span>python/&lt;version&gt;
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>At HPC2N, a way to find Python packages that you are unsure how are names, would be to do</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>-r<span class="w"> </span>spider<span class="w"> </span>’.*Python.*’
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>-r<span class="w"> </span>spider<span class="w"> </span>’.*python.*’
+</pre></div>
+</div>
+<p>Do be aware that the output of this will not just be Python packages, some will just be programs that are compiled with Python, so you need to check the list carefully.</p>
+</div></div>
+<p>Check the pre-installed packages of a loaded python module, in shell:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>list
+</pre></div>
+</div>
+<p>To see which Python packages you, yourself, has installed, you can use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span> <span class="pre">--user</span></code> while the environment you have installed the packages in are active.</p>
+<p>You can also test from within python to make sure that the package is not already installed:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Does it work? Then it is there!
+Otherwise, you can either use <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>.</p>
+<p><strong>NOTE</strong>: at HPC2N, the available Python packages needs to be loaded as modules before using! See a list of some of them here: <a class="reference external" href="https://uppmax.github.io/HPC-python/intro.html#python-at-hpc2n">https://uppmax.github.io/HPC-python/intro.html#python-at-hpc2n</a> or find more as mentioned above, using <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span> <span class="pre">-r</span> <span class="pre">....`</span></code></p>
+<p>A selection of the Python packages and libraries installed on UPPMAX and HPC2N are:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>The python application at UPPMAX comes with several preinstalled packages.
+A selection of the Python packages and libraries installed on UPPMAX are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Numpy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Pandas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Scipy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">notebook</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cython</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ipython</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">networkx</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">graphviz/0.16</span></code></p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt>In addition there are packages available from the module system</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">biopython</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python_ML_packages</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sklearn/scikit-learn</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torch</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bwa</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Graphviz/2.40.1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HiChipper</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Homer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pysam</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><ul>
+<li><p>The python application at HPC2N comes with several preinstalled packages - check first before installing yourself!.</p></li>
+<li><p>HPC2N has both Python 2.7.x and Python 3.x installed.</p></li>
+<li><p>We will be using Python 3.x in this course.  For this course, the recommended version of Python to use on Kebnekaise is 3.9.5</p>
+<p>NOTE:  HPC2N do NOT recommend (and do not support) using Anaconda/Conda on our systems. You can read more about this here: <a class="reference external" href="https://www.hpc2n.umu.se/documentation/guides/anaconda">https://www.hpc2n.umu.se/documentation/guides/anaconda</a></p>
+</li>
+<li><p>This is a selection of the packages and libraries installed at HPC2N. These are all installed as <strong>modules</strong> and need to be loaded before use.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ASE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Keras</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PyTorch</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SciPy-bundle</span></code> (Bottleneck, deap, mpi4py, mpmath, numexpr, numpy, pandas, scipy - some of the versions have more)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Theano</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scikit-image</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iPython</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Cython</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Flask</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></div>
+</section>
+</section>
+<section id="install-with-pip">
+<h2>Install with pip<a class="headerlink" href="#install-with-pip" title="Permalink to this headline"></a></h2>
+<p>You use <code class="docutils literal notranslate"><span class="pre">pip</span></code> this way, in a Linux shell OR a python shell:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>&lt;package&gt;
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">pip3</span></code> if you loaded python3.</p>
+<p>Then the package ends up in <code class="docutils literal notranslate"><span class="pre">~/.local/lib/python&lt;version&gt;/site-packages/</span></code> .</p>
+<p>Note that python&lt;version&gt; is omitting the last number (bug fix), like 3.8 for python-3.8.7.
+We HIGHLY recommend using a virtual environment during installation, since this makes it easier to install for different versions of Python.  More information will follow later in this course (<a class="reference external" href="https://uppmax.github.io/HPC-python/isolated.html">https://uppmax.github.io/HPC-python/isolated.html</a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will test this in the separated sessions about isolated environments in a while.</p>
+</div>
+<div class="admonition-keypoints keypoints admonition">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li><p>You can check for packages</p>
+<blockquote>
+<div><ul>
+<li><p>from the Python shell with the <code class="docutils literal notranslate"><span class="pre">import</span></code> command</p></li>
+<li><p>from BASH shell with the</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> command at both centers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">help</span> <span class="pre">python/3.9.5</span></code> at UPPMAX</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Installation of Python packages can be done either with <strong>PYPI</strong> or <strong>Conda</strong></p></li>
+<li><p>You install own packages with the <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> command (This is the recommended way on HPC2N)</p></li>
+<li><p>At UPPMAX Conda is also available (See Conda section)</p></li>
+</ul>
+</div>
+</section>
+<section id="conda">
+<h2>Conda<a class="headerlink" href="#conda" title="Permalink to this headline"></a></h2>
+<div class="admonition-questions questions admonition">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>What does Conda do?</p></li>
+<li><p>How to create a Conda environment</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Learn pros and cons with Conda</p></li>
+<li><p>Learn how to install packages and work with the Conda (isolated) environment</p></li>
+</ul>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>On Bianca (with no internet), Conda is the first choice when installing packages, because there is a local mirror of most of the Conda repositories.</p></li>
+</ul>
+</div>
+<div class="admonition-conda-cheat-sheet admonition">
+<p class="admonition-title">Conda cheat sheet</p>
+<ul class="simple">
+<li><p>List packages in present environment:      <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code></p></li>
+<li><p>List all environments:                     <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">info</span> <span class="pre">-e</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code></p></li>
+<li><p>Install a package: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">somepackage</span></code></p></li>
+<li><p>Install from certain channel (conda-forge): <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">somepackage</span></code></p></li>
+<li><p>Install a specific version: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">somepackage=1.2.3</span></code></p></li>
+<li><p>Create a new environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">myenvironment</span></code></p></li>
+<li><p>Create a new environment from requirements.txt: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">myenvironment</span> <span class="pre">--file</span> <span class="pre">requirements.txt</span></code></p></li>
+<li><p>On e.g. HPC systems where you don’t have write access to central installation directory: conda create –prefix /some/path/to/env``</p></li>
+<li><p>Activate a specific environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">myenvironment</span></code></p></li>
+<li><p>Deactivate current environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code></p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We have mirrored all major conda repositories directly on UPPMAX, on both Rackham and Bianca. These are updated every third day.
+We have the following channels available:</p>
+<ul class="simple">
+<li><p>bioconda</p></li>
+<li><p>biocore</p></li>
+<li><p>conda-forge</p></li>
+<li><p>dranew</p></li>
+<li><p>free</p></li>
+<li><p>main</p></li>
+<li><p>pro</p></li>
+<li><p>qiime2</p></li>
+<li><p>r</p></li>
+<li><p>r2018.11</p></li>
+<li><p>scilifelab-lts</p></li>
+</ul>
+<p>You reach them all by loading the conda module. You don’t have to state the specific channel when using UPPMAX. Otherwise you do with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">-c</span> <span class="pre">&lt;channel&gt;</span> <span class="pre">...</span></code></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>There will be an exercise in the end!</p>
+</div>
+<ol class="arabic simple">
+<li><p>First load our conda module (there is no need to install you own miniconda, for instance)</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: "$ ";
+}
+</style><span class="prompt1">module<span class="w"> </span>load<span class="w"> </span>conda</span>
+</pre></div></div><ul class="simple">
+<li><p>This grants you access to the latest version of Conda and all major repositories on all UPPMAX systems.</p></li>
+<li><p>Check the text output as conda is loaded, especially the first time, see below</p></li>
+</ul>
+<blockquote>
+<div><div class="admonition-conda-load-output-class-dropdown admonition">
+<p class="admonition-title">Conda load output
+   :class: dropdown</p>
+<ul class="simple">
+<li><p>The variable CONDA_ENVS_PATH contains the location of your environments. Set it to your project’s environments folder if you have one.</p></li>
+<li><p>Otherwise, the default is ~/.conda/envs.</p></li>
+<li><p>You may run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">conda_init.sh</span></code> to initialise your shell to be able to run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span></code> and <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code> etc.</p></li>
+<li><p>Just remember that this command adds stuff to your shell outside the scope of the module system.</p></li>
+<li><p>REMEMBER TO <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">clean</span> <span class="pre">-a</span></code> once in a while to remove unused and unnecessary files</p></li>
+</ul>
+</div>
+</div></blockquote>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>First time</p></li>
+</ol>
+<blockquote>
+<div><ul>
+<li><p>The variable CONDA_ENVS_PATH contains the location of your environments. Set it to your project’s environments folder if you have one.</p></li>
+<li><p>Otherwise, the default is ~/.conda/envs.</p></li>
+<li><p>Example:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="nb">export</span><span class="w"> </span><span class="nv">CONDA_ENVS_PATH</span><span class="o">=</span>/proj/&lt;your-project-id&gt;/nobackup/&lt;username&gt;</span>
+</pre></div></div></div></blockquote>
+</li>
+</ul>
+<blockquote>
+<div><div class="dropdown admonition">
+<p class="admonition-title">By choice</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">conda_init.sh</span></code> to initialise your shell (bash) to be able to run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span></code> and <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code> etcetera instead of <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">activate</span></code>. It will modify (append) your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file.</p>
+</div>
+<ul class="simple">
+<li><p>When conda is loaded you will by default be in the base environment, which works in the same way as other conda environments. include a Python installation and some core system libraries and dependencies of Conda. It is a “best practice” to avoid installing additional packages into your base software environment.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Create the conda environment</p></li>
+</ol>
+<blockquote>
+<div><ul>
+<li><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>python36-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6<span class="w"> </span><span class="nv">numpy</span><span class="o">=</span><span class="m">1</span>.13.1<span class="w"> </span><span class="nv">matplotlib</span><span class="o">=</span><span class="m">2</span>.2.2</span>
+</pre></div></div><div class="dropdown admonition">
+<p class="admonition-title">The <code class="docutils literal notranslate"><span class="pre">mamba</span></code> alternative</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mamba</span></code> is a fast drop-in alternative to conda, using “libsolv” for dependency resolution. It is available from the <code class="docutils literal notranslate"><span class="pre">conda</span></code> module.</p></li>
+<li><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">mamba<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>python37-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7<span class="w"> </span><span class="nv">numpy</span><span class="o">=</span><span class="m">1</span>.13.1<span class="w"> </span><span class="nv">matplotlib</span><span class="o">=</span><span class="m">2</span>.2.2</span>
+</pre></div></div></li>
+</ul>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<ol class="arabic" start="4">
+<li><p>Activate the conda environment by:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>python36-env</span>
+</pre></div></div><ul class="simple">
+<li><p>You will see that your prompt is changing to start with <code class="docutils literal notranslate"><span class="pre">(python-36-env)</span></code> to show that you are within an environment.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Now do your work!</p></li>
+<li><p>Deactivate</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt2:before {
+  content: "(python-36-env) $ ";
+}
+</style><span class="prompt2">conda<span class="w"> </span>deactivate</span>
+</pre></div></div></div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>Conda is known to create <strong>many</strong> <em>small</em> files. Your diskspace is not only limited in GB, but also in number of files (typically <code class="docutils literal notranslate"><span class="pre">300000</span></code> in $home).</p></li>
+<li><p>Check your disk usage and quota limit with <code class="docutils literal notranslate"><span class="pre">uquota</span></code></p></li>
+<li><p>Do a <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">clean</span> <span class="pre">-a</span></code> once in a while to remove unused and unnecessary files</p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://uppmax.uu.se/support/user-guides/conda-user-guide/">More info about Conda on UPPMAX</a></p></li>
+</ul>
+<ul>
+<li><p>Create an environment based on dependencies given in an environment file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda env create --file environment.yml
+</pre></div>
+</div>
+</li>
+<li><p>Create file from present conda environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda env export &gt; environment.yml
+</pre></div>
+</div>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">environments.yml</span></code> (for conda) is a yaml-file which looks like this:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-environment</span>
+<span class="nt">channels</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">defaults</span>
+<span class="nt">dependencies</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">numpy</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matplotlib</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pandas</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scipy</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">environments.yml</span></code> with versions:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-environment</span>
+<span class="nt">channels</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">defaults</span>
+<span class="nt">dependencies</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python=3.7</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">numpy=1.18.1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matplotlib=3.1.3</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pandas=1.1.2</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scipy=1.6.2</span>
+</pre></div>
+</div>
+<div class="admonition-more-on-dependencies admonition">
+<p class="admonition-title">More on dependencies</p>
+<ul class="simple">
+<li><p>Dependency management from course <a class="reference external" href="https://aaltoscicomp.github.io/python-for-scicomp/dependencies/">Python for Scientific computing</a></p></li>
+</ul>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline"></a></h2>
+<div class="admonition-uppmax-create-a-conda-environment-and-install-some-packages exercise important admonition">
+<p class="admonition-title">UPPMAX: Create a conda environment and install some packages</p>
+<ul>
+<li><p>First check the current installed packages while having <code class="docutils literal notranslate"><span class="pre">python/3.9.5</span></code> loaded</p></li>
+<li><p>Open a new terminal and have the old one available for later comparison</p></li>
+<li><p>Use the conda module on Rackham and create an environment with name <code class="docutils literal notranslate"><span class="pre">HPC-python23</span></code> with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">3.7</span></code>  and <code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">1.15</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use your a path for <code class="docutils literal notranslate"><span class="pre">CONDA_ENVS_PATH</span></code> of your own choice or <code class="docutils literal notranslate"><span class="pre">/proj/py-r-jl/&lt;user&gt;/python</span></code></p></li>
+<li><p>(It may take a minute or so)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Activate!</p></li>
+<li><p>Check with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code> what is there. Compare with the environment given from the python module in the first terminal window.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Which version of Python did you get?</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Don’t forget to deactivate the Conda environment before doing other exercises!</p></li>
+</ul>
+</div>
+<div class="dropdown solution important admonition">
+<p class="admonition-title">Solution for UPPMAX</p>
+<blockquote>
+<div><p>Write this in the terminal</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>conda
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">CONDA_ENVS_PATH</span><span class="o">=</span>/proj/py-r-jl/&lt;user&gt;/python
+$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>HPC-python23<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7<span class="w"> </span><span class="nv">numpy</span><span class="o">=</span><span class="m">1</span>.15
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>HPC-python23
+$<span class="w"> </span>pip<span class="w"> </span>list
+$<span class="w"> </span>python<span class="w"> </span>-V
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>deactivate
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="admonition-keypoints keypoints admonition">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li><p>Conda is an installer of packages but also bigger toolkits</p></li>
+<li><p>Conda creates isolated environments (see next section) not clashing with other installations of python and other versions of packages</p></li>
+<li><p>Conda environment requires that you install all packages needed by yourself.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>That is, you cannot load the python module and use the packages therein inside you Conda environment.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="load_runPython.html" class="btn btn-neutral float-left" title="Load and run python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="isolated.html" class="btn btn-neutral float-right" title="Isolated environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Running Jupyter on compute nodes &mdash; Introduction to running R, Python, and Julia in HPC 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Introduction to running R, Python, and Julia in HPC
+            <img src="../../_static/logo-python-hpc-course-Jan2023.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/interactiveJulia.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../R/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/summaryR.html">Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Running Jupyter on compute nodes</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/docs/blob/main/docs/python/not_used/jupyterUPPMAX.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="running-jupyter-on-compute-nodes">
+<h1>Running Jupyter on compute nodes<a class="headerlink" href="#running-jupyter-on-compute-nodes" title="Permalink to this headline"></a></h1>
+<div class="admonition-what-is-jupyter callout admonition">
+<p class="admonition-title">What is Jupyter?</p>
+<ul class="simple">
+<li><p>“The Jupyter Notebook is the original web application for creating and sharing computational documents. It offers a simple, streamlined, document-centric experience.”</p>
+<ul>
+<li><p>Run python interactively and make a “story” document with text and code and figures woven together.</p></li>
+<li><p>Includes file manager</p></li>
+</ul>
+</li>
+<li><p>You run it in a <strong>web browser</strong> (<code class="docutils literal notranslate"><span class="pre">firefox</span></code> at UPPMAX)</p></li>
+<li><p>The Jupyter project site contains a lot of information and inspiration. <a class="reference external" href="https://jupyter.org/">https://jupyter.org/</a></p></li>
+<li><p>The Jupyter Notebook documentation. <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/">https://jupyter-notebook.readthedocs.io/en/stable/</a></p></li>
+</ul>
+</div>
+<section id="on-the-compute-nodes">
+<h2>On the compute nodes<a class="headerlink" href="#on-the-compute-nodes" title="Permalink to this headline"></a></h2>
+</section>
+<section id="start-an-interactive-session-from-the-login-node">
+<h2>1. Start an interactive session from the login node<a class="headerlink" href="#start-an-interactive-session-from-the-login-node" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For Rackham</span>
+$<span class="w"> </span>interactive<span class="w"> </span>-A<span class="w"> </span>snic-project<span class="w">  </span>-t<span class="w"> </span><span class="m">4</span>:00:00
+
+<span class="c1"># For Snowy</span>
+$<span class="w"> </span>interactive<span class="w"> </span>-M<span class="w"> </span>snowy<span class="w"> </span>-A<span class="w"> </span>snic-project<span class="w">  </span>-t<span class="w"> </span><span class="m">4</span>:00:00
+</pre></div>
+</div>
+</section>
+<section id="start-jupyter-notebook-from-the-interactive-session-when-it-gets-allocated">
+<h2>2. Start jupyter notebook from the interactive session (<em>when it gets allocated</em>)<a class="headerlink" href="#start-jupyter-notebook-from-the-interactive-session-when-it-gets-allocated" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>python/3.9.5
+$<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--ip<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--no-browser
+</pre></div>
+</div>
+</section>
+<section id="connect-to-the-running-notebook">
+<h2>3. Connect to the running notebook<a class="headerlink" href="#connect-to-the-running-notebook" title="Permalink to this headline"></a></h2>
+<p>Keep this session open and running. Note the node on which you are got the interactive job i.e. something like “r141”.</p>
+<ul>
+<li><p>If you are connected to Rackham via <a class="reference external" href="https://www.uppmax.uu.se/support/user-guides/thinlinc-graphical-connection-guide/">Thinlinc session</a>, open a browser with the link you got but modified to point to r141 i.e.
+http://r141:8888/?token=5c3aeee9fbfc75f7a11c4a64b2b5b7ec49622231388241c2</p></li>
+<li><p>If you use ssh to connect to Rackham, you need to forward the port of the interactive node to your local computer.</p>
+<ul>
+<li><p>On Linux or Mac this is done by running in another terminal. Make sure you have the ports changed if they are not at the default 8888.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">8888</span>:r141:8888<span class="w"> </span>username@rackham.uppmax.uu.se
+</pre></div>
+</div>
+</li>
+<li><p>If you use PuTTY - you need to change the settings in “Tunnels” accordingly (could be done for the current connection as well).
+<img alt="" src="python/not_used/img/putty.png" />
+https://uplogix.com/docs/local-manager-user-guide/advanced-features/ssh-port-forwarding</p></li>
+</ul>
+<p>On your computer open  the address you got but replace r141 with localhost i.e.
+http://localhost:8888/?token=5c3aeee9fbfc75f7a11c4a64b2b5b7ec49622231388241c2</p>
+<p>This should bring the jupyter interface on your computer and all calculations and files will be on Rackham.</p>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

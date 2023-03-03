@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Load and run Julia &mdash; Introduction to running R, Python, and Julia in HPC 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/tabs.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Packages and isolated environments" href="isolatedJulia.html" />
+    <link rel="prev" title="Introduction Julia" href="introJulia.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Introduction to running R, Python, and Julia in HPC
+            <img src="../_static/logo-python-hpc-course-Jan2023.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Load and run Julia</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#check-for-julia-versions">Check for Julia versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-a-julia-module">Load a Julia module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run">Run</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-julia-script">Run Julia script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-julia-as-a-session">Run Julia as a session</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveJulia.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/summaryR.html">Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Load and run Julia</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/docs/blob/main/docs/julia/load_runJulia.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="load-and-run-julia">
+<h1>Load and run Julia<a class="headerlink" href="#load-and-run-julia" title="Permalink to this headline"></a></h1>
+<dl class="simple">
+<dt>At both UPPMAX and HPC2N we call the applications available via the module system modules.</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://www.uppmax.uu.se/resources/software/module-system/">https://www.uppmax.uu.se/resources/software/module-system/</a></p></li>
+<li><p><a class="reference external" href="https://www.hpc2n.umu.se/documentation/environment/lmod">https://www.hpc2n.umu.se/documentation/environment/lmod</a></p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-objectives objectives admonition">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Show how to load Julia</p></li>
+<li><p>Show how to run Julia scripts and start the Julia command line</p></li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Short cheat sheet</p>
+<ul class="simple">
+<li><p>See which modules exists: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">spider</span></code></p></li>
+<li><p>Find module versions for a particular software: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span> <span class="pre">&lt;software&gt;</span></code></p></li>
+<li><p>Modules depending only on what is currently loaded: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">av</span></code></p></li>
+<li><p>See which modules are currently loaded: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span></code></p></li>
+<li><p>Load a module: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">&lt;module&gt;/&lt;version&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">&lt;module&gt;/&lt;version&gt;</span></code></p></li>
+<li><p>Unload a module: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span> <span class="pre">&lt;module&gt;/&lt;version&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">-&lt;module&gt;/&lt;version&gt;</span></code></p></li>
+<li><p>More information about a module: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">show</span> <span class="pre">&lt;module&gt;/&lt;version&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">show</span> <span class="pre">&lt;module&gt;/&lt;version&gt;</span></code></p></li>
+<li><p>Unload all modules except the ‘sticky’ modules: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">purge</span></code></p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that the module systems at UPPMAX and HPC2N are slightly different. While all modules at UPPMAX not directly related to bio-informatics are shown by <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">avail</span></code>, modules at HPC2N are hidden until one has loaded a prerequisite like the compiler <code class="docutils literal notranslate"><span class="pre">GCC</span></code>.</p>
+</div>
+<ul class="simple">
+<li><p>For reproducibility reasons, you should always load a specific version of a module instead of just the default version (often the latest)</p></li>
+</ul>
+<section id="check-for-julia-versions">
+<h2>Check for Julia versions<a class="headerlink" href="#check-for-julia-versions" title="Permalink to this headline"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Check all available Julia versions with:</p>
+<blockquote>
+<div><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>avail<span class="w"> </span>julia
+</pre></div>
+</div>
+</div></blockquote>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Check all available version Julia versions with:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>spider<span class="w"> </span>julia
+</pre></div>
+</div>
+<p>To see how to load a specific version of Julia, including the prerequisites, do</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>spider<span class="w"> </span>Julia/&lt;version&gt;
+</pre></div>
+</div>
+<p>Example for Julia 1.8.5</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>spider<span class="w"> </span>Julia/1.8.5
+</pre></div>
+</div>
+</div></div>
+<div class="dropdown admonition">
+<p class="admonition-title">Output at UPPMAX as of Jan 31 2023</p>
+<blockquote>
+<div><div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span>$ module av julia
+--------------------------------------- /sw/mf/rackham/compilers ---------------------------------------
+   julia/1.0.5_LTS    julia/1.4.2    julia/1.6.3        julia/1.7.2
+   julia/1.1.1        julia/1.6.1    julia/1.6.7_LTS    julia/1.8.5 (D)
+
+ Where:
+  D:  Default Module
+
+Use &quot;module spider&quot; to find all possible modules and extensions.
+Use &quot;module keyword key1 key2 ...&quot; to search for all possible modules matching any of the &quot;keys&quot;.
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Output at HPC2N as of Jan 27th</p>
+<blockquote>
+<div><div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span>b-an01 [~]$ module spider julia
+------------------------------------------------------------------------------------------------
+  Julia:
+------------------------------------------------------------------------------------------------
+  Description:
+    Julia is a high-level, high-performance dynamic programming language for numerical
+    computing
+
+  Versions:
+     Julia/1.5.3-linux-x86_64
+     Julia/1.7.1-linux-x86_64
+     Julia/1.8.5-linux-x86_64
+
+------------------------------------------------------------------------------------------------
+  For detailed information about a specific &quot;Julia&quot; package (including how to load the modules) use the module&#39;s full name.
+  Note that names that have a trailing (E) are extensions provided by other modules.
+  For example:
+
+     $ module spider Julia/1.8.5-linux-x86_64
+------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</section>
+<section id="load-a-julia-module">
+<h2>Load a Julia module<a class="headerlink" href="#load-a-julia-module" title="Permalink to this headline"></a></h2>
+<p>For reproducibility, we recommend ALWAYS loading a specific module instad of using the default version!</p>
+<p>For this course, we recommend using Julia 1.8.5.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>Go back and check which Julia modules were available. To load version 1.8.5, do:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>julia/1.8.5
+</pre></div>
+</div>
+<p>Note: Lowercase <code class="docutils literal notranslate"><span class="pre">j</span></code>.
+For short, you can also use:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ml<span class="w"> </span>julia/1.8.5
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</pre></div>
+</div>
+<p>Note: Uppercase <code class="docutils literal notranslate"><span class="pre">J</span></code>.
+For short, you can also use:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="run">
+<h2>Run<a class="headerlink" href="#run" title="Permalink to this headline"></a></h2>
+<section id="run-julia-script">
+<h3>Run Julia script<a class="headerlink" href="#run-julia-script" title="Permalink to this headline"></a></h3>
+<p>You can run a Julia script in the shell like this:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>julia<span class="w"> </span>example.jl
+</pre></div>
+</div>
+<p>More information will follow later in the course on running Julia from within a <strong>batch job</strong>.</p>
+</section>
+<section id="run-julia-as-a-session">
+<h3>Run Julia as a session<a class="headerlink" href="#run-julia-as-a-session" title="Permalink to this headline"></a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>julia
+</pre></div>
+</div>
+<p>The Julia prompt (<code class="docutils literal notranslate"><span class="pre">julian</span></code> mode) looks like this:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Exit with</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Ctrl</span><span class="o">-</span><span class="n">D</span><span class="o">&gt;</span><span class="w"> </span><span class="n">or</span>
+<span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition-loading-modules-and-running-scripts exercise important admonition">
+<p class="admonition-title">Loading modules and running scripts</p>
+<p>Load the Julia version 1.8.5 and run the following serial script (<code class="docutils literal notranslate"><span class="pre">serial-sum.jl</span></code>) which accepts two integer arguments as input:</p>
+<blockquote>
+<div><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<span class="n">summ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;The sum of the two numbers is &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">summ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="dropdown solution important admonition">
+<p class="admonition-title">Solution for HPC2N</p>
+<blockquote>
+<div><p>This batch script is for Kebnekaise.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">       </span><span class="c1"># recommended purge</span>
+$<span class="w"> </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">      </span><span class="c1"># Julia module</span>
+
+$<span class="w"> </span>julia<span class="w"> </span>serial-sum.jl<span class="w"> </span>Arg1<span class="w"> </span>Arg2<span class="w">    </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition">
+<p class="admonition-title">Solution for UPPMAX</p>
+<blockquote>
+<div><p>This batch script is for UPPMAX. Adding the numbers 2 and 3. (FIX)</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ml<span class="w"> </span>julia/1.8.5<span class="w">      </span><span class="c1"># Julia module</span>
+
+julia<span class="w"> </span>serial-sum.jl<span class="w"> </span>Arg1<span class="w"> </span>Arg2<span class="w">    </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-keypoints keypoints admonition">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Before you can run Julia scripts or work in a Julia shell, first load a Julia module.</p></li>
+<li><p>Start a Julia shell session either with <code class="docutils literal notranslate"><span class="pre">julia</span></code></p></li>
+<li><p>Run scripts with <code class="docutils literal notranslate"><span class="pre">julia</span> <span class="pre">&lt;script.jl&gt;</span></code></p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introJulia.html" class="btn btn-neutral float-left" title="Introduction Julia" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="isolatedJulia.html" class="btn btn-neutral float-right" title="Packages and isolated environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

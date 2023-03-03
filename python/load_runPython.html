@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Load and run python &mdash; Introduction to running R, Python, and Julia in HPC 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/tabs.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Packages" href="packages.html" />
+    <link rel="prev" title="Introduction Python" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Introduction to running R, Python, and Julia in HPC
+            <img src="../_static/logo-python-hpc-course-Jan2023.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction Python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Load and run python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#check-for-python-versions">Check for Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-a-python-module">Load a Python module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run">Run</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-python-script">Run Python script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-an-interactive-python-shell">Run an interactive Python shell</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/summaryR.html">Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Load and run python</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/docs/blob/main/docs/python/load_runPython.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="load-and-run-python">
+<h1>Load and run python<a class="headerlink" href="#load-and-run-python" title="Permalink to this headline"></a></h1>
+<dl class="simple">
+<dt>At both UPPMAX and HPC2N we call the applications available via the module system modules.</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://www.uppmax.uu.se/resources/software/module-system/">https://www.uppmax.uu.se/resources/software/module-system/</a></p></li>
+<li><p><a class="reference external" href="https://www.hpc2n.umu.se/documentation/environment/lmod">https://www.hpc2n.umu.se/documentation/environment/lmod</a></p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-objectives objectives admonition">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Show how to load Python</p></li>
+<li><p>Show how to run Python scripts and start the Python command line</p></li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Short cheat sheet</p>
+<ul class="simple">
+<li><p>See which modules exists: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">spider</span></code></p></li>
+<li><p>Find module versions for a particular software: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span> <span class="pre">&lt;software&gt;</span></code></p></li>
+<li><p>Modules depending only on what is currently loaded: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">av</span></code></p></li>
+<li><p>See which modules are currently loaded: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span></code></p></li>
+<li><p>Load a module: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">&lt;module&gt;/&lt;version&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">&lt;module&gt;/&lt;version&gt;</span></code></p></li>
+<li><p>Unload a module: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span> <span class="pre">&lt;module&gt;/&lt;version&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">-&lt;module&gt;/&lt;version&gt;</span></code></p></li>
+<li><p>More information about a module: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">show</span> <span class="pre">&lt;module&gt;/&lt;version&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">show</span> <span class="pre">&lt;module&gt;/&lt;version&gt;</span></code></p></li>
+<li><p>Unload all modules except the ‘sticky’ modules: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> or <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">purge</span></code></p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>Note that the module systems at UPPMAX and HPC2N are slightly different.</p></li>
+<li><p>While all modules at UPPMAX not directly related to bio-informatics are shown by <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">avail</span></code>, modules at HPC2N are hidden until one has loaded a prerequisite like the compiler <code class="docutils literal notranslate"><span class="pre">GCC</span></code>.</p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>For reproducibility reasons, you should always load a specific version of a module instead of just the default version</p></li>
+<li><p>Many modules have prerequisite modules which needs to be loaded first (at HPC2N this is also the case for the Python modules). When doing <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span> <span class="pre">&lt;module&gt;/&lt;version&gt;</span></code> you will get a list of which other modules needs to be loaded first</p></li>
+</ul>
+<section id="check-for-python-versions">
+<h2>Check for Python versions<a class="headerlink" href="#check-for-python-versions" title="Permalink to this headline"></a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Code along!</strong></p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Check all available Python versions with:</p>
+<blockquote>
+<div><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>avail<span class="w"> </span>python
+</pre></div>
+</div>
+</div></blockquote>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Check all available version Python versions with:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>spider<span class="w"> </span>Python
+</pre></div>
+</div>
+<p>To see how to load a specific version of Python, including the prerequisites, do</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>spider<span class="w"> </span>Python/&lt;version&gt;
+</pre></div>
+</div>
+<p>Example for Python 3.9.5</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>spider<span class="w"> </span>Python/3.9.5
+</pre></div>
+</div>
+</div></div>
+<div class="dropdown admonition">
+<p class="admonition-title">Output at UPPMAX as of Feb 7 2023</p>
+<blockquote>
+<div><div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="nv">--------------------------------------</span><span class="w"> </span><span class="o">/</span>sw<span class="o">/</span>mf<span class="o">/</span>rackham<span class="o">/</span>applications<span class="w"> </span><span class="o">---------------------------------------</span>
+<span class="w"> </span><span class="nv">python_ML_packages</span><span class="o">/</span><span class="mf">3.9</span>.5<span class="w">    </span>wrf-python<span class="o">/</span><span class="mf">1.3</span>.1
+
+<span class="w"> </span><span class="nv">---------------------------------------</span><span class="w"> </span><span class="o">/</span>sw<span class="o">/</span>mf<span class="o">/</span>rackham<span class="o">/</span>compilers<span class="w"> </span><span class="o">----------------------------------------</span>
+<span class="w"> </span><span class="nv">python</span><span class="o">/</span><span class="mf">2.7</span>.6<span class="w">     </span>python<span class="o">/</span><span class="mf">3.3</span><span class="w">      </span>python<span class="o">/</span><span class="mf">3.6</span>.0<span class="w">    </span>python<span class="o">/</span><span class="mf">3.9</span>.5<span class="w">           </span>python3<span class="o">/</span><span class="mf">3.7</span>.2
+<span class="w"> </span><span class="nv">python</span><span class="o">/</span><span class="mf">2.7</span>.9<span class="w">     </span>python<span class="o">/</span><span class="mf">3.3</span>.1<span class="w">    </span>python<span class="o">/</span><span class="mf">3.6</span>.8<span class="w">    </span>python<span class="o">/</span><span class="mf">3.10</span>.8<span class="w"> </span><span class="k">(</span><span class="nv">L</span>,D<span class="k">)</span><span class="w">    </span>python3<span class="o">/</span><span class="mf">3.8</span>.7
+<span class="w"> </span><span class="nv">python</span><span class="o">/</span><span class="mf">2.7</span>.11<span class="w">    </span>python<span class="o">/</span><span class="mf">3.4</span>.3<span class="w">    </span>python<span class="o">/</span><span class="mf">3.7</span>.2<span class="w">    </span>python3<span class="o">/</span><span class="mf">3.6</span>.0<span class="w">          </span>python3<span class="o">/</span><span class="mf">3.9</span>.5
+<span class="w"> </span><span class="nv">python</span><span class="o">/</span><span class="mf">2.7</span>.15<span class="w">    </span>python<span class="o">/</span><span class="mf">3.5</span>.0<span class="w">    </span>python<span class="o">/</span><span class="mf">3.8</span>.7<span class="w">    </span>python3<span class="o">/</span><span class="mf">3.6</span>.8<span class="w">          </span>python3<span class="o">/</span><span class="mf">3.10</span>.8<span class="w"> </span><span class="k">(</span><span class="nv">D</span><span class="k">)</span>
+
+<span class="w"> </span><span class="nv">Where</span><span class="o">:</span>
+<span class="w"> </span><span class="nv">D</span><span class="o">:</span><span class="w">  </span>Default<span class="w"> </span>Module
+
+<span class="w"> </span><span class="nv">Use</span><span class="w"> </span>module<span class="w"> </span>spider<span class="s2">&quot; to find all possible modules and extensions.</span>
+<span class="s2"> Use &quot;</span>module<span class="w"> </span>keyword<span class="w"> </span>key1<span class="w"> </span>key2<span class="w"> </span>...<span class="s2">&quot; to search for all possible modules matching any of the &quot;</span>keys<span class="s2">&quot;.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Output at HPC2N as of 7 Feb 2023</p>
+<blockquote>
+<div><div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span>b-an01 [~]$ module spider Python
+----------------------------------------------------------------------------
+Python:
+----------------------------------------------------------------------------
+Description:
+    Python is a programming language that lets you work more quickly and
+    integrate your systems more effectively.
+
+ Versions:
+     Python/2.7.15
+     Python/2.7.16
+     Python/2.7.18-bare
+     Python/2.7.18
+     Python/3.7.2
+     Python/3.7.4
+     Python/3.8.2
+     Python/3.8.6
+     Python/3.9.5-bare
+     Python/3.9.5
+     Python/3.9.6-bare
+     Python/3.9.6
+     Python/3.10.4-bare
+     Python/3.10.4
+ Other possible modules matches:
+     Biopython  Boost.Python  GitPython  IPython  flatbuffers-python  ...
+----------------------------------------------------------------------------
+To find other possible module matches execute:
+    $ module -r spider &#39;.*Python.*&#39;
+----------------------------------------------------------------------------
+For detailed information about a specific &quot;Python&quot; package (including how to load the modules) use the module&#39;s full name.
+    Note that names that have a trailing (E) are extensions provided by other modules.
+
+For example:
+ $ module spider Python/3.9.5
+----------------------------------------------------------------------------
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</section>
+<section id="load-a-python-module">
+<h2>Load a Python module<a class="headerlink" href="#load-a-python-module" title="Permalink to this headline"></a></h2>
+<p>For reproducibility, we recommend ALWAYS loading a specific module instad of using the default version!</p>
+<p>For this course, we recommend using Python 3.9.5.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Code along!</strong></p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>Go back and check which Python modules were available. To load version 3.9.5, do:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>python/3.9.5
+</pre></div>
+</div>
+<p>Note: Lowercase <code class="docutils literal notranslate"><span class="pre">p</span></code>.
+For short, you can also use:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ml<span class="w"> </span>python/3.9.5
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/10.3.0<span class="w"> </span>Python/3.9.5
+</pre></div>
+</div>
+<p>Note: Uppercase <code class="docutils literal notranslate"><span class="pre">P</span></code>.
+For short, you can also use:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ml<span class="w"> </span>GCC/10.3.0<span class="w"> </span>Python/3.9.5
+</pre></div>
+</div>
+</div></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>UPPMAX: Don’t use system-installed python (2.7.5)</p></li>
+<li><p>UPPMAX: Don’t use system installed python3 (3.6.8)</p></li>
+<li><p>HPC2N: Don’t use system-installed python (2.7.18)</p></li>
+<li><p>HPC2N: Don’t use system-installed python3  (3.8.10)</p></li>
+<li><p>ALWAYS use python module</p></li>
+</ul>
+</div>
+<div class="admonition-why-are-there-both-python-2-x-y-and-python-3-z-w-modules admonition">
+<p class="admonition-title">Why are there both Python/2.X.Y and Python/3.Z.W modules?</p>
+<p>Some existing software might use <cite>Python2</cite> and some will use <cite>Python3</cite>. Some of the Python packages have both <cite>Python2</cite> and <cite>Python3</cite> versions. Check what your software as well as the installed modules need when you pick!</p>
+</div>
+<div class="admonition-uppmax-why-are-there-both-python-3-x-y-and-python3-3-x-y-modules admonition">
+<p class="admonition-title">UPPMAX: Why are there both python/3.X.Y and python3/3.X.Y modules?</p>
+<p>Sometimes existing software might use <cite>python2</cite> and there’s nothing you can do about that. In pipelines and other toolchains the different tools may together require both <cite>python2</cite> and <cite>python3</cite>.
+Here’s how you handle that situation:</p>
+<ul class="simple">
+<li><p>You can run two python modules at the same time if ONE of the module is <code class="docutils literal notranslate"><span class="pre">python/2.X.Y</span></code> and the other module is <code class="docutils literal notranslate"><span class="pre">python3/3.X.Y</span></code> (not <code class="docutils literal notranslate"><span class="pre">python/3.X.Y</span></code>).</p></li>
+</ul>
+</div>
+</section>
+<section id="run">
+<h2>Run<a class="headerlink" href="#run" title="Permalink to this headline"></a></h2>
+<section id="run-python-script">
+<h3>Run Python script<a class="headerlink" href="#run-python-script" title="Permalink to this headline"></a></h3>
+<p>You can run a python script in the shell like this:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>example.py
+</pre></div>
+</div>
+<p>or, if you loaded a python3 module, you can use:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span>example.py
+</pre></div>
+</div>
+<p>since python is a symbolic link to python3 in this case.</p>
+<p>NOTE: <em>only</em> run jobs that are short and/or do not use a lot of resources from the command line. Otherwise use the batch system!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Real cases will be tested in the <strong>batch session</strong> (<a class="reference external" href="https://uppmax.github.io/R-python-julia-HPC/python/batchPython.html">https://uppmax.github.io/R-python-julia-HPC/python/batchPython.html</a>).</p>
+</div>
+</section>
+<section id="run-an-interactive-python-shell">
+<h3>Run an interactive Python shell<a class="headerlink" href="#run-an-interactive-python-shell" title="Permalink to this headline"></a></h3>
+<p>For more interactiveness you can run Ipython.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Code along!</strong></p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p>NOTE: remember to load a python module first. Then start IPython from the terminal</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipython
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipython3
+</pre></div>
+</div>
+<p>UPPMAX has also <code class="docutils literal notranslate"><span class="pre">jupyter-notebook</span></code> installed and available from the loaded Python module. Start with</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>jupyter-notebook
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p>NOTE: remember to load an IPython module first. You can see possible modules with</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>spider<span class="w"> </span>IPython
+$<span class="w"> </span>ml<span class="w"> </span>IPython/7.25.0
+</pre></div>
+</div>
+<p>Then start Ipython with (lowercase):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipython
+</pre></div>
+</div>
+</div></div>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">=</span><span class="mi">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Exit Python or IPython with &lt;Ctrl-D&gt;, “quit()” or ‘exit()’ in the python prompt</p></li>
+</ul>
+<p>Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">&lt;</span><span class="n">Ctrl</span><span class="o">-</span><span class="n">D</span><span class="o">&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quit</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>iPython</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">Ctrl</span><span class="o">-</span><span class="n">D</span><span class="o">&gt;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">quit</span><span class="p">()</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition-keypoints keypoints admonition">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Before you can run Python scripts or work in a Python shell, first load a python module and probable prerequisites</p></li>
+<li><p>Start a Python shell session either with <code class="docutils literal notranslate"><span class="pre">python</span></code> or <code class="docutils literal notranslate"><span class="pre">ipython</span></code></p></li>
+<li><p>Run scripts with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">&lt;script.py&gt;</span></code></p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="packages.html" class="btn btn-neutral float-right" title="Packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

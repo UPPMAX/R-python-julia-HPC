@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isolated environments with renv &mdash; Introduction to running R, Python, and Julia in HPC 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/tabs.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running R in batch mode" href="batchR.html" />
+    <link rel="prev" title="Packages" href="packagesR.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Introduction to running R, Python, and Julia in HPC
+            <img src="../_static/logo-python-hpc-course-Jan2023.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packagesR.html">Packages</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-procedures">General procedures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-installing-stringr">Example - Installing <code class="docutils literal notranslate"><span class="pre">stringr</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#conda-uppmax">Conda (UPPMAX)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryR.html">Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/docs/blob/main/docs/R/isolatedR.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="isolated-environments-with-renv">
+<h1>Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code><a class="headerlink" href="#isolated-environments-with-renv" title="Permalink to this headline"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Isolated environments solve a couple of problems:</p>
+<ul class="simple">
+<li><p>You can install specific, also older, versions into them.</p></li>
+<li><p>You can create one for each project and no problem if the two projects
+require different versions.</p></li>
+<li><p>You can remove the environment and create a new one, if not needed or with
+errors.</p></li>
+</ul>
+</div>
+<p>R is not very well known for virtual environments like Python and Julia. However:</p>
+<p>&gt; The <code class="docutils literal notranslate"><span class="pre">renv</span></code> package is a new effort to bring project-local R dependency
+&gt; management to your projects. The goal is for renv to be a robust, stable
+&gt; replacement for the Packrat package, with fewer surprises and better default
+&gt; behaviors.</p>
+<div class="admonition-questions questions admonition">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>How to work with isolated R environments at HPC2N and UPPMAX?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Give a general an introduction to isolated environments in R.</p></li>
+</ul>
+</div>
+<section id="general-procedures">
+<h2>General procedures<a class="headerlink" href="#general-procedures" title="Permalink to this headline"></a></h2>
+<p>You will now and then  have the situation that your project(s) use different
+versions of R and different versions of packages. This is great if you need
+different versions of a package for different tasks, for instance. This is
+easily solved with isolated environments.</p>
+<p>Isolated environments lets you create separate workspaces for different
+versions of R and/or different versions of packages. You can activate and
+deactivate them one at a time, and work as if the other workspace does not
+exist.</p>
+<p>&gt; Underlying the philosophy of <code class="docutils literal notranslate"><span class="pre">renv</span></code> is that any of your existing workflows
+&gt; should just work as they did before – <code class="docutils literal notranslate"><span class="pre">renv</span></code> helps manage library paths (and
+&gt; other project-specific state) to help isolate your project’s R dependencies,
+&gt; and the existing tools you’ve used for managing R packages (e.g.
+&gt; <code class="docutils literal notranslate"><span class="pre">install.packages()</span></code>, <code class="docutils literal notranslate"><span class="pre">remove.packages()</span></code>) should work as they did before.
+&gt; <a class="reference external" href="https://rstudio.github.io/renv/articles/renv.html">https://rstudio.github.io/renv/articles/renv.html</a></p>
+</section>
+<section id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline"></a></h2>
+<p>The general workflow when working with <code class="docutils literal notranslate"><span class="pre">renv</span></code> is:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><dl class="simple">
+<dt>Call <code class="docutils literal notranslate"><span class="pre">renv::init()</span></code> to initialize a new project-local environment with</dt><dd><p>a private R library,</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Work in the project as normal, installing and removing new R packages as</dt><dd><p>they are needed in the project,</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Call <code class="docutils literal notranslate"><span class="pre">renv::snapshot()</span></code> to save the state of the project library to</dt><dd><p>the lockfile (called <code class="docutils literal notranslate"><span class="pre">renv.lock</span></code>),</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Continue working on your project, installing and updating R packages as</dt><dd><p>needed.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Call <code class="docutils literal notranslate"><span class="pre">renv::snapshot()</span></code> again to save the state of your project</dt><dd><p>library if your attempts to update R packages were successful, or
+call <code class="docutils literal notranslate"><span class="pre">renv::restore()</span></code> to revert to the previous state as encoded
+in the lockfile if your attempts to update packages introduced some
+new problems.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">renv::init()</span></code> function attempts to ensure the newly-created project
+library includes all R packages currently used by the project. It does this by
+crawling R files within the project for dependencies with the
+<code class="docutils literal notranslate"><span class="pre">renv::dependencies()</span></code> function. The discovered packages are then installed
+into the project library with the r``env::hydrate()`` function, which will also
+attempt to save time by copying packages from your user library (rather than
+reinstalling from CRAN) as appropriate.</p>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">renv::init()</span></code> will also write out the infrastructure necessary to
+automatically load and use the private library for new R sessions launched from
+the project root directory. This is accomplished by creating (or amending) a
+project-local .Rprofile with the necessary code to load the project when the R
+session is started.</p>
+<p>If you’d like to initialize a project without attempting dependency discovery
+and installation – that is, you’d prefer to manually install the packages your
+project requires on your own – you can use <code class="docutils literal notranslate"><span class="pre">renv::init(bare</span> <span class="pre">=</span> <span class="pre">TRUE)</span></code> to
+initialize a project with an empty project library.</p>
+<section id="example-installing-stringr">
+<h3>Example - Installing <code class="docutils literal notranslate"><span class="pre">stringr</span></code><a class="headerlink" href="#example-installing-stringr" title="Permalink to this headline"></a></h3>
+<p>First create a project under the course project directory and cd to it</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>-v<span class="w"> </span>/proj/py-r-jl/matpiq/R/r_proj<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$_</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>-v<span class="w"> </span>/proj/nobackup/&lt;your-project-id&gt;/matpiq/&lt;language&gt;/r_proj<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w">  </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$_</span>
+</pre></div>
+</div>
+</div></div>
+<p>Make sure you have loaded <code class="docutils literal notranslate"><span class="pre">R_packages</span></code> on UPPMAX or <code class="docutils literal notranslate"><span class="pre">R</span></code> on keb. Next,
+launch the <code class="docutils literal notranslate"><span class="pre">R</span></code> interpreter and initialize an <code class="docutils literal notranslate"><span class="pre">renv</span></code> environment.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">renv</span><span class="o">::</span><span class="nf">init</span><span class="p">()</span>
+<span class="c1"># Exit the session</span>
+<span class="nf">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Verify that the <code class="docutils literal notranslate"><span class="pre">renv</span></code> directory as well as lock file was created</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>❯<span class="w"> </span>ls<span class="w"> </span>-l
+drwxrwsr-x<span class="w"> </span><span class="m">4</span><span class="w"> </span>matpiq<span class="w"> </span>p_py-r-jl<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">16</span>:32<span class="w"> </span>renv
+-rw-rw-r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>matpiq<span class="w"> </span>p_py-r-jl<span class="w">  </span><span class="m">354</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">16</span>:32<span class="w"> </span>renv.lock
+</pre></div>
+</div>
+<p>Relaunch and check at the library paths</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="nf">.libPaths</span><span class="p">()</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/crex/proj/py-r-jl/matpiq/r_proj/renv/library/R-4.1/x86_64-pc-linux-gnu&quot;</span>
+<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;/scratch/RtmpMgprgX/renv-system-library&quot;</span>
+</pre></div>
+</div>
+<p>What happens if you leave the project directory? As a last step we can try
+installing some package into the environment. Let’s re-enter the project
+directory and try installing  <code class="docutils literal notranslate"><span class="pre">knitr</span></code></p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;knitr&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And check what was installed</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>renv/library/R-4.1/x86_64-pc-linux-gnu
+lrwxrwxrwx<span class="w">  </span><span class="m">1</span><span class="w"> </span>matpiq<span class="w"> </span>p_py-r-jl<span class="w">  </span><span class="m">121</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">16</span>:44<span class="w"> </span>evaluate<span class="w"> </span>-&gt;<span class="w"> </span>/domus/h1/matpiq/.cache/R/renv/cache/v5/R-4.1/x86_64-pc-linux-gnu/evaluate/0.20/4b68aa51edd89a0e044a66e75ae3cc6c/evaluate
+lrwxrwxrwx<span class="w">  </span><span class="m">1</span><span class="w"> </span>matpiq<span class="w"> </span>p_py-r-jl<span class="w">  </span><span class="m">115</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">16</span>:44<span class="w"> </span>highr<span class="w"> </span>-&gt;<span class="w"> </span>/domus/h1/matpiq/.cache/R/renv/cache/v5/R-4.1/x86_64-pc-linux-gnu/highr/0.10/06230136b2d2b9ba5805e1963fa6e890/highr
+lrwxrwxrwx<span class="w">  </span><span class="m">1</span><span class="w"> </span>matpiq<span class="w"> </span>p_py-r-jl<span class="w">  </span><span class="m">115</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">16</span>:44<span class="w"> </span>knitr<span class="w"> </span>-&gt;<span class="w"> </span>/domus/h1/matpiq/.cache/R/renv/cache/v5/R-4.1/x86_64-pc-linux-gnu/knitr/1.42/8329a9bcc82943c8069104d4be3ee22d/knitr
+dr-xr-sr-x<span class="w"> </span><span class="m">10</span><span class="w"> </span>matpiq<span class="w"> </span>sw<span class="w">        </span><span class="m">4096</span><span class="w"> </span>Sep<span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">2021</span><span class="w"> </span>renv
+lrwxrwxrwx<span class="w">  </span><span class="m">1</span><span class="w"> </span>matpiq<span class="w"> </span>p_py-r-jl<span class="w">  </span><span class="m">113</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">16</span>:44<span class="w"> </span>xfun<span class="w"> </span>-&gt;<span class="w"> </span>/domus/h1/matpiq/.cache/R/renv/cache/v5/R-4.1/x86_64-pc-linux-gnu/xfun/0.37/a6860e1400a8fd1ddb6d9b4230cc34ab/xfun
+lrwxrwxrwx<span class="w">  </span><span class="m">1</span><span class="w"> </span>matpiq<span class="w"> </span>p_py-r-jl<span class="w">  </span><span class="m">114</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">16</span>:44<span class="w"> </span>yaml<span class="w"> </span>-&gt;<span class="w"> </span>/domus/h1/matpiq/.cache/R/renv/cache/v5/R-4.1/x86_64-pc-linux-gnu/yaml/2.3.7/0d0056cc5383fbc240ccd0cb584bf436/yaml
+</pre></div>
+</div>
+<p><em>Note</em>: Notice that the packages exposed in the <code class="docutils literal notranslate"><span class="pre">renv</span></code> library are actually
+just symbolic links to the home directory. This allows the same package to be
+shared across environments. However, having this cached in the home directory
+might be suboptimal because of limited storage. We can change this behavior by
+setting <code class="docutils literal notranslate"><span class="pre">use.cache::</span> <span class="pre">FALSE</span></code> in the <code class="docutils literal notranslate"><span class="pre">renv/settings.dcf</span></code> file. Another option
+is to set the <code class="docutils literal notranslate"><span class="pre">RENV_PATHS_CACHE</span></code> to someplace else, for example
+<code class="docutils literal notranslate"><span class="pre">R_LIBS_SITE</span></code> if the R_packages module is loaded. See more here:
+<a class="reference external" href="https://rstudio.github.io/renv/articles/renv.html#cache">https://rstudio.github.io/renv/articles/renv.html#cache</a>.</p>
+<p><em>Note</em>: You can also do all of this directly through Rstudio when initializing a
+project.</p>
+</section>
+</section>
+<section id="conda-uppmax">
+<h2>Conda (UPPMAX)<a class="headerlink" href="#conda-uppmax" title="Permalink to this headline"></a></h2>
+<p>Another possibility on UPPMAX is instead using Conda to create a virtual
+environment. For example, create an environment <code class="docutils literal notranslate"><span class="pre">yaml</span></code> file. Let’s call it
+<code class="docutils literal notranslate"><span class="pre">r_env.yaml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_r_env</span>
+<span class="nt">channels</span><span class="p">:</span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
+<span class="nt">dependencies</span><span class="p">:</span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">r</span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">r-essentials</span>
+</pre></div>
+</div>
+<p>Then load conda and create the environment</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>r_env.yaml
+</pre></div>
+</div>
+<p>Next, we can activate the environment and verify that we have indeed have an
+isolated R environment</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>r_env
+$<span class="w"> </span>which<span class="w"> </span>R
+~/.conda/envs/my_r_env/bin/R
+</pre></div>
+</div>
+<p>If we want to store our environments somewhere else, e.g. in the project
+directory (recommended), we can define the environmental variable
+<code class="docutils literal notranslate"><span class="pre">CONDA_ENVS_PATH=&quot;path/to/your/env&quot;</span></code>.</p>
+<p>Benefits of using Conda:</p>
+<ul class="simple">
+<li><p>Easy to install a specific R version (Not bound to module system)</p></li>
+<li><p>Good integration with Jupyter</p></li>
+<li><p>Should be familiar to people with a Python background</p></li>
+</ul>
+<div class="admonition-keypoints keypoints admonition">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>With a virtual environment you can tailor an environment with specific
+versions for R and packages, not interfering with other installed
+versions.</p></li>
+<li><p>Make it for each project you have for reproducibility.</p></li>
+<li><p>UPPMAX has Conda as an alternative to <code class="docutils literal notranslate"><span class="pre">renv</span></code></p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="packagesR.html" class="btn btn-neutral float-left" title="Packages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="batchR.html" class="btn btn-neutral float-right" title="Running R in batch mode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

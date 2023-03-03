@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Packages &mdash; Introduction to running R, Python, and Julia in HPC 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Introduction to running R, Python, and Julia in HPC
+            <img src="../../_static/logo-python-hpc-course-Jan2023.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interactiveJulia.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../R/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/summaryR.html">Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Packages</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/docs/blob/main/docs/julia/not_used/packages.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="packages">
+<h1>Packages<a class="headerlink" href="#packages" title="Permalink to this headline"></a></h1>
+<div class="admonition-julia-modules-aka-julia-packages admonition">
+<p class="admonition-title">Julia modules AKA Julia packages</p>
+<ul class="simple">
+<li><p>Julia <strong>packages broaden the use of Julia</strong> considerably!</p></li>
+<li><p>Instead of writing code yourself there may be others that have done the same!</p></li>
+</ul>
+</div>
+<div class="admonition-questions questions admonition">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>How do I find which packages and versions are available?</p></li>
+<li><p>What to do if I need other packages?</p></li>
+<li><p>Are there differences between HPC2N and UPPMAX?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Show how to check for Julia packages</p></li>
+<li><p>show how to install own packages on the different clusters</p></li>
+</ul>
+</div>
+<section id="check-current-available-packages">
+<h2>Check current available packages<a class="headerlink" href="#check-current-available-packages" title="Permalink to this headline"></a></h2>
+<section id="general-for-both-centers">
+<h3>General for both centers<a class="headerlink" href="#general-for-both-centers" title="Permalink to this headline"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Check the pre-installed packages of a specific Julia module:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span><span class="nb">help</span><span class="w"> </span>julia/&lt;version&gt;
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>The Julia versions installed at HPC2N include only the Base and Standard library
+modules.</p>
+</div></div>
+<p>Check the pre-installed packages of a loaded Julia module, in shell:</p>
+</section>
+<section id="uppmax">
+<h3>UPPMAX<a class="headerlink" href="#uppmax" title="Permalink to this headline"></a></h3>
+<p>You may control the present “central library” by typing in Julia shell :</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="nb">DEPOT_PATH</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="s">&quot;/environments/v1.7&quot;</span><span class="p">);</span><span class="w">     </span><span class="c">#change version accordingly</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="nb">DEPOT_PATH</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="s">&quot;/environments/v1.7&quot;</span><span class="p">);</span><span class="w">     </span><span class="c">#to return to user library</span>
+</pre></div>
+</div>
+<p>Packages are imported or loaded by the commands <code class="docutils literal notranslate"><span class="pre">import</span></code> and <code class="docutils literal notranslate"><span class="pre">using</span></code>, respectively. The difference is shown here. Or briefly:</p>
+<blockquote>
+<div><p>To use module functions, use import Module to import the module, and Module.fn(x) to use the functions.
+Alternatively, using Module will import all exported Module functions into the current namespace.</p>
+</div></blockquote>
+<p>A selection of the Julia packages and libraries installed on UPPMAX and HPC2N are:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>The Julia application at UPPMAX comes with several preinstalled packages.
+A selection of the Julia packages and libraries installed on UPPMAX are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>BenchmarkTools</p></li>
+<li><p>CSV</p></li>
+<li><p>CUDA</p></li>
+<li><p>MPI</p></li>
+<li><p>Distributed</p></li>
+<li><p>IJulia</p></li>
+<li><p>Plots</p></li>
+<li><p>PyPlot</p></li>
+<li><p>Gadfly</p></li>
+<li><p>DataFrames</p></li>
+<li><p>DistributedArrays</p></li>
+<li><p>PlotlyJS</p></li>
+</ul>
+</div></blockquote>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>The Julia versions installed at HPC2N include only the Base and Standard library
+modules.</p>
+</div></div>
+</section>
+</section>
+<section id="install-own-packages">
+<h2>Install own packages<a class="headerlink" href="#install-own-packages" title="Permalink to this headline"></a></h2>
+<p>To make sure that the package is not already installed, type in Julia:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="nb">DEPOT_PATH</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="s">&quot;/environments/v1.7&quot;</span><span class="p">);</span><span class="w">  </span><span class="c">#change version accordingly</span>
+
+<span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To go back to your own personal packages:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="nb">DEPOT_PATH</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="s">&quot;/environments/v1.7&quot;</span><span class="p">);</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can load (using/import) ANY package from both local and central installation irrespective to which environment you activate. However, the setup is that your package is prioritized if there are similar names.</p>
+<p>To install personal packages you type within Julia:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;&lt;package_name&gt;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will install under the path ~/.julia/packages/. Then you can load it by just doing “using/import &lt;package_name&gt;”.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You can also activate a “package prompt” in julia with   ‘]’:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nd">@v1</span><span class="mf">.7</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For installing specific versions specify with  &lt;package name&gt;&#64;&lt;X.Y.Z&gt;.</p>
+<p>After adding you may be asked to precompile or build. Do so according to instruction given on the screen. Otherwise, first time importing or using the package, Julia may start a precompilation that will take a few seconds up to several minutes.</p>
+<p>Exit “package prompt” with &lt;backspace&gt;:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will test this in the separated sessions about isolated environments in a while.</p>
+</div>
+<div class="admonition-summary-of-workflow admonition">
+<p class="admonition-title">Summary of workflow</p>
+<p>In addition to loading Julia, you will also often need to load site-installed modules for Julia packages,
+or use own-installed Julia packages. The work-flow would be something like this:</p>
+<ol class="arabic simple">
+<li><p>Load Julia: <cite>module load julia/&lt;version&gt;`</cite> <code class="docutils literal notranslate"><span class="pre">Julia</span></code> at HPC2N</p></li>
+<li><p>Activate your virtual environment (optional) (this will be discussed in <strong>Isolated environments</strong>)</p></li>
+<li><p>Start Julia or run Julia script: <code class="docutils literal notranslate"><span class="pre">julia</span></code></p></li>
+<li><p>Install any extra Julia packages (optional): <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">Pkg.add</span> <span class="pre">&lt;julia</span> <span class="pre">package&gt;</span></code></p></li>
+</ol>
+<p>Installed Julia packages can be accessed within Julia with <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">&lt;package&gt;</span></code></p>
+<p>More about packages and virtual/isolated environment to follow in later sections of the course!</p>
+</div>
+<div class="admonition-keypoints keypoints admonition">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>You can check for packages</dt><dd><ul>
+<li><p>from the Julia shell with the <code class="docutils literal notranslate"><span class="pre">using</span></code> command</p></li>
+<li><dl class="simple">
+<dt>from BASH shell with the</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">help</span> <span class="pre">julia/1.8.5</span></code> at UPPMAX</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Installation of Julia packages can be done with Julia package manager.</p></li>
+<li><p>You install own packages with the <code class="docutils literal notranslate"><span class="pre">add</span></code> command</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

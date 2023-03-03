@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using RStudio &mdash; Introduction to running R, Python, and Julia in HPC 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercises" href="exercisesR.html" />
+    <link rel="prev" title="Interactive work on the compute nodes" href="interactiveR.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Introduction to running R, Python, and Julia in HPC
+            <img src="../_static/logo-python-hpc-course-Jan2023.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using RStudio</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#on-uppmax">On UPPMAX</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#on-bianca">On Bianca</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#on-hpc2n">On HPC2N</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summaryR.html">Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Using RStudio</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/docs/blob/main/docs/R/rstudio.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-rstudio">
+<h1>Using RStudio<a class="headerlink" href="#using-rstudio" title="Permalink to this headline"></a></h1>
+<section id="on-uppmax">
+<h2>On UPPMAX<a class="headerlink" href="#on-uppmax" title="Permalink to this headline"></a></h2>
+<p>There is a system installed version, available via the “rstudio” command (you
+will get RStudio/1.1.423).</p>
+<p>However, we recommend you to use a RStudio module.</p>
+<p>Also, we recommend to use ThinLinc. Login using</p>
+<ul>
+<li><p>server: rackham-gui.uppmax.uu.se</p></li>
+<li><p>username</p></li>
+<li><p>password</p></li>
+<li><p>Choose Xfce as the desktop environment (faster)</p></li>
+<li><p>start a command line window</p></li>
+<li><p>load R_packages/4.1.1, use ‘module help R_packages/4.1.1’ to see what is
+available in this certain version module load RStudio/1.4.1106</p></li>
+<li><p>run ‘rstudio &amp;’ from the command line, and wait
+- it might take 5-10 minutes for RStudio to start, but once it starts, there</p>
+<blockquote>
+<div><p>should be no further delays</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>do <em>not</em> start RStudio through the graphical menu system in ThinLinc, this
+will not have access to loaded modules.</p></li>
+<li><p>if it takes a long time and might be due to that you have saved a lot of
+workspace</p></li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>R_packages/4.1.1
+$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>RStudio/2022.02.0-443
+$<span class="w"> </span>rstudio<span class="w"> </span><span class="p">&amp;</span>
+</pre></div>
+</div>
+<p>If you’re going to run heavier computations within RStudio then you have to
+remember that you need to do it inside an interactive session on one of the
+computation nodes, and not on a login node. But if you mostly want to use it as
+a pretty code editor then you can run it on the login node as well.</p>
+<p>To use Rstudio on a compute node, start by asking SLURM for an interactive
+allocation (within the ThinLink session). E.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>interactive<span class="w"> </span>-A<span class="w"> </span>naiss2023-22-44<span class="w"> </span>-p<span class="w"> </span>devcore<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">10</span>:00
+</pre></div>
+</div>
+<section id="on-bianca">
+<h3>On Bianca<a class="headerlink" href="#on-bianca" title="Permalink to this headline"></a></h3>
+<p>When logging onto Bianca, you are placed on a login node, which nowadays has 2
+CPU and a few GB of RAM. This is sufficient for doing some lightweight
+calculations, but interactive sessions and batch jobs provide access to much
+more resources and should be requested via the SLURM system.</p>
+<p>The desktop client version of ThinLinc does not work for Bianca. Instead you
+run and login to ThinLinc in the browser:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://bianca.uppmax.uu.se">https://bianca.uppmax.uu.se</a></p></li>
+</ul>
+</section>
+</section>
+<section id="on-hpc2n">
+<h2>On HPC2N<a class="headerlink" href="#on-hpc2n" title="Permalink to this headline"></a></h2>
+<p>Rstudio also exists on Kebnekaise but is only installed on the ThinLinc login nodes and not on the compute nodes (and also not on the regular login nodes accessible with SSH).
+Thus, Rstudio should only be used for development and very light analysis, since there is no way to submit a job to the compute nodes.</p>
+<p>Login to ThinLinc desktop application by providing the following</p>
+<ul class="simple">
+<li><p>server: kebnekaise-tl.hpc2n.umu.se</p></li>
+<li><p>username</p></li>
+<li><p>password</p></li>
+</ul>
+<p>Alternatively, you can use ThinLinc in the browser: <a class="reference external" href="https://kebnekaise-tl.hpc2n.umu.se:300/">https://kebnekaise-tl.hpc2n.umu.se:300/</a></p>
+<p>When in ThinLinc, you can start Rstudio either from the menu (version 4.0.4) or from the command line. If you start it from the command line you first need to load R and its prerequisites, but you can pick between several versions this way.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="interactiveR.html" class="btn btn-neutral float-left" title="Interactive work on the compute nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="exercisesR.html" class="btn btn-neutral float-right" title="Exercises" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>On UPPMAX clusters &mdash; Introduction to running R, Python, and Julia in HPC 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Introduction to running R, Python, and Julia in HPC
+            <img src="../../_static/logo-python-hpc-course-Jan2023.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/interactiveJulia.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../julia/summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../R/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../R/summaryR.html">Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>On UPPMAX clusters</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/docs/blob/main/docs/python/not_used/uppmaxPython.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="on-uppmax-clusters">
+<h1>On UPPMAX clusters<a class="headerlink" href="#on-uppmax-clusters" title="Permalink to this headline"></a></h1>
+<div class="admonition-questions questions admonition">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>Can you login to Rackham?</p></li>
+<li><p>Did you try and find Python packages at the system?</p></li>
+<li><p>Can you load Python and start it, as well as run a short program?</p></li>
+</ul>
+</div>
+<section id="uppmax-clusters">
+<h2>UPPMAX clusters<a class="headerlink" href="#uppmax-clusters" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Rackham: general purpose</p></li>
+<li><p>Snowy: available for UPPMAX projects (not SNIC), have GPU:s</p></li>
+<li><p>Bianca: sensitive data, have GPU:s</p></li>
+</ul>
+</section>
+<section id="uppmax-packages">
+<h2>UPPMAX packages<a class="headerlink" href="#uppmax-packages" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>What about the packages you suggested/requested in your registration?</p>
+</div>
+<section id="packages-included-in-the-python-3-9-5-module">
+<h3>Packages included in the python/3.9.5 module<a class="headerlink" href="#packages-included-in-the-python-3-9-5-module" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Jupyter Notebook</p></li>
+<li><p>matplotlib</p></li>
+<li><p>networkx</p></li>
+<li><p>numpy</p></li>
+<li><p>Pandas</p></li>
+<li><p>Graphviz/0.16</p></li>
+<li><p>scipy</p></li>
+</ul>
+</section>
+<section id="packages-that-can-be-loaded-with-module-load">
+<h3>Packages that can be loaded with ‘module load’<a class="headerlink" href="#packages-that-can-be-loaded-with-module-load" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>module load bioinfo-tools biopython</p>
+<ul>
+<li><p>biopython</p></li>
+</ul>
+</li>
+<li><p>module load python_ML_packages</p>
+<ul>
+<li><p>sklearn/scikit-learn</p></li>
+<li><p>TensorFlow</p></li>
+<li><p>torch</p></li>
+<li><p>mpi</p></li>
+<li><p>mpi4py</p></li>
+</ul>
+</li>
+<li><p>module load bwa</p></li>
+<li><p>module load Graphviz/2.40.1</p></li>
+<li><p>module load HiChipper</p></li>
+<li><p>module load Homer</p></li>
+<li><p>module load pysam</p></li>
+</ul>
+</section>
+<section id="packages-not-centrally-installed-at-the-moment-update">
+<h3>Packages not centrally installed at the moment UPDATE<a class="headerlink" href="#packages-not-centrally-installed-at-the-moment-update" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>adjustText</p></li>
+<li><p>DeepLabCut</p></li>
+<li><p>ete3</p></li>
+<li><p>Google Colab</p></li>
+<li><p>KiwiDist</p></li>
+<li><p>rpack</p></li>
+<li><p>Rdkit</p></li>
+<li><p>plink</p></li>
+<li><p>puma</p></li>
+<li><p>Pygraphviz/1.9</p></li>
+<li><p>pyspark</p></li>
+<li><p>ScanPy</p></li>
+<li><p>venndiagram (venn/matplotlib-venn)</p></li>
+<li><p>vtk/vtkmodules</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
