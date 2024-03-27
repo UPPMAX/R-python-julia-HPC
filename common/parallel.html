@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parallel and multithreaded functions &mdash; Introduction to running R, Python, and Julia in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+        <script src="../_static/minipres.js?v=a0d29692"></script>
+        <script src="../_static/tabs.js?v=3030b3cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Conda at UPPMAX" href="../python/condaUPPMAX.html" />
+    <link rel="prev" title="Jupyter on compute nodes" href="../python/jupyter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, and Julia in HPC
+              <img src="../_static/logo-python-hpc-course.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../python/intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/GPU.html">Using GPUs with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/jupyter.html">Jupyter on compute nodes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Parallel and multithreaded functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-parallel-programming">What is parallel programming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-is-parallel-programming-needed">Why is parallel programming needed?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common-parallel-programming-paradigms">Common parallel programming paradigms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#threaded-programming">Threaded programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distributed-programming">Distributed programming</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python/condaUPPMAX.html">Conda at UPPMAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Parallel and multithreaded functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-parallel-programming">What is parallel programming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-is-parallel-programming-needed">Why is parallel programming needed?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common-parallel-programming-paradigms">Common parallel programming paradigms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#threaded-programming">Threaded programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distributed-programming">Distributed programming</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Parallel and multithreaded functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-parallel-programming">What is parallel programming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-is-parallel-programming-needed">Why is parallel programming needed?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common-parallel-programming-paradigms">Common parallel programming paradigms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#threaded-programming">Threaded programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distributed-programming">Distributed programming</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Parallel and multithreaded functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-parallel-programming">What is parallel programming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-is-parallel-programming-needed">Why is parallel programming needed?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common-parallel-programming-paradigms">Common parallel programming paradigms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#threaded-programming">Threaded programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distributed-programming">Distributed programming</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Parallel and multithreaded functions</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-HPC/blob/main/docs/common/parallel.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="parallel-and-multithreaded-functions">
+<h1>Parallel and multithreaded functions<a class="headerlink" href="#parallel-and-multithreaded-functions" title="Link to this heading"></a></h1>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>What is parallel programming?</p></li>
+<li><p>Why do we need it?</p></li>
+<li><p>Where I can use it?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Short introduction to parallel programming</p></li>
+<li><p>Common paradigms to write a parallel code</p></li>
+</ul>
+</div>
+<section id="what-is-parallel-programming">
+<h2>What is parallel programming?<a class="headerlink" href="#what-is-parallel-programming" title="Link to this heading"></a></h2>
+<p>Parallel programming is the art of writing code that execute tasks on different
+computing units (cores) simultaneously. In the past computers were shiped with a
+single core per Central Processing Unit (CPU) and therefore it could only perform
+a single computation at the time (serial program).</p>
+<p>Nowadays computer architectures are more complex than the single core CPU mentioned
+already. For instance, common architectures include those where several cores in a
+CPU share a common memory space and also those where CPUs are connected through some
+network interconnect.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/shared-distributed-mem.svg"><img alt="../_images/shared-distributed-mem.svg" src="../_images/shared-distributed-mem.svg" width="550" /></a>
+<figcaption>
+<p><span class="caption-text">Shared Memory and Distributed Memory architectures.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>A more realistic picture of a computer architecture can be seen in the following
+picture where we have 14 cores that shared a common memory of 64 GB. These cores
+form the socket and the two sockets shown in this picture constitute a node.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/cpus.png"><img alt="../_images/cpus.png" src="../_images/cpus.png" style="width: 550px;" /></a>
+<figcaption>
+<p><span class="caption-text">1 standard node on Kebnekaise &#64;HPC2N</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>It is interesting to notice that there are different types of memory that are
+available for the cores, ranging from the L1 cache to the node’s memory for a single
+node. In the former, the bandwidth can be TB/s while in the latter GB/s.</p>
+<p>Now you can see that on a single node you already have several computing units
+(cores) and also a hierarchy of memory resources which is denoted as Non Uniform
+Memory Access (NUMA).</p>
+<p>Besides the standard CPUs, nowadays one finds Graphic Processing Units (GPUs)
+architectures in HPC clusters, a K80 engine looks like this:</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/gpu.png" src="../_images/gpu.png" />
+<figcaption>
+<p><span class="caption-text">A single GPU engine of a K80 card. Each green dot represents a core (single precision) which
+runs at a frequency of 562 MHz. The cores are arranged in slots called streaming multiprocessors (SMX)
+in the figure. Cores in the same SMX share some local and fast cache memory.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In a typical cluster, some GPUs are attached to a single node resulting in a CPU-GPU
+hybrid architecture. The CPU component is called the host and the GPU part the device.
+One possible layout (Kebnekaise) is as follows:</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/cpu-gpu.png"><img alt="../_images/cpu-gpu.png" src="../_images/cpu-gpu.png" style="width: 450px;" /></a>
+<figcaption>
+<p><span class="caption-text">Schematics of a hybrid CPU-GPU architecture. A GPU K80 card consisting of two engines is attached
+to a NUMA island which in turn contains 14 cores. The NUMA island and the GPUs are
+connected through a PCI-E interconnect which makes the data transfer between both components rather
+slow.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="why-is-parallel-programming-needed">
+<h2>Why is parallel programming needed?<a class="headerlink" href="#why-is-parallel-programming-needed" title="Link to this heading"></a></h2>
+<p>There is no “free lunch” when trying to use features (computing/memory resources) in
+modern architectures. If you want your code to be aware of those features, you will
+need to either add them explicitly (by coding them yourself) or implicitly (by using
+libraries that were coded by others).</p>
+<p>In your local machine, you may have some number of cores available and some memory
+attached to them which can be exploited by using a parallel program. There can be
+some limited resources for running your data-production simulations as you may use
+your local machine for other purposes such as writing a manuscript, making a presentation,
+etc. One alternative to your local machine can be a High Performance Computing (HPC)
+cluster another could be a cloud service. A common layout for the resources in an
+HPC cluster is a shown in the figure below.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/workflow-hpc.svg"><img alt="../_images/workflow-hpc.svg" src="../_images/workflow-hpc.svg" width="550" /></a>
+<figcaption>
+<p><span class="caption-text">High Performance Computing (HPC) cluster.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Although a serial application can run in such a cluster, it would not gain much of the
+HPC resources. The situation would be similar to turn on many washing machines to wash
+a single item, we can waste energy easily.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/laundry-machines.svg"><img alt="../_images/laundry-machines.svg" src="../_images/laundry-machines.svg" width="300" /></a>
+</figure>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/laundry-machines.svg"><img alt="../_images/laundry-machines.svg" src="../_images/laundry-machines.svg" width="300" /></a>
+<figcaption>
+<p><span class="caption-text">Under-using a cluster.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="common-parallel-programming-paradigms">
+<h2>Common parallel programming paradigms<a class="headerlink" href="#common-parallel-programming-paradigms" title="Link to this heading"></a></h2>
+<p>Now the question is how to take advantage of modern architectures which consist of many-cores,
+interconnected through networks, and that have different types of memory available?
+Python, Julia, and R languages have different tools and libraries that can help you
+to get more from your local machine or HPC cluster resources.</p>
+<section id="threaded-programming">
+<h3>Threaded programming<a class="headerlink" href="#threaded-programming" title="Link to this heading"></a></h3>
+<p>To take advantage of the shared memory of the cores, <strong>threaded</strong> mechanisms can be used.
+Low-level programming languages, such as Fortra/C/C++, use OpenMP as the standard
+application programming interface (API) to parallelize programs by using a threaded mechanism.
+Here, all threads have access to the same data and can do computations simultaneously.
+Higher-level languages have their own mechanisms to generate threads and this can be
+confusing especially if the code is using external libraries, linear algebra for instance
+(LAPACK, BLAS, …). These libraries have their own threads (OpenMP for example) and
+the code you are writing can also have some threded mechanism such as <cite>Julia threads</cite>.
+Due to a locking mechanism in Python, <cite>Python threads</cite> are not efficient for computation.
+However, the <a class="reference external" href="https://docs.modular.com/mojo/notebooks/Mandelbrot.html#benchmarking">Mojo project</a>
+is striving to leverage the threaded parallelism in Python.</p>
+<p>From the previous paragraph we infer that without doing any modification to our code
+we can get the benefits from parallel computing by turning-on/off external libraries,
+by setting environment variables such as <cite>OMP_NUM_THREADS</cite>.</p>
+<p>A common issue with shared memory programming is <em>data racing</em> which happens when
+different threads write on the same memory address.</p>
+<p>GPU programming has similar patterns to shared memory programming but there are
+major differences, for instance in the former one works with highly optimized
+pieces of code that can run on thousand of cores (<em>kernels</em>). Also the APIs
+are different, with NVIDIA and ROCM being two of the most common ones in GPU
+programming.</p>
+</section>
+<section id="distributed-programming">
+<h3>Distributed programming<a class="headerlink" href="#distributed-programming" title="Link to this heading"></a></h3>
+<p>Although threaded programming is convenient because one can achieve considerable initial speedups
+with little code modifications, this approach does not scale for more than hundreds of
+cores. Scalability can be achieved with distributed programming. Here, there is not
+a common shared memory but the individual <cite>processes</cite> (notice the different terminology
+with <cite>threads</cite> in shared memory) have their own memory space. Then, if a process requires
+data from or should transfer data to another process, it can do that by using <cite>send</cite> and
+<cite>receive</cite> to transfer messages. A standard API for distributed computing is the Message
+Passing Interface (MPI). In general, MPI requires refactoring of your code.</p>
+<div class="admonition-demo demo admonition" id="demo-0">
+<p class="admonition-title">Demo</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Python</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">R</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>In the following example <code class="docutils literal notranslate"><span class="pre">sleep.py</span></code> the <cite>sleep()</cite> function is called <cite>n</cite> times first in serial mode and then by using <cite>n</cite> processes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">perf_counter</span><span class="p">,</span><span class="n">sleep</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
+
+<span class="c1"># number of iterations</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="c1"># number of processes</span>
+<span class="n">numprocesses</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="k">def</span> <span class="nf">sleep_serial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">sleep_threaded</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">numprocesses</span><span class="p">,</span><span class="n">processindex</span><span class="p">):</span>
+    <span class="c1"># workload for each process</span>
+    <span class="n">workload</span> <span class="o">=</span> <span class="n">n</span><span class="o">/</span><span class="n">numprocesses</span>
+    <span class="n">begin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">workload</span><span class="o">*</span><span class="n">processindex</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">workload</span><span class="o">*</span><span class="p">(</span><span class="n">processindex</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">begin</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">starttime</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span>   <span class="c1"># Start timing serial code</span>
+    <span class="n">sleep_serial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">endtime</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time spent serial: </span><span class="si">%.2f</span><span class="s2"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">endtime</span><span class="o">-</span><span class="n">starttime</span><span class="p">))</span>
+
+
+    <span class="n">starttime</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span>   <span class="c1"># Start timing parallel code</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numprocesses</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">sleep_threaded</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">numprocesses</span><span class="p">,</span><span class="n">i</span><span class="p">))</span>
+        <span class="n">processes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># waiting for the processes</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">processes</span><span class="p">:</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+    <span class="n">endtime</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time spent parallel: </span><span class="si">%.2f</span><span class="s2"> sec&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">endtime</span><span class="o">-</span><span class="n">starttime</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>First load the modules <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">GCCcore/10.3.0</span> <span class="pre">Python/3.9.5</span></code> and then run the script
+with the command  <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">sleep.py</span></code> to use 6 processes.</p>
+<p><strong>DASK</strong></p>
+<p>There are other strategies that are more automatic. <strong>Dask</strong> is a array model extension and task scheduler. By using the new array classes, you can automatically distribute operations across multiple CPUs.</p>
+<p>Dask is very popular for data analysis and is used by a number of high-level Python libraries:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Dask arrays scale NumPy (see also xarray)</p></li>
+<li><p>Dask dataframes scale Pandas workflows</p></li>
+<li><p>Dask-ML scales Scikit-Learn</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Dask divides arrays into many small pieces (chunks), as small as necessary to fit it into memory.</p></li>
+<li><p>Operations are delayed (lazy computing) e.g. tasks are queue and no computation is performed until
+you actually ask values to be computed (for instance print mean values).</p></li>
+<li><p>Then data is loaded into memory and computation proceeds in a streaming fashion, block-by-block.</p></li>
+</ul>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>In the following example <code class="docutils literal notranslate"><span class="pre">sleep-threads.jl</span></code> the <cite>sleep()</cite> function is called <cite>n</cite> times
+first in serial mode and then by using <cite>n</cite> threads. The <em>BenchmarkTools</em> package
+help us to time the code (this package is not in the base Julia installation).</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">BenchmarkTools</span>
+<span class="k">using</span><span class="w"> </span><span class="o">.</span><span class="n">Threads</span>
+
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w">   </span><span class="c"># number of iterations</span>
+
+<span class="k">function</span><span class="w"> </span><span class="n">sleep_serial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w">   </span><span class="c">#Serial version</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">n</span>
+<span class="w">        </span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nd">@btime</span><span class="w"> </span><span class="n">sleep_serial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">evals</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="n">samples</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="k">function</span><span class="w"> </span><span class="n">sleep_threaded</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="c">#Parallel version</span>
+<span class="w">    </span><span class="nd">@threads</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">n</span>
+<span class="w">        </span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nd">@btime</span><span class="w"> </span><span class="n">sleep_threaded</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">evals</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="n">samples</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>First load the Julia module <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">Julia/1.8.5-linux-x86_64</span></code> and then run the script
+with the command  <code class="docutils literal notranslate"><span class="pre">julia</span> <span class="pre">--threads</span> <span class="pre">6</span> <span class="pre">sleep-threads.jl</span></code> to use 6 Julia threads.</p>
+<p>We can also use the <em>Distributed</em> package that allows the scaling of simulations beyond
+a single node (call the script <code class="docutils literal notranslate"><span class="pre">sleep-distributed.jl</span></code>):</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">BenchmarkTools</span>
+<span class="k">using</span><span class="w"> </span><span class="n">Distributed</span>
+
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w">   </span><span class="c"># number of iterations</span>
+
+<span class="k">function</span><span class="w"> </span><span class="n">sleep_parallel</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@distributed</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">n</span>
+<span class="w">        </span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Run the script with the command  <code class="docutils literal notranslate"><span class="pre">julia</span> <span class="pre">-p</span> <span class="pre">6</span> <span class="pre">sleep-distributed.jl</span></code> to use 6 Julia processes.</p>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>In the following example <code class="docutils literal notranslate"><span class="pre">sleep.R</span></code> the <cite>sleep()</cite> function is called <cite>n</cite> times
+first in serial mode and then by using <cite>n</cite> processes. Start by loading the
+modules <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">GCC/10.2.0</span> <span class="pre">OpenMPI/4.0.5</span> <span class="pre">R/4.0.4</span></code></p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+
+<span class="c1"># number of iterations = number of processes</span>
+<span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">6</span>
+
+<span class="n">sleep_serial</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nf">Sys.sleep</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">serial_time</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">system.time</span><span class="p">(</span><span class="w">   </span><span class="nf">sleep_serial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w">   </span><span class="p">)[</span><span class="m">3</span><span class="p">]</span>
+<span class="n">serial_time</span>
+
+<span class="n">sleep_parallel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">r</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span><span class="w"> </span><span class="nf">Sys.sleep</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">cl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">makeCluster</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="n">parallel_time</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">system.time</span><span class="p">(</span><span class="w">    </span><span class="nf">sleep_parallel</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w">   </span><span class="p">)[</span><span class="m">3</span><span class="p">]</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="n">parallel_time</span>
+</pre></div>
+</div>
+<p>Run the script with the command  <code class="docutils literal notranslate"><span class="pre">Rscript</span> <span class="pre">--no-save</span> <span class="pre">--no-restore</span> <span class="pre">sleep.R</span></code>.</p>
+<p>In this second example, a <em>lapply</em> function is used in parallel mode to compute the root
+square of a sequence of numbers (call the script <code class="docutils literal notranslate"><span class="pre">clusterapply.R</span></code>):</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">parallel</span><span class="p">)</span>
+
+<span class="c1"># Define a function to be applied</span>
+<span class="n">square_function</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1"># Create the sequence of values</span>
+<span class="n">numbers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1000000</span><span class="p">)</span>
+
+<span class="c1"># Create a cluster with 4 workers</span>
+<span class="n">cl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">makeCluster</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
+
+<span class="c1"># Use a parallel lapply function</span>
+<span class="n">result_parallel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">clusterApply</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span><span class="w"> </span><span class="n">numbers</span><span class="p">,</span><span class="w"> </span><span class="n">square_function</span><span class="p">)</span>
+
+<span class="c1"># Stop the cluster</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+
+<span class="c1"># Print the result</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">unlist</span><span class="p">(</span><span class="n">result_parallel</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Run the script with the command  <code class="docutils literal notranslate"><span class="pre">Rscript</span> <span class="pre">--no-save</span> <span class="pre">--no-restore</span> <span class="pre">clusterapply.R</span></code>.</p>
+</div></div>
+</div>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="admonition-parallelizing-a-for-loop-workflow exercise important admonition" id="exercise-0">
+<p class="admonition-title">Parallelizing a <em>for loop</em> workflow</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Python</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">R</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>Pandas is available in the following combo <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">GCC/12.3.0</span> <span class="pre">SciPy-bundle/2023.07</span></code> (HPC2N) and
+<code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">python/3.11.8</span></code> (UPPMAX). Call the script <code class="docutils literal notranslate"><span class="pre">script-df.py</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
+
+<span class="c1"># Create a DataFrame with two sets of values ID and Value</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10001</span><span class="p">),</span>
+    <span class="s1">&#39;Value&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20002</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Generate 10000 odd numbers starting from 3</span>
+<span class="p">})</span>
+
+<span class="c1"># Define a function to calculate the sum of a vector</span>
+<span class="k">def</span> <span class="nf">calculate_sum</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">total_sum</span> <span class="o">=</span> <span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">*</span><span class="n">FIXME</span><span class="o">*</span>
+
+<span class="c1"># Split the &#39;Value&#39; column into chunks of size 1000</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="o">*</span><span class="n">FIXME</span><span class="o">*</span>
+<span class="n">value_chunks</span> <span class="o">=</span> <span class="p">[</span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">][</span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">:</span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;*FIXME*&#39;</span><span class="p">]),</span> <span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">)]</span>
+
+<span class="c1"># Create a Pool of 4 worker processes, this is required by multiprocessing</span>
+<span class="n">pool</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">)</span>
+
+<span class="c1"># Map the calculate_sum function to each chunk of data in parallel</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">*</span><span class="n">FIXME</span><span class="p">:</span> <span class="n">function</span><span class="o">*</span><span class="p">,</span> <span class="o">*</span><span class="n">FIXME</span><span class="p">:</span> <span class="n">chunk</span> <span class="n">size</span><span class="o">*</span><span class="p">)</span>
+
+<span class="c1"># Close the pool to free up resources, if the pool won&#39;t be used further</span>
+<span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># Combine the partial results to get the total sum</span>
+<span class="n">total_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+<span class="c1"># Compute the mean by dividing the total sum by the total length of the column &#39;Value&#39;</span>
+<span class="n">mean_value</span> <span class="o">=</span> <span class="o">*</span><span class="n">FIXME</span><span class="o">*</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;*FIXME*&#39;</span><span class="p">])</span>
+
+<span class="c1"># Print the mean value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Run the code with the batch script (HPC2N):</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A naiss2024-22-107     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 4                 # nr. tasks/coresw</span>
+<span class="c1">#SBATCH --time=00:20:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load any modules you need, here for Python 3.11.8 and compatible SciPy-bundle</span>
+module<span class="w"> </span>load<span class="w"> </span>python/3.11.8
+python<span class="w"> </span>script-df.py
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2023-110     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:20:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+<span class="c1"># Load any modules you need, here for Python 3.11.3 and compatible SciPy-bundle</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/12.3.0<span class="w"> </span>Python/3.11.3<span class="w"> </span>SciPy-bundle/2023.07
+python<span class="w"> </span>script-df.py
+</pre></div>
+</div>
+</div></div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>First, be sure you have <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> installed as JuliaPackage.</p></li>
+<li><p>If not, follow the steps below. You can install it in your ordinaty user space (not an environment)</p></li>
+<li><p>Open a Julia session</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="n">using</span> <span class="n">DataFrames</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Let it be installed when asking</p></li>
+<li><p>When done and working, exit().</p></li>
+<li><p>Here is an exercise to fix some code snippets. Call the script <code class="docutils literal notranslate"><span class="pre">script-df.jl</span></code>.</p></li>
+<li><p>Watch out for <code class="docutils literal notranslate"><span class="pre">*FIXME*</span></code> and replace with suitable functions</p></li>
+<li><p>The functions <code class="docutils literal notranslate"><span class="pre">nthreads()</span></code> (number of available threads), and <code class="docutils literal notranslate"><span class="pre">threadid()</span></code> (the thread identification number) will be useful in this task.</p></li>
+</ul>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">DataFrames</span>
+<span class="k">using</span><span class="w"> </span><span class="n">Base</span><span class="o">.</span><span class="n">Threads</span>
+
+<span class="c"># Create a data frame with two sets of values ID and Value</span>
+<span class="n">data_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="mi">10000</span><span class="p">))</span>
+
+<span class="c"># Define a function to compute the sum in parallel</span>
+<span class="k">function</span><span class="w"> </span><span class="n">parallel_sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Initialize an array to store thread-local sums</span>
+<span class="w">    </span><span class="n">local_sums</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zeros</span><span class="p">(</span><span class="n">eltype</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Iterate through each value in the &#39;Value&#39; column in parallel</span>
+<span class="w">    </span><span class="nd">@threads</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="w">        </span><span class="c"># Add the value to the thread-local sum</span>
+<span class="w">        </span><span class="n">local_sums</span><span class="p">[</span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="c"># Combine the local sums to obtain the total sum</span>
+<span class="w">    </span><span class="n">total_sum_parallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">local_sums</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total_sum_parallel</span>
+<span class="k">end</span>
+
+<span class="c"># Compute the sum in parallel</span>
+<span class="n">total_sum_parallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parallel_sum</span><span class="p">(</span><span class="n">data_df</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span>
+
+<span class="c"># Compute the mean</span>
+<span class="n">mean_value_parallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">data_df</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span>
+
+<span class="c"># Print the mean value</span>
+<span class="n">println</span><span class="p">(</span><span class="n">mean_value_parallel</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Run this job with the following batch script, defining that we want to use 4 threads:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A naiss2024-22-107     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 4                 # nr. tasks/coresw</span>
+<span class="c1">#SBATCH --time=00:20:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+ml<span class="w"> </span>julia/1.8.5
+
+julia<span class="w"> </span>--threads<span class="w"> </span><span class="m">4</span><span class="w"> </span>script-df.jl<span class="w">  </span><span class="c1"># X number of threads</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2023-110     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 4                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:20:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+
+julia<span class="w"> </span>--threads<span class="w"> </span><span class="m">4</span><span class="w"> </span>script-df.jl<span class="w">  </span><span class="c1"># X number of threads</span>
+</pre></div>
+</div>
+</div></div>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>Call the script <code class="docutils literal notranslate"><span class="pre">script-df.R</span></code>.</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">foreach</span><span class="p">)</span>
+
+<span class="c1"># Create a data frame with two sets called ID and Value</span>
+<span class="n">data_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<span class="n">ID</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">10000</span><span class="p">),</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="n">from</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">length.out</span><span class="o">=</span><span class="m">10000</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Create 4 subsets</span>
+<span class="n">num_subsets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span>
+
+<span class="c1"># Create a cluster with 4 workers</span>
+<span class="n">cl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">makeCluster</span><span class="p">(</span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">)</span>
+
+<span class="c1"># Register the cluster for parallel processing</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+
+<span class="c1"># Function to process a subset of the whole data</span>
+<span class="n">process_subset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="c1"># Perform some computation on the subset</span>
+<span class="n">subset_sum</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">)</span>
+<span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">SubsetSum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subset_sum</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1"># Use foreach with dopar to process subsets in parallel</span>
+<span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rbind</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span><span class="w"> </span><span class="p">{</span>
+<span class="c1"># Determine the indices for the subset</span>
+<span class="n">subset_indices</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">)</span>
+
+<span class="c1"># Create the subset</span>
+<span class="n">subset_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data_df</span><span class="p">[</span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">drop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">]</span>
+
+<span class="c1"># Process the subset</span>
+<span class="n">subset_result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">process_subset</span><span class="p">(</span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">)</span>
+
+<span class="nf">return</span><span class="p">(</span><span class="n">subset_result</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Stop the cluster when done</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+
+<span class="c1"># Print the results</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="o">*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">)</span><span class="o">/*</span><span class="n">FIXME</span><span class="o">*</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Run the code with the following batch script:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A naiss2024-22-107     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 4                 # nr. tasks/coresw</span>
+<span class="c1">#SBATCH --time=00:20:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+ml<span class="w"> </span>R_packages/4.1.1
+
+Rscript<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>script-df.R
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2023-110     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:20:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>GCC/10.2.0<span class="w">  </span>OpenMPI/4.0.5<span class="w">  </span>R/4.0.4
+Rscript<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>script-df.R
+</pre></div>
+</div>
+</div></div>
+</div></div>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Solution</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">Python</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-5-5-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-2" name="5-2" role="tab" tabindex="-1">R</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
+
+<span class="c1"># Create a DataFrame with two sets of values ID and Value</span>
+<span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10001</span><span class="p">),</span>
+    <span class="s1">&#39;Value&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20002</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Generate 10000 odd numbers starting from 3</span>
+<span class="p">})</span>
+
+<span class="c1"># Define a function to calculate the sum of a vector</span>
+<span class="k">def</span> <span class="nf">calculate_sum</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">total_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total_sum</span>
+
+<span class="c1"># Split the &#39;Value&#39; column into chunks</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">value_chunks</span> <span class="o">=</span> <span class="p">[</span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">chunk_size</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">]),</span> <span class="n">chunk_size</span><span class="p">)]</span>
+
+<span class="c1"># Create a Pool of 4 worker processes, this is required by multiprocessing</span>
+<span class="n">pool</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Map the calculate_sum function to each chunk of data in parallel</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">calculate_sum</span><span class="p">,</span> <span class="n">value_chunks</span><span class="p">)</span>
+
+<span class="c1"># Close the pool to free up resources, if the pool won&#39;t be used further</span>
+<span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># Combine the partial results to get the total sum</span>
+<span class="n">total_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+<span class="c1"># Compute the mean by dividing the total sum by the total length of the column &#39;Value&#39;</span>
+<span class="n">mean_value</span> <span class="o">=</span> <span class="n">total_sum</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">])</span>
+
+<span class="c1"># Print the mean value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">DataFrames</span>
+<span class="k">using</span><span class="w"> </span><span class="n">Base</span><span class="o">.</span><span class="n">Threads</span>
+
+<span class="c"># Create a data frame with two sets of values ID and Value</span>
+<span class="n">data_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="mi">10000</span><span class="p">))</span>
+
+<span class="c"># Define a function to compute the sum in parallel</span>
+<span class="k">function</span><span class="w"> </span><span class="n">parallel_sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Initialize an array to store thread-local sums</span>
+<span class="w">    </span><span class="n">local_sums</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zeros</span><span class="p">(</span><span class="n">eltype</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="w"> </span><span class="n">nthreads</span><span class="p">())</span>
+<span class="w">    </span><span class="c"># Iterate through each value in the &#39;Value&#39; column in parallel</span>
+<span class="w">    </span><span class="nd">@threads</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="w">        </span><span class="c"># Add the value to the thread-local sum</span>
+<span class="w">        </span><span class="n">local_sums</span><span class="p">[</span><span class="n">threadid</span><span class="p">()]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="c"># Combine the local sums to obtain the total sum</span>
+<span class="w">    </span><span class="n">total_sum_parallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">local_sums</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total_sum_parallel</span>
+<span class="k">end</span>
+
+<span class="c"># Compute the sum in parallel</span>
+<span class="n">total_sum_parallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parallel_sum</span><span class="p">(</span><span class="n">data_df</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span>
+
+<span class="c"># Compute the mean</span>
+<span class="n">mean_value_parallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total_sum_parallel</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">data_df</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span>
+
+<span class="c"># Print the mean value</span>
+<span class="n">println</span><span class="p">(</span><span class="n">mean_value_parallel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-2" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-2" name="5-2" role="tabpanel" tabindex="0"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">foreach</span><span class="p">)</span>
+
+<span class="c1"># Create a data frame with two sets called ID and Value</span>
+<span class="n">data_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<span class="n">ID</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">10000</span><span class="p">),</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="n">from</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">length.out</span><span class="o">=</span><span class="m">10000</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Create 4 subsets</span>
+<span class="n">num_subsets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">4</span>
+
+<span class="c1"># Create a cluster with 4 workers</span>
+<span class="n">cl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">makeCluster</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
+
+<span class="c1"># Register the cluster for parallel processing</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+
+<span class="c1"># Function to process a subset of the whole data</span>
+<span class="n">process_subset</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="c1"># Perform some computation on the subset</span>
+<span class="n">subset_sum</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">subset</span><span class="o">$</span><span class="n">Value</span><span class="p">)</span>
+<span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">SubsetSum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subset_sum</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1"># Use foreach with dopar to process subsets in parallel</span>
+<span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">num_subsets</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rbind</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span><span class="w"> </span><span class="p">{</span>
+<span class="c1"># Determine the indices for the subset</span>
+<span class="n">subset_indices</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">num_subsets</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">data_df</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">num_subsets</span><span class="p">)</span>
+
+<span class="c1"># Create the subset</span>
+<span class="n">subset_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data_df</span><span class="p">[</span><span class="n">subset_indices</span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">drop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">]</span>
+
+<span class="c1"># Process the subset</span>
+<span class="n">subset_result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">process_subset</span><span class="p">(</span><span class="n">subset_data</span><span class="p">)</span>
+
+<span class="nf">return</span><span class="p">(</span><span class="n">subset_result</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Stop the cluster when done</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+
+<span class="c1"># Print the results</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">/</span><span class="m">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="admonition-more-info admonition">
+<p class="admonition-title">More info</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.hpc2n.umu.se/resources/software/julia">HPC2N Julia documentation</a>.</p></li>
+<li><p><a class="reference external" href="https://www.hpc2n.umu.se/resources/software/r">HPC2N R documentation</a>.</p></li>
+<li><p><a class="reference external" href="https://aaltoscicomp.github.io/python-for-scicomp/parallel/#dask-and-task-queues">Introduction to Dask by Aalto Scientific Computing and CodeRefinery</a></p></li>
+<li><p><a class="reference external" href="https://enccs.github.io/hpda-python/dask/">Intermediate level Dask by ENCCS</a>.</p></li>
+<li><p><a class="reference external" href="https://www.python.org/doc/">Official Python documentation</a>.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Parallel_computing">Wikipedias’ article on Parallel Computing</a></p></li>
+<li><p>The book <a class="reference external" href="https://www.oreilly.com/library/view/high-performance-python/9781492055013/">High Performance Python</a> is a good resource for ways of speeding up Python code.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../python/jupyter.html" class="btn btn-neutral float-left" title="Jupyter on compute nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../python/condaUPPMAX.html" class="btn btn-neutral float-right" title="Conda at UPPMAX" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
