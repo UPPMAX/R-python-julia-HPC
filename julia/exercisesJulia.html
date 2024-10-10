@@ -1,0 +1,572 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercises &mdash; Introduction to running R, Python, and Julia in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Summary" href="summaryJulia.html" />
+    <link rel="prev" title="Interactive work on compute nodes" href="interactiveJulia.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, and Julia in HPC
+              <img src="../_static/logo-python-hpc-course.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On-Demand</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/GPU.html">Using GPUs with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/jupyter.html">Jupyter on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/condaUPPMAX.html">Conda at UPPMAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveJulia.html">Interactive work on compute nodes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Exercises</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-and-run">Load and run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#packages-and-isolated-environments">Packages and isolated environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#batch-mode">Batch mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#serial-code">Serial code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu-code">GPU code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Local desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/interactiveMatlab.html">Interactive work on compute nodes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Exercises</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-HPC/blob/main/docs/julia/exercisesJulia.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<div class="admonition-getting-familiar-with-julia-repl exercise important admonition" id="exercise-0">
+<p class="admonition-title">Getting familiar with Julia REPL</p>
+<p>Is is important in this course that you know how to navigate on the
+Julia command line. This exercise will help you to become more familiar
+with the REPL. Do the following steps:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Start a Julia session. In the <code class="docutils literal notranslate"><span class="pre">Julian</span></code> mode, compute the sum the numbers
+5 and 6</p></li>
+<li><p>Change to the <code class="docutils literal notranslate"><span class="pre">shell</span></code> mode and display the current directory</p></li>
+<li><p>Now, go to the <code class="docutils literal notranslate"><span class="pre">package</span></code> mode and list the currently installed packages</p></li>
+<li><p>Finally, display help information of the function <code class="docutils literal notranslate"><span class="pre">println</span></code> in <code class="docutils literal notranslate"><span class="pre">help</span></code> mode.</p></li>
+</ul>
+</div></blockquote>
+<div class="dropdown solution important admonition" id="solution-0">
+<p class="admonition-title">Solution for the centres</p>
+<blockquote>
+<div><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="o">$</span><span class="w"> </span><span class="n">julia</span>
+<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span>
+<span class="n">julia</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pwd</span>
+<span class="n">julia</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">status</span>
+<span class="n">julia</span><span class="o">&gt;?</span>
+<span class="n">help</span><span class="o">?&gt;</span><span class="w"> </span><span class="n">println</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</section>
+<section id="load-and-run">
+<h2>Load and run<a class="headerlink" href="#load-and-run" title="Link to this heading"></a></h2>
+<div class="admonition-loading-modules-and-running-scripts exercise important admonition" id="exercise-1">
+<p class="admonition-title">Loading modules and running scripts</p>
+<p>Load the Julia version 1.8.5 and run the following serial script (<code class="docutils literal notranslate"><span class="pre">serial-sum.jl</span></code>) which accepts two integer arguments as input:</p>
+<blockquote>
+<div><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<span class="n">summ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;The sum of the two numbers is &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">summ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="dropdown solution important admonition" id="solution-1">
+<p class="admonition-title">Solution for HPC2N</p>
+<blockquote>
+<div><p>This batch script is for Kebnekaise.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">       </span><span class="c1"># recommended purge</span>
+$<span class="w"> </span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">      </span><span class="c1"># Julia module</span>
+
+$<span class="w"> </span>julia<span class="w"> </span>serial-sum.jl<span class="w"> </span>Arg1<span class="w"> </span>Arg2<span class="w">    </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-2">
+<p class="admonition-title">Solution for UPPMAX</p>
+<blockquote>
+<div><p>This batch script is for UPPMAX. Adding the numbers 2 and 3.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ml<span class="w"> </span>julia/1.8.5<span class="w">      </span><span class="c1"># Julia module</span>
+
+$<span class="w"> </span>julia<span class="w"> </span>serial-sum.jl<span class="w"> </span>Arg1<span class="w"> </span>Arg2<span class="w">    </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</section>
+<section id="packages-and-isolated-environments">
+<h2>Packages and isolated environments<a class="headerlink" href="#packages-and-isolated-environments" title="Link to this heading"></a></h2>
+<div class="admonition-project-environment exercise important admonition" id="exercise-2">
+<p class="admonition-title">Project environment</p>
+<p>Create a project environment called <code class="docutils literal notranslate"><span class="pre">new-env</span></code> and activate it. Then, install the
+package <code class="docutils literal notranslate"><span class="pre">CSV</span></code> in this environment. For your knowledge, <code class="docutils literal notranslate"><span class="pre">CSV</span></code> is a package that
+offers tools for dealing with <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files. After this, check that this package
+was installed. Finally, deactivate the environment.</p>
+<div class="dropdown solution important admonition" id="solution-3">
+<p class="admonition-title">Solution for both centres</p>
+<blockquote>
+<div><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">new</span><span class="o">-</span><span class="n">env</span>
+<span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">new</span><span class="o">-</span><span class="n">env</span>
+<span class="p">(</span><span class="nd">@v1</span><span class="mf">.8</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span><span class="w"> </span><span class="o">.</span>
+<span class="w">      </span><span class="n">Activating</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="sb">`path-to-folder\new-env`</span>
+<span class="p">(</span><span class="n">new</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">CSV</span>
+<span class="p">(</span><span class="n">new</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">status</span>
+<span class="w">      </span><span class="n">Status</span><span class="w"> </span><span class="sb">`path-to-folder\new-env\Project.toml`</span>
+<span class="w">      </span><span class="p">[</span><span class="mi">336</span><span class="n">ed68f</span><span class="p">]</span><span class="w"> </span><span class="n">CSV</span><span class="w"> </span><span class="n">v0</span><span class="mf">.10.9</span>
+<span class="p">(</span><span class="n">new</span><span class="o">-</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-package-environment exercise important admonition" id="exercise-3">
+<p class="admonition-title">Package environment</p>
+<p>Create a package environment called <code class="docutils literal notranslate"><span class="pre">new_pack</span></code> and activate it. Then, install the
+package <code class="docutils literal notranslate"><span class="pre">CSV</span></code> in this environment. For your knowledge, <code class="docutils literal notranslate"><span class="pre">CSV</span></code> is a package that
+offers tools for dealing with <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files. After this, check that this package
+was installed. Finally, deactivate the environment.</p>
+<div class="dropdown solution important admonition" id="solution-4">
+<p class="admonition-title">Solution for both centres</p>
+<blockquote>
+<div><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pwd</span><span class="w">            </span><span class="c">#Check were you are currently located</span>
+<span class="p">(</span><span class="nd">@v1</span><span class="mf">.8</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">generate</span><span class="w"> </span><span class="n">new_pack</span>
+<span class="w">     </span><span class="n">Generating</span><span class="w">  </span><span class="n">project</span><span class="w"> </span><span class="n">new_pack</span><span class="o">:</span>
+<span class="w">     </span><span class="n">new_pack</span><span class="o">\</span><span class="n">Project</span><span class="o">.</span><span class="n">toml</span>
+<span class="w">     </span><span class="n">new_pack</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">new_pack</span><span class="o">.</span><span class="n">jl</span>
+<span class="n">shell</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">new_pack</span>
+<span class="w">     </span><span class="sb">`path-to-folder\new_pack`</span>
+<span class="p">(</span><span class="nd">@v1</span><span class="mf">.8</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span><span class="w"> </span><span class="o">.</span>
+<span class="w">       </span><span class="n">Activating</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="sb">`path-to-folder\new_pack`</span>
+<span class="p">(</span><span class="n">new_pack</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">CSV</span>
+<span class="p">(</span><span class="n">new_pack</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">status</span>
+<span class="w">       </span><span class="n">Project</span><span class="w"> </span><span class="n">new_pack</span><span class="w"> </span><span class="n">v0</span><span class="mf">.1.0</span>
+<span class="w">       </span><span class="n">Status</span><span class="w"> </span><span class="sb">`path-to-folder\new_pack\Project.toml`</span>
+<span class="w">       </span><span class="p">[</span><span class="mi">336</span><span class="n">ed68f</span><span class="p">]</span><span class="w"> </span><span class="n">CSV</span><span class="w"> </span><span class="n">v0</span><span class="mf">.10.9</span>
+<span class="p">(</span><span class="n">new_pack</span><span class="p">)</span><span class="w"> </span><span class="n">pkg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activate</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</section>
+<section id="batch-mode">
+<h2>Batch mode<a class="headerlink" href="#batch-mode" title="Link to this heading"></a></h2>
+<section id="serial-code">
+<h3>Serial code<a class="headerlink" href="#serial-code" title="Link to this heading"></a></h3>
+<div class="admonition-run-a-serial-script exercise important admonition" id="exercise-4">
+<p class="admonition-title">Run a serial script</p>
+<p>Run the serial script <code class="docutils literal notranslate"><span class="pre">serial-sum.jl</span></code>:</p>
+<blockquote>
+<div><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="w"> </span><span class="kt">Int32</span><span class="p">,</span><span class="w"> </span><span class="nb">ARGS</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<span class="n">summ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;The sum of the two numbers is &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">summ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>This scripts accepts two integers as command line arguments.</p>
+<div class="dropdown solution important admonition" id="solution-5">
+<p class="admonition-title">Solution for HPC2N</p>
+<blockquote>
+<div><p>This batch script is for Kebnekaise.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2023-110     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">   </span><span class="c1"># recommended purge</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64<span class="w">  </span><span class="c1"># Julia module</span>
+
+julia<span class="w"> </span>serial-sum.jl<span class="w"> </span>Arg1<span class="w"> </span>Arg2<span class="w">    </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-6">
+<p class="admonition-title">Solution for UPPMAX</p>
+<blockquote>
+<div><p>This batch script is for UPPMAX. Adding the numbers 2 and 3.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH -A naiss2023-22-914  # Change to your own after the course</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:05:00 # Asking for 5 minutes</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+module<span class="w"> </span>load<span class="w"> </span>julia/1.8.5
+
+julia<span class="w"> </span>serial-sum.jl<span class="w"> </span>Arg1<span class="w"> </span>Arg2<span class="w">    </span><span class="c1"># run the serial script</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</section>
+<section id="gpu-code">
+<h3>GPU code<a class="headerlink" href="#gpu-code" title="Link to this heading"></a></h3>
+<div class="admonition-run-the-gpu-script exercise important admonition" id="exercise-5">
+<p class="admonition-title">Run the GPU script</p>
+<p>Run the following script <code class="docutils literal notranslate"><span class="pre">script-gpu.jl</span></code>. Why are we running the simulations
+twice?
+Note that at UPPMAX you will need a project will access to Snowy (or Bianca)</p>
+<blockquote>
+<div><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">CUDA</span>
+
+<span class="n">CUDA</span><span class="o">.</span><span class="n">versioninfo</span><span class="p">()</span>
+
+<span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">8</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
+
+<span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CuArray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CuArray</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c"># Calculation on CPU</span>
+<span class="nd">@time</span><span class="w"> </span><span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<span class="c"># Calculation on GPU</span>
+<span class="nd">@time</span><span class="w"> </span><span class="n">A</span><span class="o">*</span><span class="n">B</span>
+
+<span class="c"># Calculation on CPU</span>
+<span class="nd">@time</span><span class="w"> </span><span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<span class="c"># Calculation on GPU</span>
+<span class="nd">@time</span><span class="w"> </span><span class="n">A</span><span class="o">*</span><span class="n">B</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="dropdown solution important admonition" id="solution-7">
+<p class="admonition-title">Solution for HPC2N</p>
+<blockquote>
+<div><p>This batch script is for Kebnekaise. We run the simulation twice because
+in this way, the reported time is more reliable for the computing time as
+in the first simulation, data transfer and other settings could be added to
+the reported time.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2024-025     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:03:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+<span class="c1">#SBATCH --gres=gpu:v100:1     # 1 GPU v100 card</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>CUDA/11.4.1
+
+julia<span class="w"> </span>script-gpu.jl
+</pre></div>
+</div>
+<dl>
+<dt>Output:</dt><dd><p>0.689096 seconds (2.72 M allocations: 132.617 MiB, 6.27% gc time, 99.62% compilation time)</p>
+<p>1.194153 seconds (1.24 M allocations: 62.487 MiB, 3.41% gc time, 55.13% compilation time)</p>
+<p>0.000933 seconds (2 allocations: 512.047 KiB)</p>
+<p>0.000311 seconds (5 allocations: 192 bytes)</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-8">
+<p class="admonition-title">Solution for UPPMAX</p>
+<blockquote>
+<div><p>This batch script is for UPPMAX. Adding the numbers 2 and 3.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -A &lt;project with Snowy/Bianca access    # your project_ID</span>
+<span class="c1">#SBATCH -M snowy</span>
+<span class="c1">#SBATCH -p node</span>
+<span class="c1">##SBATCH -C gpu   #NB: Only for Bianca</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --job-name=juliaGPU         # create a short name for your job</span>
+<span class="c1">#SBATCH --gpus-per-node=1             # number of gpus per node (Bianca 2, Snowy 1)</span>
+<span class="c1">#SBATCH --time=00:15:00          # total run time limit (HH:MM:SS)</span>
+<span class="c1">#SBATCH --qos=short              # if test run t&lt;15 min</span>
+
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+
+julia<span class="w"> </span>script-gpu.jl
+</pre></div>
+</div>
+<p>Output:</p>
+<blockquote>
+<div><p>Downloading artifact: CUDNN
+Downloading artifact: CUTENSOR
+CUDA toolkit 11.7, artifact installation
+NVIDIA driver 525.85.12, for CUDA 12.0
+CUDA driver 12.0</p>
+<p>Libraries:
+- CUBLAS: 11.10.1
+- CURAND: 10.2.10
+- CUFFT: 10.7.2
+- CUSOLVER: 11.3.5
+- CUSPARSE: 11.7.3
+- CUPTI: 17.0.0
+- NVML: 12.0.0+525.85.12
+- CUDNN: 8.30.2 (for CUDA 11.5.0)
+- CUTENSOR: 1.4.0 (for CUDA 11.5.0)</p>
+<p>Toolchain:
+- Julia: 1.8.5
+- LLVM: 13.0.1
+- PTX ISA support: 3.2, 4.0, 4.1, 4.2, 4.3, 5.0, 6.0, 6.1, 6.3, 6.4, 6.5, 7.0, 7.1, 7.2
+- Device capability support: sm_35, sm_37, sm_50, sm_52, sm_53, sm_60, sm_61, sm_62, sm_70, sm_72, sm_75, sm_80, sm_86</p>
+<dl class="simple">
+<dt>1 device:</dt><dd><p>0: Tesla T4 (sm_75, 14.605 GiB / 15.000 GiB available)
+0.988437 seconds (2.72 M allocations: 132.556 MiB, 4.72% gc time, 99.10% compilation time)
+5.707402 seconds (1.30 M allocations: 65.564 MiB, 0.72% gc time, 19.70% compilation time)
+0.000813 seconds (2 allocations: 512.047 KiB)
+0.000176 seconds (16 allocations: 384 bytes)</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-machine-learning-job-on-gpus-hpc2n exercise important admonition" id="exercise-6">
+<p class="admonition-title">Machine Learning job on GPUs (HPC2N)</p>
+<p>Julia has already several packages for ML, one of them is <code class="docutils literal notranslate"><span class="pre">Flux</span></code> (<a class="reference external" href="https://fluxml.ai/">https://fluxml.ai/</a>). We will work with one of
+the test cases provided by <code class="docutils literal notranslate"><span class="pre">Flux</span></code> which deals with a data set of tiny images (CIFAR10). Follow this steps:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Create an environment called <code class="docutils literal notranslate"><span class="pre">ML</span></code>, move to that environment directory and activate it</p></li>
+<li><p>Fetch the <code class="docutils literal notranslate"><span class="pre">vgg_cifar10.jl</span></code> test case from <code class="docutils literal notranslate"><span class="pre">Flux</span></code> repo (wget <a class="reference external" href="https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl">https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl</a>)</p></li>
+<li><p>Load CUDA toolkit 11.4.1</p></li>
+<li><p>Install (add) the following packages: CUDA, MLDatasets, MLUtils</p></li>
+<li><p>The first time you use the data set CIFAR10, it will ask you to download it and accept. Do this in <code class="docutils literal notranslate"><span class="pre">Julian</span></code> mode:</p></li>
+</ul>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">MLDatasets</span><span class="o">:</span><span class="w"> </span><span class="n">CIFAR10</span>
+<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CIFAR10</span><span class="p">(</span><span class="ss">:train</span><span class="p">)[</span><span class="o">:</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Change the number of epochs in the <code class="docutils literal notranslate"><span class="pre">vgg_cifar10.jl</span></code> script from 50 to something shorter like 5.</p></li>
+<li><p>Submit the job with the script:</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A Project-ID        # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:20:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+<span class="c1">#SBATCH --gres=gpu:v100:1     # 1 GPU v100 card</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>CUDA/11.4.1
+
+julia<span class="w"> </span>&lt;fix-activate-environment&gt;<span class="w"> </span>&lt;fix-name-script&gt;.jl
+</pre></div>
+</div>
+</div></blockquote>
+<div class="dropdown solution important admonition" id="solution-9">
+<p class="admonition-title">Solution for HPC2N</p>
+<blockquote>
+<div><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>CUDA/11.4.1
+mkdir<span class="w"> </span>ML
+<span class="nb">cd</span><span class="w"> </span>ML
+wget<span class="w"> </span>https://raw.githubusercontent.com/FluxML/model-zoo/master/vision/vgg_cifar10/vgg_cifar10.jl
+
+julia
+<span class="o">(</span>v1.8<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>activate<span class="w"> </span>.
+<span class="o">(</span>ML<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>add<span class="w"> </span>CUDA
+<span class="o">(</span>ML<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>add<span class="w"> </span>Flux
+<span class="o">(</span>ML<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>add<span class="w"> </span>MLDatasets
+<span class="o">(</span>ML<span class="o">)</span><span class="w"> </span>pkg&gt;<span class="w"> </span>add<span class="w"> </span>MLUtils
+julia&gt;<span class="w"> </span>using<span class="w"> </span>MLDatasets:<span class="w"> </span>CIFAR10
+julia&gt;<span class="w"> </span>x,<span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>CIFAR10<span class="o">(</span>:train<span class="o">)[</span>:<span class="o">]</span>
+</pre></div>
+</div>
+<p>The batch script looks like:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n20xx-xyz     # your project_ID</span>
+<span class="c1">#SBATCH -J job-serial        # name of the job</span>
+<span class="c1">#SBATCH -n 1                 # nr. tasks</span>
+<span class="c1">#SBATCH --time=00:20:00      # requested time</span>
+<span class="c1">#SBATCH --error=job.%J.err   # error file</span>
+<span class="c1">#SBATCH --output=job.%J.out  # output file</span>
+<span class="c1">#SBATCH --gres=gpu:v100:1     # 1 GPU v100 card</span>
+
+ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+ml<span class="w"> </span>Julia/1.8.5-linux-x86_64
+ml<span class="w"> </span>CUDA/11.4.1
+
+julia<span class="w"> </span>--project<span class="o">=</span>.<span class="w"> </span>vgg_cifar10.jl
+</pre></div>
+</div>
+<p>At HPC2N you can use the tool <code class="docutils literal notranslate"><span class="pre">job-usage</span></code> on the command line:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>job-usage<span class="w"> </span>job_ID<span class="w">   </span><span class="c1"># job_ID number you get upon using sbatch</span>
+</pre></div>
+</div>
+<p>This will give you a URL that you can paste on your local browser. It would display
+statistics after a couple of minutes the job started.</p>
+</div></blockquote>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="interactiveJulia.html" class="btn btn-neutral float-left" title="Interactive work on compute nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="summaryJulia.html" class="btn btn-neutral float-right" title="Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

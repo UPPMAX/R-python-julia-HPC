@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summary &mdash; Introduction to running R, Python, and Julia in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to MATLAB" href="../matlab/introMatlab.html" />
+    <link rel="prev" title="Exercises" href="exercisesR.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, and Julia in HPC
+              <img src="../_static/logo-python-hpc-course.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On-Demand</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/GPU.html">Using GPUs with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/jupyter.html">Jupyter on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/condaUPPMAX.html">Conda at UPPMAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercisesR.html">Exercises</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Local desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/interactiveMatlab.html">Interactive work on compute nodes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Summary</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-HPC/blob/main/docs/r/summaryR.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h1>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li><dl class="simple">
+<dt>Load and run</dt><dd><ul class="simple">
+<li><p>Use the desired <code class="docutils literal notranslate"><span class="pre">R</span></code> version from the module system e.g. <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span>&#160; <span class="pre">R/4.1.1</span></code></p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> to run a script or <code class="docutils literal notranslate"><span class="pre">R</span></code> to start the interpreter/REPL</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Packages</dt><dd><ul>
+<li><p>Always check for preinstalled packages e.g. <code class="docutils literal notranslate"><span class="pre">R_packages</span></code> on UPPMAX</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>use <code class="docutils literal notranslate"><span class="pre">library(&lt;pkg-name&gt;)</span></code> to see if available</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Isolated environments</dt><dd><ul class="simple">
+<li><p>With a virtual environment you can tailor an environment with specific
+versions.</p></li>
+<li><p>You can make it for each project you have for reproducibility using
+<code class="docutils literal notranslate"><span class="pre">renv</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> on UPPMAX.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Batch mode</dt><dd><ul class="simple">
+<li><p>The SLURM scheduler handles allocations to the calculation nodes</p></li>
+<li><p>Batch jobs runs without interaction with user</p></li>
+<li><p>A batch script consists of a part with <em>SLURM parameters</em> describing
+the allocation and a second part describing the actual work within the
+job, for instance one or several R scripts.</p></li>
+<li><p>Remember to include possible input arguments to the R script in
+the batch script.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Interactive work on calculation nodes</dt><dd><ul>
+<li><p>Start an interactive session on a calculation node by a SLURM
+allocation (similar flags)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>At HPC2N: <code class="docutils literal notranslate"><span class="pre">salloc</span></code> …</p></li>
+<li><p>At UPPMAX: <code class="docutils literal notranslate"><span class="pre">interactive</span></code> …</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Follow the same procedure as usual by loading the R module and
+possible prerequisites.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Using RStudio</dt><dd><ul class="simple">
+<li><p>Rstudio is available both on UPPMAX and HPC2N and works well through a
+graphical ThinLinc Session.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="admonition-not-really-clear-5-min exercise important admonition" id="exercise-0">
+<p class="admonition-title">Not really clear? (5 min)</p>
+<ul class="simple">
+<li><p>Discuss in breakout rooms</p></li>
+<li><p>Learn from each other</p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>Content from NBIS R course from 2021: <a class="reference external" href="https://nbisweden.github.io/RaukR-2021/">https://nbisweden.github.io/RaukR-2021/</a></p></li>
+<li><dl class="simple">
+<dt>CodeRefinery develops and maintains training material on software best practices for researchers that already write code.</dt><dd><ul>
+<li><p>Their material addresses all academic disciplines and tries to be as
+programming language-independent as possible.
+<a class="reference external" href="https://coderefinery.org/lessons/">https://coderefinery.org/lessons/</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Learn more about R packages: <a class="reference external" href="https://r-pkgs.org/">https://r-pkgs.org/</a></p></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="exercisesR.html" class="btn btn-neutral float-left" title="Exercises" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../matlab/introMatlab.html" class="btn btn-neutral float-right" title="Introduction to MATLAB" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

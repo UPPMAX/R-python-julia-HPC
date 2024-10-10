@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desktop On-Demand &mdash; Introduction to running R, Python, and Julia in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction Python" href="../python/intro.html" />
+    <link rel="prev" title="Log in session" href="login.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, and Julia in HPC
+              <img src="../_static/logo-python-hpc-course.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="login.html">Log in session</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Desktop On-Demand</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-desktop-on-demand">What is Desktop On-Demand?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#when-should-i-use-it">When should I use it?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-start">How do I start?</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/GPU.html">Using GPUs with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/jupyter.html">Jupyter on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/condaUPPMAX.html">Conda at UPPMAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r/summaryR.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Local desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/interactiveMatlab.html">Interactive work on compute nodes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Desktop On-Demand</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-HPC/blob/main/docs/common/ondemand-desktop.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="desktop-on-demand">
+<h1>Desktop On-Demand<a class="headerlink" href="#desktop-on-demand" title="Link to this heading"></a></h1>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>What is Desktop On-Demand?</p></li>
+<li><p>When should I useit?</p></li>
+<li><p>How do I start?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Short introduction to Desktop On-Demand</p></li>
+<li><p>Typical setup and usage</p></li>
+</ul>
+</div>
+<section id="what-is-desktop-on-demand">
+<h2>What is Desktop On-Demand?<a class="headerlink" href="#what-is-desktop-on-demand" title="Link to this heading"></a></h2>
+<p>At LUNARC (and coming to other HPC centers in the not-too-distant future), Desktop On-Demand provides an interactive environment for submitting single-node programs to SLURM without the typical shell script. It uses the graphical application launcher (GfxLauncher) to submit jobs to SLURM, connect to the application running on the Compute node, and monitor the application’s progress. It is not itself an option in the Applications menu; rather, it’s the engine that lets you run the listed applications interactively.</p>
+<p>Of the coding languages in the course, all but Julia has at least one interactive development environment (IDE) that can be run with Desktop On-Demand: Both Spyder and Jupyter notebooks are available for Python users, R can be used via one of a couple releases of RStudio, and the standard MATLAB IDE is available for the 3 most recent releases. Other applications not explicitly listed but that can be launched from an Interactive Terminal or Accelerated Terminal session.</p>
+<p>Desktop On-Demand requires the use of the Thinlinc interface. It is not accessible via ssh.</p>
+</section>
+<section id="when-should-i-use-it">
+<h2>When should I use it?<a class="headerlink" href="#when-should-i-use-it" title="Link to this heading"></a></h2>
+<p>Desktop On-Demand is most appropriate for <em>interactive</em> work requiring small-to-medium amounts of computing resources. The GfxLauncher will prompt you for resource specification and then Desktop On-Demand will put your resource requests into the same SLURM queue as every other job. Depending on the time and resources you request, you may have to wait a while for your session to start. For information about the capabilities of the available nodes, you can explore the <a class="reference external" href="https://www.lunarc.lu.se/systems/">LUNARC homepage’s Systems tab</a> and follow the links to your desired resource. (Note: COSMOS-SENS is past the installation phase and is available as a resource; hopefully I can delete this comment before the workshop.)</p>
+<p>Some On-Demand applications will let you configure and submit separate batch jobs that are not bound by the parameters set for the graphical user interface (GUI) in GfxLauncher, although the initial configuration process can be rather involved. For example, you could launch the MATLAB GUI with a wall time of 2 hours, but having set the right configurations, you could use a livescript in the GUI to submit a batch job that lasts 3 days. Such a batch job will not be interrupted if the GUI used to submit it closes or times out. Keep in mind that the optimal resources for the computations to be done in your batch job are often very different from the resources needed to run the GUI.</p>
+<div class="admonition-wall-time-limits admonition">
+<p class="admonition-title">Wall Time Limits</p>
+<p>Wall time for interactive work with Desktop On-Demand is restricted to 48 consecutive (not business) hours. In practice, there can be significant startup delays for wall times as short as 4 hours. Users should save their work frequently and be conservative in their wall time estimates. To help save on GPU resources, we also encourage users who are able submit jobs requiring minimal supervision as ordinary batch scripts to do that whenever feasible.</p>
+</div>
+</section>
+<section id="how-do-i-start">
+<h2>How do I start?<a class="headerlink" href="#how-do-i-start" title="Link to this heading"></a></h2>
+<p>On the LUNARC HPC Desktop, the Applications menu lists all the applications available to be run interactively, and opening one prefixed by “Applications -” will start it in Desktop On-Demand. There is no specific “Desktop On-Demand” application in the list. Most common IDEs can be found in a drop-down menu that appears when you hover over <code class="docutils literal notranslate"><span class="pre">Applications</span> <span class="pre">-</span> <span class="pre">&lt;Language&gt;</span></code> for your language of choice, but more niche packages may be listed under a subject-matter field instead, like <code class="docutils literal notranslate"><span class="pre">Applications</span> <span class="pre">-</span> <span class="pre">Engineering</span></code>. If you don’t see the program you want to run interactively listed under any other <code class="docutils literal notranslate"><span class="pre">Applications</span></code> sub-menus, you may still be able to launch it via the <strong>Interactive Terminal</strong> (CPU only) under <code class="docutils literal notranslate"><span class="pre">Applications</span> <span class="pre">-</span> <span class="pre">General</span></code>, or the <strong>Accelerated Terminal</strong> (GPU support) under <code class="docutils literal notranslate"><span class="pre">Applications</span> <span class="pre">-</span> <span class="pre">Visualization</span></code>.</p>
+<figure class="align-center">
+<img alt="../img/CosmosAppMenu.png" src="../img/CosmosAppMenu.png" />
+</figure>
+<p><strong>Please be aware that only the applications in the menus prefixed with “Applications -” are set up to run on the Compute nodes.</strong> If you start a terminal session from Favorites or System Tools and launch an interactive program from that, it will run on a Login node, with all the risks that that entails for your user privileges.</p>
+<p>For most programs, the start-up process is roughly the same:</p>
+<ol class="arabic simple">
+<li><p>Log into COSMOS via Thinlinc to start a LUNARC HPC Desktop session.</p></li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Applications</span></code> in the top left corner and hover over the items prefixed with <code class="docutils literal notranslate"><span class="pre">Applications</span> <span class="pre">-</span></code> until you find your desired application.</p></li>
+<li><dl class="simple">
+<dt>Upon clicking your chosen application, a pop-up, the Gfx Launcher interface, will appear and let you set the following options:</dt><dd><ol class="arabic simple">
+<li><p><strong>wall time</strong> - how long your interactive session will remain open. When it ends, the whole window closes immediately and any unsaved work is lost. You can select the time from a drop-down menu, or type in a number of minutes or hours manually, as long as that number does not exceed 48 hours. Default is 30 minutes.</p></li>
+<li><p><strong>Requirements</strong> - how many tasks per node you need. The default is usually 1 or 4 tasks per node. There is also a <strong>gear icon</strong> to the right of this box that can pull up a second menu where you can set the name of your job, the number of tasks per node, the amount of memory per CPU core, and/or toggle whether or not to use a full node.</p></li>
+<li><p><strong>Resource</strong> - which kind of node you want in terms of the architecture (AMD or Intel) and number of cores in the CPU (or GPU, if you choose the Accelerated Terminal). For most programs, you only have 2 choices: one AMD option and one Intel option.</p></li>
+<li><p><strong>Project</strong> - choose from a drop-down menu the project with which your work is associated. This is mainly to keep your usage in line with your licenses and permissions, and to send any applicable invoices to the correct PI. Licensed software will only work for projects whose group members are covered by the license.</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+<ol class="arabic simple">
+<li><p>When you’re happy with your settings, click “Start”. The Gfx Launcher menu will stay open in the background so that you can monitor your remaining time and resources with the <code class="docutils literal notranslate"><span class="pre">Usage</span></code> bar.</p></li>
+</ol>
+<p>If you want, you can also look at the associated SLURM scripts by clicking the “More” button at the bottom of the Gfx Launcher menu and clicking the “Script” tab (example below), or view the logs under the “Logg” tab.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../img/Cosmos-OnDemand-Matlab2023b-more-script.png"><img alt="../img/Cosmos-OnDemand-Matlab2023b-more-script.png" src="../img/Cosmos-OnDemand-Matlab2023b-more-script.png" style="width: 200px;" />
+</a>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="login.html" class="btn btn-neutral float-left" title="Log in session" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../python/intro.html" class="btn btn-neutral float-right" title="Introduction Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

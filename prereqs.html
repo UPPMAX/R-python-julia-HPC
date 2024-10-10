@@ -1,0 +1,747 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pre-requirements &mdash; Introduction to running R, Python, and Julia in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="_static/tabs.js?v=3030b3cb"></script>
+      <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+      <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Log in session" href="common/login.html" />
+    <link rel="prev" title="Introduction to running R, Python, Julia, and Matlab in HPC" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Introduction to running R, Python, and Julia in HPC
+              <img src="_static/logo-python-hpc-course.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pre-requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#technical-on-local-computer">Technical on local computer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-terminal-clients">Basic terminal clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-x11-graphics-to-terminal">Add X11 graphics to terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thinlinc">ThinLinc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#try-to-log-in">Try to log in</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#text-editors-on-the-clusters">Text editors on the Clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coding">Coding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#material-for-improving-your-programming-skills">Material for improving your programming skills</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#first-level">First level</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#second-level">Second level</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#third-level">Third level</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-clusters">Understanding clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-two-hpc-centers-uppmax-and-hpc2n">The two HPC centers UPPMAX and HPC2N</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-features">Common features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview-of-the-uppmax-systems">Overview of the UPPMAX systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview-of-the-hpc2n-system">Overview of the HPC2N system</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/ondemand-desktop.html">Desktop On-Demand</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python/intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/GPU.html">Using GPUs with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/jupyter.html">Jupyter on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/condaUPPMAX.html">Conda at UPPMAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/interactiveJulia.html">Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="julia/summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="r/introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/exercisesR.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r/summaryR.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/local_desktopMatlab.html">Local desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab/interactiveMatlab.html">Interactive work on compute nodes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Pre-requirements</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-HPC/blob/main/docs/prereqs.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pre-requirements">
+<h1>Pre-requirements<a class="headerlink" href="#pre-requirements" title="Link to this heading"></a></h1>
+<section id="technical-on-local-computer">
+<h2>Technical on local computer<a class="headerlink" href="#technical-on-local-computer" title="Link to this heading"></a></h2>
+<ul>
+<li><p>We recommend that you set up both:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>a terminal on you computer that can handle X11 graphics AND</p></li>
+<li><p>install the “Remote Access Desktop application” ThinLinc, see below.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<section id="basic-terminal-clients">
+<h3>Basic terminal clients<a class="headerlink" href="#basic-terminal-clients" title="Link to this heading"></a></h3>
+<p><strong>If you are in a hurry or get problems in the installation procedure you can do most of the work from these first steps.</strong></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Mac</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>Use terminal (e.g. from Launchpad) or <a class="reference external" href="https://iterm2.com/">iTerm2</a></p></li>
+</ul>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/Mac_terminal.png"><img alt="_images/Mac_terminal.png" src="_images/Mac_terminal.png" style="width: 550px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Mac built-in terminal</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><dl class="simple">
+<dt>iTerm2 goodies:</dt><dd><ul>
+<li><p>You can save hosts for later.</p></li>
+<li><p>Drag and drop scp</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><ul>
+<li><p>the ssh (secure shell) client <a class="reference external" href="https://www.putty.org/">putty</a> is sufficient for most of course</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>You can save hosts for later.</p></li>
+<li><p>No graphics.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/putty.jpg"><img alt="_images/putty.jpg" src="_images/putty.jpg" style="width: 550px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Putty built-in terminal</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>Windows Powershell terminal can also work</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Cannot save hosts</p></li>
+<li><p>no graphics</p></li>
+<li><p><a class="reference external" href="https://learn.microsoft.com/en-us/powershell/">PowerShell</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Windows command prompt can also work</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Cannot save hosts</p></li>
+<li><p>no graphics</p></li>
+<li><p><a class="reference external" href="https://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/">Command Prompt</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><a class="reference external" href="https://gitforwindows.org/">Git bash</a></p></li>
+</ul>
+</div></div>
+</section>
+<section id="add-x11-graphics-to-terminal">
+<h3>Add X11 graphics to terminal<a class="headerlink" href="#add-x11-graphics-to-terminal" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Mac</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><ul class="simple">
+<li><dl class="simple">
+<dt>Download and install <strong>XQuartz</strong> or other X11 server for Mac OS</dt><dd><ul>
+<li><p><a class="reference external" href="https://www.xquartz.org">https://www.xquartz.org</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Start terminal (e.g. from Launchpad) or <a class="reference external" href="https://iterm2.com/">iTerm2</a></p></li>
+</ul>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><ul class="simple">
+<li><dl class="simple">
+<dt>Either continue building upon Putty and install <a class="reference external" href="https://sourceforge.net/projects/xming/">XMING</a></dt><dd><ul>
+<li><p>When installed, start XMING and let run in background and then start putty and log in with <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span></code> …</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>OR</p></li>
+<li><dl class="simple">
+<dt>Install <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a>  with built-in X11 and sftp file manager</dt><dd><ul>
+<li><p>sftp frame makes it easy to move, upload and download files.</p></li>
+<li><p>… though downloading from remote host to local is usually easier.</p></li>
+<li><p>tabs for several sessions</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<figure class="align-default">
+<img alt="_images/mobax.jpg" src="_images/mobax.jpg" />
+</figure>
+<ul class="simple">
+<li><p>Start local terminal and a SSH session by:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>-X<span class="w"> </span>&lt;username&gt;@rackham.uppmax.uu.se
+<span class="gp">$ </span>ssh<span class="w"> </span>-X<span class="w"> </span>&lt;username&gt;@kebnekaise.hpc2n.uu.se
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="_images/mobax_start1.jpg" src="_images/mobax_start1.jpg" />
+</figure>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Or even better, create and save a SSH session, as shown in image below.</dt><dd><ul>
+<li><p>This allows you to use MobaXterm as a file manager and  to use the built-in graphical texteditor.</p></li>
+<li><p>You can rename the session in the Bookmark settings tab.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<figure class="align-default">
+<img alt="_images/mobax_start.jpg" src="_images/mobax_start.jpg" />
+</figure>
+</div></div>
+<div class="admonition-x11-forwarding-from-the-command-line-generally admonition">
+<p class="admonition-title">X11-forwarding from the command line (generally)</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Graphics can be sent through the SSH connection you’re using to connect</dt><dd><ul>
+<li><p>Use primarily <cite>ssh -X &lt;…&gt;</cite> and secondary <cite>ssh -Y &lt;…&gt;</cite></p></li>
+<li><p><a class="reference external" href="http://docs.uppmax.uu.se/software/ssh_x_forwarding/">http://docs.uppmax.uu.se/software/ssh_x_forwarding/</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>The X servers that enables graphics are needed, as mentioned above!</dt><dd><ul>
+<li><p>When starting a graphical program, a new window will open, but your terminal will be “locked”.</p></li>
+<li><p>Run using “<cite>&amp;</cite>” at the end to run it as a background process e.g. “<cite>xeyes &amp;</cite>” or “<cite>gedit &amp;</cite>”</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<blockquote>
+<div><figure class="align-default">
+<img alt="_images/xeyes.png" src="_images/xeyes.png" />
+</figure>
+<ul class="simple">
+<li><p>Alternatively, use <cite>&lt;ctrl&gt;-z</cite> to put a graphical window to sleep and type “<cite>bg</cite>” to make this process work in the background.</p></li>
+</ul>
+</div></blockquote>
+</div>
+</section>
+<section id="thinlinc">
+<h3>ThinLinc<a class="headerlink" href="#thinlinc" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Rackham, Kebnekaise and Bianca offer graphical login.</p></li>
+<li><p>This gives you a desktop environment, as if you were working on your own computer!</p></li>
+<li><dl class="simple">
+<dt>Install ThinLinc client</dt><dd><ul>
+<li><p><a class="reference external" href="https://www.cendio.com/thinlinc/download">https://www.cendio.com/thinlinc/download</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Login to ThinLinc desktop application by providing the following</p></li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Rackham</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Kebnekaise</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>server: rackham-gui.uppmax.uu.se</p></li>
+<li><p>username</p></li>
+<li><p>password</p></li>
+</ul>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>server: kebnekaise-tl.hpc2n.umu.se</p></li>
+<li><p>username</p></li>
+<li><p>password</p></li>
+</ul>
+</div></div>
+<figure class="align-default">
+<img alt="_images/Thinlinc2.jpg" src="_images/Thinlinc2.jpg" />
+</figure>
+</section>
+<section id="try-to-log-in">
+<h3>Try to log in<a class="headerlink" href="#try-to-log-in" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Follow the steps in the emailed instructions.</p></li>
+<li><p>First time you need to use a terminal to set password</p></li>
+<li><p>When password is set you can begin to use ThinLinc as well.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>Using ThinLinc to log in to Rackham may require 2FA
+- <a class="reference external" href="https://www.uppmax.uu.se/support/user-guides/setting-up-two-factor-authentication/">https://www.uppmax.uu.se/support/user-guides/setting-up-two-factor-authentication/</a></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>When logging in the first time in ThinLinc, choose XFCE desktop.</p></li>
+<li><p>Test it!</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="http://docs.uppmax.uu.se/getting_started/login_rackham/">Log in to Rackham</a>
+<a class="reference external" href="http://docs.uppmax.uu.se/getting_started/login_rackham/">Log in to Kebnekaise</a></p>
+</div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>When you log in from your local computer you will always arrive at a login node with limited resources.</dt><dd><ul>
+<li><p>You reach the calculations nodes from within the login node (See  Submitting jobs section)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>You reach UPPMAX clusters either using a terminal client or Thinlinc</p></li>
+<li><p>Graphics are included in Thinlinc and from terminal if you have enabled X11.</p></li>
+<li><dl class="simple">
+<dt>Which client to use?</dt><dd><ul>
+<li><p>Graphics and easy to use</p></li>
+<li><p>ThinLinc</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Best integrated systems</dt><dd><ul>
+<li><p>Visual Studio Code has several extensions (remote, SCP, programming IDE:s)</p></li>
+<li><p>Windows: MobaXterm is somewhat easier to use.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="text-editors-on-the-clusters">
+<h2>Text editors on the Clusters<a class="headerlink" href="#text-editors-on-the-clusters" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Nano</p></li>
+<li><p>gedit</p></li>
+<li><p>mobaxterm built-in</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://docs.uppmax.uu.se/software/text_editors/">http://docs.uppmax.uu.se/software/text_editors/</a></p></li>
+</ul>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li><p>There are many ways to edit your scripts.</p></li>
+<li><p>If you are rather new.</p>
+<blockquote>
+<div><ul>
+<li><p>Graphical: <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">gedit</span> <span class="pre">&lt;script&gt;</span> <span class="pre">&amp;</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>(<code class="docutils literal notranslate"><span class="pre">&amp;</span></code> is for letting you use the terminal while editor window is open)</p></li>
+<li><p>Requires ThinLinc or <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-Y</span> <span class="pre">...</span></code> or <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Terminal: <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">nano</span> <span class="pre">&lt;script&gt;</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Otherwise you would know what to do!</p></li>
+<li><dl class="simple">
+<dt>⚠️ The teachers may use their common editor, like <code class="docutils literal notranslate"><span class="pre">vi</span></code>/<code class="docutils literal notranslate"><span class="pre">vim</span></code></dt><dd><ul class="simple">
+<li><p>If you get stuck, press: <code class="docutils literal notranslate"><span class="pre">&lt;esc&gt;</span></code> and then <code class="docutils literal notranslate"><span class="pre">:q</span></code> !</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="admonition-demo demo admonition" id="demo-0">
+<p class="admonition-title">Demo</p>
+<ul class="simple">
+<li><p>Let’s make a script with the name <code class="docutils literal notranslate"><span class="pre">example.py</span></code></p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nano<span class="w"> </span>example.py
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Insert the following text</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This program prints Hello, world!</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Save and exit. In nano: <code class="docutils literal notranslate"><span class="pre">&lt;ctrl&gt;+O</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;ctrl&gt;+X</span></code></p></li>
+</ul>
+<p>You can run a python script in the shell like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>example.py
+<span class="gp"># </span>or
+<span class="gp">$ </span>python3<span class="w"> </span>example.py
+</pre></div>
+</div>
+</div>
+</section>
+<section id="coding">
+<h2>Coding<a class="headerlink" href="#coding" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Basic knowledge of the languages used the different days.</p></li>
+<li><p>We won’t test your skills though.</p></li>
+<li><p>Rather you will learn to understand the ecosystems and navigations for the the different languages on a HPC cluster.</p></li>
+</ul>
+<p>See below for links to useful material if you need a refresher before the course.</p>
+<ul class="simple">
+<li><p>More important is how to work in Linux and especially Bash</p></li>
+</ul>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h3>
+<ul>
+<li><p>some familiarity with the LINUX command line (recordings from HPC2N:s Linux intro and UPPMAX Intro course),</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://uppsala.instructure.com/courses/67267/pages/using-the-command-line-bash?module_item_id=455632">Short introductions</a></p></li>
+<li><p><a class="reference external" href="https://www.hpc2n.umu.se/documentation/guides/linux-cheat-sheet">Linux “cheat sheet”</a></p></li>
+<li><p>UPPMAX</p>
+<ul>
+<li><p><a class="reference external" href="http://docs.uppmax.uu.se/getting_started/linux/">Linux</a></p></li>
+<li><p><a class="reference external" href="http://docs.uppmax.uu.se/getting_started/linux_basics/">Basic commands</a></p></li>
+<li><p><a class="reference external" href="https://www.uppmax.uu.se/support/courses-and-workshops/uppmax-introductory-course/">Whole intro course material</a></p></li>
+<li><p><a class="reference external" href="https://uppsala.instructure.com/courses/67267/pages/uppmax-basics-software?module_item_id=455641">UPPMAX software library</a></p></li>
+</ul>
+</li>
+<li><p>HPC2N</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/hpc2n/intro-course">HPC2N’s intro course material (including link to recordings)</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=gq4Dvt2LeDg">HPC2N’s YouTube channel video on Linux</a></p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="material-for-improving-your-programming-skills">
+<h3>Material for improving your programming skills<a class="headerlink" href="#material-for-improving-your-programming-skills" title="Link to this heading"></a></h3>
+<section id="first-level">
+<h4>First level<a class="headerlink" href="#first-level" title="Link to this heading"></a></h4>
+<p><a class="reference external" href="https://carpentries.org/">The Carpentries</a> teaches basic lab skills for research computing.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://software-carpentry.org/lessons/">Software carpentry courses/material</a></p></li>
+</ul>
+</section>
+<section id="second-level">
+<h4>Second level<a class="headerlink" href="#second-level" title="Link to this heading"></a></h4>
+<p><a class="reference external" href="https://coderefinery.org/">Code Refinery</a> develops and maintains training material on software best practices for researchers that already write code.</p>
+<ul class="simple">
+<li><p>Their material addresses all academic disciplines and tries to be as programming language-independent as possible.</p></li>
+<li><p><a class="reference external" href="https://coderefinery.org/lessons/">Code refinery lessons</a></p></li>
+</ul>
+</section>
+<section id="third-level">
+<h4>Third level<a class="headerlink" href="#third-level" title="Link to this heading"></a></h4>
+<p><a class="reference external" href="https://enccs.se/">ENCCS (EuroCC National Competence Centre Sweden)</a> is a national centre that supports industry, public administration and academia accessing and using European supercomputers. They give higher-level training of programming and specific software.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://enccs.se/lessons/">ENCCS training material</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="understanding-clusters">
+<h2>Understanding clusters<a class="headerlink" href="#understanding-clusters" title="Link to this heading"></a></h2>
+</section>
+<section id="the-two-hpc-centers-uppmax-and-hpc2n">
+<h2>The two HPC centers UPPMAX and HPC2N<a class="headerlink" href="#the-two-hpc-centers-uppmax-and-hpc2n" title="Link to this heading"></a></h2>
+<div class="admonition-two-hpc-centers admonition">
+<p class="admonition-title">Two HPC centers</p>
+<ul class="simple">
+<li><p>There are many similarities:</p>
+<ul>
+<li><p>Login vs. calculation/compute nodes</p></li>
+<li><p>Environmental module system with software hidden until loaded with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code></p></li>
+<li><p>Slurm batch job and scheduling system</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> procedure</p></li>
+</ul>
+</li>
+<li><p>… and small differences:</p>
+<ul>
+<li><p>commands to load Python, Python packages, R, Julia</p></li>
+<li><p>slightly different flags to Slurm</p></li>
+</ul>
+</li>
+<li><p>… and some bigger differences:</p>
+<ul>
+<li><p>UPPMAX has three different clusters</p>
+<ul>
+<li><p>Rackham for general purpose computing on CPUs only</p></li>
+<li><p>Snowy available for local projects and suits long jobs (&lt; 1 month) and has GPUs</p></li>
+<li><p>Bianca for sensitive data and has GPUs</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>HPC2N has Kebnekaise with GPUs</p></li>
+<li><p>Conda is recommended only for UPPMAX users</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>At both HPC2N and UPPMAX we call the applications available via the <em>module system</em> <strong>modules</strong>.</p></li>
+<li><p><a class="reference external" href="https://www.uppmax.uu.se/resources/software/module-system/">https://www.uppmax.uu.se/resources/software/module-system/</a></p></li>
+<li><p><a class="reference external" href="https://www.hpc2n.umu.se/documentation/environment/lmod">https://www.hpc2n.umu.se/documentation/environment/lmod</a></p></li>
+</ul>
+<p>To distinguish these modules from the <strong>python</strong> <em>modules</em> that work as libraries we refer to the later ones as <strong>packages</strong>.</p>
+</div>
+<p><strong>What is a cluster?</strong></p>
+<ul class="simple">
+<li><p>Login nodes and calculations/computation nodes</p></li>
+<li><p>A network of computers, each computer working as a <strong>node</strong>.</p></li>
+<li><p>Each node contains several processor cores and RAM and a local disk called scratch.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="_images/node.png" src="_images/node.png" />
+</figure>
+<ul class="simple">
+<li><p>The user logs in to <strong>login nodes</strong>  via Internet through ssh or Thinlinc.</p>
+<ul>
+<li><p>Here the file management and lighter data analysis can be performed.</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center">
+<img alt="_images/nodes.png" src="_images/nodes.png" />
+</figure>
+<ul class="simple">
+<li><p>The <strong>calculation nodes</strong> have to be used for intense computing.</p></li>
+</ul>
+<section id="common-features">
+<h3>Common features<a class="headerlink" href="#common-features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Intel CPUs</p></li>
+<li><p>Linux kernel</p></li>
+<li><p>Bash shell</p></li>
+</ul>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Hardware</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Technology</p></th>
+<th class="head"><p>Kebnekaise</p></th>
+<th class="head"><p>Rackham</p></th>
+<th class="head"><p>Snowy</p></th>
+<th class="head"><p>Bianca</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cores/compute node</p></td>
+<td><p>28 (72 for largemem part)</p></td>
+<td><p>20</p></td>
+<td><p>16</p></td>
+<td><p>16</p></td>
+</tr>
+<tr class="row-odd"><td><p>Memory/compute node</p></td>
+<td><p>128-3072 GB</p></td>
+<td><p>128-1024 GB</p></td>
+<td><p>128-4096 GB</p></td>
+<td><p>128-512 GB</p></td>
+</tr>
+<tr class="row-even"><td><p>GPU</p></td>
+<td><p>NVidia V100, A100, old K80s</p></td>
+<td><p>None</p></td>
+<td><p>NVidia T4</p></td>
+<td><p>NVidia A100</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="overview-of-the-uppmax-systems">
+<h3>Overview of the UPPMAX systems<a class="headerlink" href="#overview-of-the-uppmax-systems" title="Link to this heading"></a></h3>
+<img src="_images/mermaid-9b8712ee01100c69ff26b918b4d0cc4be4fc8db0.png" alt="graph TB
+
+  Node1 -- interactive --&gt; SubGraph2Flow
+  Node1 -- sbatch --&gt; SubGraph2Flow
+  subgraph &quot;Snowy&quot;
+  SubGraph2Flow(calculation nodes) 
+        end
+
+        ThinLinc -- usr-sensXXX + 2FA + VPN ----&gt; SubGraph1Flow
+        Terminal/ThinLinc -- usr --&gt; Node1
+        Terminal -- usr-sensXXX + 2FA + VPN ----&gt; SubGraph1Flow
+        Node1 -- usr-sensXXX + 2FA + no VPN ----&gt; SubGraph1Flow
+        
+        subgraph &quot;Bianca&quot;
+        SubGraph1Flow(Bianca login) -- usr+passwd --&gt; private(private cluster)
+        private -- interactive --&gt; calcB(calculation nodes)
+        private -- sbatch --&gt; calcB
+        end
+
+        subgraph &quot;Rackham&quot;
+        Node1[Login] -- interactive --&gt; Node2[calculation nodes]
+        Node1 -- sbatch --&gt; Node2
+        end" />
+</section>
+<section id="overview-of-the-hpc2n-system">
+<h3>Overview of the HPC2N system<a class="headerlink" href="#overview-of-the-hpc2n-system" title="Link to this heading"></a></h3>
+<img src="_images/mermaid-70246c534051d358d45925cca44c4ae7447aa73b.png" alt="graph TB
+
+
+        Terminal/ThinLinc -- usr --&gt; Node1
+        
+
+        subgraph &quot;Kebnekaise&quot;
+        Node1[Login] -- interactive --&gt; Node2[compute nodes]
+        Node1 -- sbatch --&gt; Node2
+        end" />
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Introduction to running R, Python, Julia, and Matlab in HPC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="common/login.html" class="btn btn-neutral float-right" title="Log in session" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercises &mdash; Introduction to running R, Python, and Julia in HPC 2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=60dbed4a"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Summary" href="summaryR.html" />
+    <link rel="prev" title="Using RStudio" href="rstudio.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to running R, Python, and Julia in HPC
+              <img src="../_static/logo-python-hpc-course.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-requirements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereqs.html">Pre-requirements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COMMON:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/login.html">Log in session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/ondemand-desktop.html">Desktop On-Demand</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/intro.html">Introduction Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/load_runPython.html">Load and run python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/packages.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/isolated.html">Isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/batchPython.html">Running Python in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/GPU.html">Using GPUs with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/interactivePython.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/jupyter.html">Jupyter on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/condaUPPMAX.html">Conda at UPPMAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/exercisesPython.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/summaryPython.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Julia Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../julia/introJulia.html">Introduction Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/load_runJulia.html">Load and run Julia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/isolatedJulia.html">Packages and isolated environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/batchJulia.html">Running Julia in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/interactiveJulia.html">Interactive work on compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/exercisesJulia.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../julia/summaryJulia.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R Lessons:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introR.html">Introduction R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_runR.html">Load and run R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packagesR.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="isolatedR.html">Isolated environments with <code class="docutils literal notranslate"><span class="pre">renv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="batchR.html">Running R in batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MLR.html">ML with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactiveR.html">Interactive work on the compute nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">Using RStudio</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Exercises</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#load-and-run">Load and run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#packages">Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#batch-mode">Batch mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="summaryR.html">Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab Lessons:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/introMatlab.html">Introduction to MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/load_runMatlab.html">Load and Run MATLAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/add_onsMatlab.html">Add-Ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/parallel.html">Parallel and multithreaded functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/local_desktopMatlab.html">Local desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/interactiveMatlab.html">Interactive work on compute nodes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to running R, Python, and Julia in HPC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Exercises</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UPPMAX/R-python-julia-HPC/blob/main/docs/r/exercisesR.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h1>
+<section id="load-and-run">
+<h2>Load and run<a class="headerlink" href="#load-and-run" title="Link to this heading"></a></h2>
+<div class="admonition-try-yourself-to-load-r-start-it-check-libraries-load-a-library-quit-r exercise important admonition" id="exercise-0">
+<p class="admonition-title">Try yourself to load R, start it, check libraries, load a library, quit R</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="n">Load</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="m">4.1</span><span class="n">.</span><span class="m">1</span>
+<span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="n">Start</span><span class="w"> </span><span class="n">R.</span><span class="w"> </span><span class="n">Check</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">libraries</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">installed.</span><span class="w"> </span><span class="n">Load</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">them.</span>
+<span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="n">Quit</span><span class="w"> </span><span class="n">R</span>
+</pre></div>
+</div>
+<p>Remember to check if a module you are loading has prerequisites, and load those first if it does. In this case it depends on whether you do the exercises on Kebnekaise or Rackham.</p>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Solution</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>This is for Rackham.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ml<span class="w"> </span>spider<span class="w"> </span>R/4.1.1
+
+----------------------------------------------------------------------------
+R:<span class="w"> </span>R/4.1.1
+----------------------------------------------------------------------------
+
+<span class="w">   </span>This<span class="w"> </span>module<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>loaded<span class="w"> </span>directly:<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>R/4.1.1
+
+Help:
+<span class="w">   </span>R<span class="w"> </span>-<span class="w"> </span>use<span class="w"> </span>R<span class="w"> </span>Version<span class="w"> </span><span class="m">4</span>.1.1
+
+<span class="w">   </span>https://www.r-project.org
+
+Many,<span class="w"> </span>many<span class="w"> </span>R<span class="w"> </span>and<span class="w"> </span>Bioconductor<span class="w"> </span>packages<span class="w"> </span>are<span class="w"> </span>available<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>module
+<span class="s1">&#39;R_packages/4.1.1&#39;</span>
+
+$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>R/4.1.1
+Nearly<span class="w"> </span>all<span class="w"> </span>CRAN<span class="w"> </span>and<span class="w"> </span>BioConductor<span class="w"> </span>packages<span class="w"> </span>are<span class="w"> </span>installed<span class="w"> </span>and<span class="w"> </span>available<span class="w"> </span>by<span class="w"> </span>loading<span class="w"> </span>the<span class="w"> </span>module<span class="w"> </span>R_packages/4.1.1
+$
+
+$<span class="w"> </span>R
+
+<span class="w">   </span>R<span class="w"> </span>version<span class="w"> </span><span class="m">4</span>.1.1<span class="w"> </span><span class="o">(</span><span class="m">2021</span>-08-10<span class="o">)</span><span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;Kick Things&quot;</span>
+Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>The<span class="w"> </span>R<span class="w"> </span>Foundation<span class="w"> </span><span class="k">for</span><span class="w"> </span>Statistical<span class="w"> </span>Computing
+<span class="w">   </span>Platform:<span class="w"> </span>x86_64-pc-linux-gnu<span class="w"> </span><span class="o">(</span><span class="m">64</span>-bit<span class="o">)</span>
+
+R<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software<span class="w"> </span>and<span class="w"> </span>comes<span class="w"> </span>with<span class="w"> </span>ABSOLUTELY<span class="w"> </span>NO<span class="w"> </span>WARRANTY.
+You<span class="w"> </span>are<span class="w"> </span>welcome<span class="w"> </span>to<span class="w"> </span>redistribute<span class="w"> </span>it<span class="w"> </span>under<span class="w"> </span>certain<span class="w"> </span>conditions.
+Type<span class="w"> </span><span class="s1">&#39;license()&#39;</span><span class="w"> </span>or<span class="w"> </span><span class="s1">&#39;licence()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>distribution<span class="w"> </span>details.
+
+Natural<span class="w"> </span>language<span class="w"> </span>support<span class="w"> </span>but<span class="w"> </span>running<span class="w"> </span><span class="k">in</span><span class="w"> </span>an<span class="w"> </span>English<span class="w"> </span>locale
+
+R<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>collaborative<span class="w"> </span>project<span class="w"> </span>with<span class="w"> </span>many<span class="w"> </span>contributors.
+Type<span class="w"> </span><span class="s1">&#39;contributors()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>and
+<span class="s1">&#39;citation()&#39;</span><span class="w"> </span>on<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>cite<span class="w"> </span>R<span class="w"> </span>or<span class="w"> </span>R<span class="w"> </span>packages<span class="w"> </span><span class="k">in</span><span class="w"> </span>publications.
+
+Type<span class="w"> </span><span class="s1">&#39;demo()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>some<span class="w"> </span>demos,<span class="w"> </span><span class="s1">&#39;help()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>on-line<span class="w"> </span>help,<span class="w"> </span>or
+<span class="s1">&#39;help.start()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>HTML<span class="w"> </span>browser<span class="w"> </span>interface<span class="w"> </span>to<span class="w"> </span>help.
+Type<span class="w"> </span><span class="s1">&#39;q()&#39;</span><span class="w"> </span>to<span class="w"> </span>quit<span class="w"> </span>R.
+
+&gt;<span class="w"> </span>installed.packages<span class="o">()</span>
+Package<span class="w">      </span>LibPath<span class="w">                                    </span>Version
+base<span class="w">       </span><span class="s2">&quot;base&quot;</span><span class="w">       </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;4.1.1&quot;</span>
+boot<span class="w">       </span><span class="s2">&quot;boot&quot;</span><span class="w">       </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;1.3-28&quot;</span>
+class<span class="w">      </span><span class="s2">&quot;class&quot;</span><span class="w">      </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;7.3-19&quot;</span>
+cluster<span class="w">    </span><span class="s2">&quot;cluster&quot;</span><span class="w">    </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;2.1.2&quot;</span>
+codetools<span class="w">  </span><span class="s2">&quot;codetools&quot;</span><span class="w">  </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;0.2-18&quot;</span>
+compiler<span class="w">   </span><span class="s2">&quot;compiler&quot;</span><span class="w">   </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;4.1.1&quot;</span>
+datasets<span class="w">   </span><span class="s2">&quot;datasets&quot;</span><span class="w">   </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;4.1.1&quot;</span>
+foreign<span class="w">    </span><span class="s2">&quot;foreign&quot;</span><span class="w">    </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;0.8-81&quot;</span>
+graphics<span class="w">   </span><span class="s2">&quot;graphics&quot;</span><span class="w">   </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;4.1.1&quot;</span>
+grDevices<span class="w">  </span><span class="s2">&quot;grDevices&quot;</span><span class="w">  </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;4.1.1&quot;</span>
+grid<span class="w">       </span><span class="s2">&quot;grid&quot;</span><span class="w">       </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;4.1.1&quot;</span>
+KernSmooth<span class="w"> </span><span class="s2">&quot;KernSmooth&quot;</span><span class="w"> </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;2.23-20&quot;</span>
+lattice<span class="w">    </span><span class="s2">&quot;lattice&quot;</span><span class="w">    </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;0.20-45&quot;</span>
+MASS<span class="w">       </span><span class="s2">&quot;MASS&quot;</span><span class="w">       </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;7.3-54&quot;</span>
+Matrix<span class="w">     </span><span class="s2">&quot;Matrix&quot;</span><span class="w">     </span><span class="s2">&quot;/sw/apps/R/4.1.1/rackham/lib64/R/library&quot;</span><span class="w"> </span><span class="s2">&quot;1.3-4&quot;</span>
+...
+
+&gt;<span class="w"> </span>library<span class="o">(</span><span class="s2">&quot;parallel&quot;</span><span class="o">)</span>
+&gt;<span class="w"> </span>quit<span class="o">()</span>
+Save<span class="w"> </span>workspace<span class="w"> </span>image?<span class="w"> </span><span class="o">[</span>y/n/c<span class="o">]</span>:
+</pre></div>
+</div>
+<p>The list of installed packages is very long, as you will see for yourself.</p>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>This is for Kebnekaise.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>b-an01<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>ml<span class="w"> </span>spider<span class="w"> </span>R/4.1.2
+
+----------------------------------------------------------------------------
+<span class="w">  </span>R:<span class="w"> </span>R/4.1.2
+----------------------------------------------------------------------------
+<span class="w">    </span>Description:
+<span class="w">      </span>R<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>free<span class="w"> </span>software<span class="w"> </span>environment<span class="w"> </span><span class="k">for</span><span class="w"> </span>statistical<span class="w"> </span>computing<span class="w"> </span>and<span class="w"> </span>graphics.
+
+
+<span class="w">    </span>You<span class="w"> </span>will<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>all<span class="w"> </span>module<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>on<span class="w"> </span>any<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>lines<span class="w"> </span>below<span class="w"> </span>before<span class="w"> </span>the<span class="w"> </span><span class="s2">&quot;R/4.1.2&quot;</span><span class="w"> </span>module<span class="w"> </span>is<span class="w"> </span>available<span class="w"> </span>to<span class="w"> </span>load.
+
+<span class="w">      </span>GCC/11.2.0<span class="w">  </span>OpenMPI/4.1.1
+
+<span class="w">    </span>This<span class="w"> </span>module<span class="w"> </span>provides<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>extensions:
+
+<span class="w">       </span>abc.data/1.0<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>abc/2.1<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>abe/3.0.1<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>abind/1.4-5<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>acepack/1.4.1<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,
+<span class="w">       </span>adabag/4.2<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>ade4/1.7-16<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>ADGofTest/0.3<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>aggregation/1.0.1<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,
+<span class="w">       </span>AICcmodavg/2.3-1<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>akima/0.6-2.1<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>AlgDesign/1.2.0<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>AnalyzeFMRI/1.1-23<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,
+<span class="w">       </span>animation/2.6<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>aod/1.3.1<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>ape/5.4-1<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>argparse/2.0.3<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>arm/1.11-2<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,
+<span class="w">       </span>askpass/1.1<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>asnipe/1.1.15<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>assertive.base/0.0-9<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>assertive.code/0.0-3<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,
+<span class="w">       </span>assertive.data.uk/0.0-2<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>assertive.data.us/0.0-2<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>assertive.data/0.0-3<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,
+<span class="w">       </span>assertive.datetimes/0.0-3<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>assertive.files/0.0-2<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>assertive.matrices/0.0-2<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,
+<span class="w">       </span>assertive.models/0.0-2<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>assertive.numbers/0.0-2<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>assertive.properties/0.0-4<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,
+<span class="w">       </span>assertive.reflection/0.0-5<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>assertive.sets/0.0-3<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>assertive.strings/0.0-3<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,
+<span class="w">       </span>assertive.types/0.0-3<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>assertive/0.3-6<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>assertthat/0.2.1<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,<span class="w"> </span>AUC/0.3.0<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>,
+<span class="w">       </span>...
+
+<span class="w">       </span>b-an01<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w">  </span>OpenMPI/4.1.1<span class="w"> </span>R/4.1.2
+<span class="w">       </span>b-an01<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>R
+
+<span class="w">       </span>R<span class="w"> </span>version<span class="w"> </span><span class="m">4</span>.1.2<span class="w"> </span><span class="o">(</span><span class="m">2021</span>-11-01<span class="o">)</span><span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;Bird Hippie&quot;</span>
+<span class="w">       </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>The<span class="w"> </span>R<span class="w"> </span>Foundation<span class="w"> </span><span class="k">for</span><span class="w"> </span>Statistical<span class="w"> </span>Computing
+<span class="w">       </span>Platform:<span class="w"> </span>x86_64-pc-linux-gnu<span class="w"> </span><span class="o">(</span><span class="m">64</span>-bit<span class="o">)</span>
+
+<span class="w">       </span>R<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software<span class="w"> </span>and<span class="w"> </span>comes<span class="w"> </span>with<span class="w"> </span>ABSOLUTELY<span class="w"> </span>NO<span class="w"> </span>WARRANTY.
+<span class="w">       </span>You<span class="w"> </span>are<span class="w"> </span>welcome<span class="w"> </span>to<span class="w"> </span>redistribute<span class="w"> </span>it<span class="w"> </span>under<span class="w"> </span>certain<span class="w"> </span>conditions.
+<span class="w">       </span>Type<span class="w"> </span><span class="s1">&#39;license()&#39;</span><span class="w"> </span>or<span class="w"> </span><span class="s1">&#39;licence()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>distribution<span class="w"> </span>details.
+
+<span class="w">         </span>Natural<span class="w"> </span>language<span class="w"> </span>support<span class="w"> </span>but<span class="w"> </span>running<span class="w"> </span><span class="k">in</span><span class="w"> </span>an<span class="w"> </span>English<span class="w"> </span>locale
+
+<span class="w">       </span>R<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>collaborative<span class="w"> </span>project<span class="w"> </span>with<span class="w"> </span>many<span class="w"> </span>contributors.
+<span class="w">       </span>Type<span class="w"> </span><span class="s1">&#39;contributors()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>and
+<span class="w">       </span><span class="s1">&#39;citation()&#39;</span><span class="w"> </span>on<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>cite<span class="w"> </span>R<span class="w"> </span>or<span class="w"> </span>R<span class="w"> </span>packages<span class="w"> </span><span class="k">in</span><span class="w"> </span>publications.
+
+<span class="w">       </span>Type<span class="w"> </span><span class="s1">&#39;demo()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>some<span class="w"> </span>demos,<span class="w"> </span><span class="s1">&#39;help()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>on-line<span class="w"> </span>help,<span class="w"> </span>or
+<span class="w">       </span><span class="s1">&#39;help.start()&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>HTML<span class="w"> </span>browser<span class="w"> </span>interface<span class="w"> </span>to<span class="w"> </span>help.
+<span class="w">       </span>Type<span class="w"> </span><span class="s1">&#39;q()&#39;</span><span class="w"> </span>to<span class="w"> </span>quit<span class="w"> </span>R.
+
+<span class="w">       </span>&gt;<span class="w"> </span>installed.packages<span class="o">()</span>
+<span class="w">       </span>...
+
+<span class="w">       </span>&gt;<span class="w"> </span>library<span class="o">(</span><span class="s2">&quot;parallel&quot;</span><span class="o">)</span>
+<span class="w">       </span>&gt;<span class="w"> </span>quit<span class="o">()</span>
+<span class="w">       </span>Save<span class="w"> </span>workspace<span class="w"> </span>image?<span class="w"> </span><span class="o">[</span>y/n/c<span class="o">]</span>:
+</pre></div>
+</div>
+<p>As you can see above, the main differences here compared to Rackham is that you need to load some prerequisites before you can load R and that doing <code class="docutils literal notranslate"><span class="pre">ml</span> <span class="pre">spider</span> <span class="pre">R/&lt;version&gt;</span></code> will give you a long list of “extensions” which is what the module system calls the system installed R packages.</p>
+</div></div>
+</div>
+<div class="admonition-load-r-and-run-a-short-r-script-from-the-command-line exercise important admonition" id="exercise-1">
+<p class="admonition-title">Load R and run a short R script from the command line</p>
+<ol class="arabic simple">
+<li><p>Load R version 4.1.x (if you have not done so already)</p></li>
+<li><p>Run the small R script called <code class="docutils literal notranslate"><span class="pre">hello.R</span></code>, using <code class="docutils literal notranslate"><span class="pre">Rscript</span></code></p></li>
+</ol>
+<p>Remember to check if a module you are loading has prerequisites, and load those first if it does. In this case it depends on whether you do the exercises on Kebnekaise or Rackham. Remember, Kebnekaise has 4.1.2 and Rackham has 4.1.1.</p>
+</div>
+<div class="admonition-hello-r-it-can-also-be-found-under-r-in-the-exercises-directory-on-the-course-github-repository-https-github-com-uppmax-r-python-julia-hpc admonition">
+<p class="admonition-title">“hello.R” (it can also be found under “R” in the “Exercises” directory on the course GitHub repository (<a class="reference external" href="https://github.com/UPPMAX/R-python-julia-HPC">https://github.com/UPPMAX/R-python-julia-HPC</a>).</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">message</span><span class="w"> </span><span class="o">&lt;-</span><span class="s">&quot;Hello World!&quot;</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-1">
+<p class="admonition-title">Solution</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">UPPMAX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">HPC2N</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>This is for Rackham.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>Rscript<span class="w"> </span>hello.R
+<span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="s2">&quot;Hello World!&quot;</span>
+$
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>This is for Kebnekaise.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>Rscript<span class="w"> </span>hello.R
+<span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="s2">&quot;Hello World!&quot;</span>
+$
+</pre></div>
+</div>
+</div><p>As you can see, it is working the same way.</p>
+</div>
+</div>
+</section>
+<section id="packages">
+<h2>Packages<a class="headerlink" href="#packages" title="Link to this heading"></a></h2>
+<div class="admonition-install-a-package-with-automatic-download exercise important admonition" id="exercise-2">
+<p class="admonition-title">Install a package with automatic download</p>
+<p>1) First do the setup of .Renviron and create the directory for installing R
+packages. Remember to load any modules you need.</p>
+<ol class="arabic simple" start="2">
+<li><p>Install a package from the command line. Suggestion: the package “anomalize”</p></li>
+<li><p>Install a package from inside R. Suggestion: the package “tidyr”</p></li>
+<li><p>Start R and see if the library can be loaded.</p></li>
+</ol>
+<p>These are both on CRAN, and this way any dependencies will be installed as
+well.</p>
+<p>Remember to pick a repo that is nearby, to install from:
+<a class="reference external" href="https://cran.r-project.org/mirrors.html">https://cran.r-project.org/mirrors.html</a></p>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-2">
+<p class="admonition-title">Solution</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Setup</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Command line</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Inside R</button><button aria-controls="panel-2-2-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-3" name="2-3" role="tab" tabindex="-1">Load library</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="se">\&quot;</span><span class="nv">$HOME</span>/R-packages-%V<span class="se">\&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>~/.Renviron<span class="w"> </span><span class="nv">R_LIBS_USER</span><span class="o">=</span><span class="s2">&quot;/home/bbrydsoe/R-packages-%V&quot;</span>
+$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/R-packages-4.0.4
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p>Installing package “anomalize”. Using the repo <a class="reference external" href="http://ftp.acc.umu.se/mirror/CRAN/">http://ftp.acc.umu.se/mirror/CRAN/</a></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>R<span class="w"> </span>--quiet<span class="w"> </span>--no-save<span class="w"> </span>--no-restore<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;install.packages(&#39;anomalize&#39;, repo=&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;)&quot;</span>
+</pre></div>
+</div>
+<p>This assumes you have already loaded the R module. If not, then do so first.</p>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><p>Installing package “tidyr”. Using the repo <a class="reference external" href="http://ftp.acc.umu.se/mirror/CRAN/">http://ftp.acc.umu.se/mirror/CRAN/</a></p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;tidyr&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">repo</span><span class="o">=</span><span class="s">&#39;http://ftp.acc.umu.se/mirror/CRAN/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-3" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-3" name="2-3" role="tabpanel" tabindex="0"><div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="o">$</span><span class="w"> </span><span class="n">R</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;anomalize&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;tidyr&quot;</span><span class="p">)</span>
+
+<span class="w"> </span><span class="s">&quot;anomalize&quot;</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">text</span><span class="o">/</span><span class="n">advertisment</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">loaded.</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">ignore</span><span class="w"> </span><span class="n">this.</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="batch-mode">
+<h2>Batch mode<a class="headerlink" href="#batch-mode" title="Link to this heading"></a></h2>
+<div class="admonition-serial-batch-script-for-r exercise important admonition" id="exercise-3">
+<p class="admonition-title">Serial batch script for R</p>
+<p>Run the serial batch script shown in the session “Running R in batch mode”, but for the add2.R code (see the <a class="reference external" href="https://github.com/UPPMAX/R-python-julia-HPC/blob/main/Exercises/R/add2.R">Exercise/R directory on GitHub</a>). Remember the arguments.</p>
+</div>
+<div class="dropdown solution important admonition" id="solution-3">
+<p class="admonition-title">Solution for UPPMAX</p>
+<blockquote>
+<div><p>Serial script on Rackham</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A naiss2024-22-107 # Change to your own after the course</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for R/4.1.1</span>
+module<span class="w"> </span>load<span class="w"> </span>R/4.1.1
+
+<span class="c1"># Run your R script</span>
+R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>add2.R<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="dropdown solution important admonition" id="solution-4">
+<p class="admonition-title">Solution for HPC2N</p>
+<blockquote>
+<div><p>Serial script on Kebnekaise</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A hpc2n2024-025 # Change to your own project ID</span>
+<span class="c1">#SBATCH --time=00:10:00 # Asking for 10 minutes</span>
+<span class="c1">#SBATCH -n 1 # Asking for 1 core</span>
+
+<span class="c1"># Load any modules you need, here for R/4.1.2</span>
+module<span class="w"> </span>load<span class="w"> </span>R/4.1.2
+
+<span class="c1"># Run your R script</span>
+R<span class="w"> </span>--no-save<span class="w"> </span>--quiet<span class="w"> </span>&lt;<span class="w"> </span>add2.R<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="admonition-parallel-job-run exercise important admonition" id="exercise-4">
+<p class="admonition-title">Parallel job run</p>
+<p>Try running the parallel example with “foreach” from the session “Running R in batch mode”.</p>
+</div>
+<div class="admonition-r-for-ml exercise important admonition" id="exercise-5">
+<p class="admonition-title">R for ML</p>
+<p>Run the ML examples shown in the session “ML with R”.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rstudio.html" class="btn btn-neutral float-left" title="Using RStudio" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="summaryR.html" class="btn btn-neutral float-right" title="Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, UPPMAX &amp; HPC2N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
