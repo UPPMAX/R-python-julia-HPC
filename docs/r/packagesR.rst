@@ -1,17 +1,60 @@
 Packages
 ========
 
+[RB: All my feedback is added like this: between square brackets
+and starting with ``RB:``.
+
+Feel free to ignore all this. The goal is to make one consider or
+reconsider, not bluntly accepting other's (potentially worse!) ideas.
+
+I enjoy to see enthusiasm put into this chapter, with a large amount
+and detailed information. It does match the teaching goal
+'To understand the basics of an R package' when 'the basics' includings
+reading 'Advanced R' and/or 'R packages' by Hadley Wickham.
+
+I feel that these teaching goals,
+however, are in the incorrect context to be achieved: the learners are not
+ready for this yet. Instead, I suggest to let the learners first load
+and use an R package. I feel this session, at this point in the day,
+should be just that: load and run a pre-installed package.
+This is what the learners need the rest of the day.
+I understand the eagerness to ask 'But what if they want to use a package
+that is not pre-installed?' and will answer with that we should first
+focus on the majority; those that want to run the most-used and pre-installed
+packages. I suggest to focus on getting the basics that are needed by all
+uses practiced first and maybe doing the more specific not-done-by-all
+things in an optional later session (note I don't think there should be
+such a session).
+
+A weakness in my feedback is that I do not know the Kebnekaise setup.
+I've seen somewhere in the HPC2N doc that there is a Bioconductor package
+with the 750 most used R packages, but it is missing from the main page
+about R at https://www.hpc2n.umu.se/resources/software/r ...?
+
+Again, feel free to ignore all this. The goal is to make one consider or
+reconsider, not bluntly accepting other's (potentially worse!) ideas.]
+
 .. admonition:: R packages
 
-   - R packages is the main way of extending the functionallity of R and
-     **broadens the use of R** to almost infinity! 
+   - R packages is the main way of extending the functionality of R and
+     **broadens the use of R** to almost infinity!
+     [RB: I enjoy writing down why packages are important. 
+     I feel 'R packages extend what R can do' is a more succint way of writing
+     this] 
 
    - Instead of writing code yourself there may be others that have done the
      same!
+     [RB: I enjoy writing down why packages are important. 
+     I feel 'R packages alow to re-use code written by others'
+     is a more succint way of writing
+     this] 
 
    - Many **scientific tools** are distributed as **R packages**, making it
      possible to run a script in the prompt and there define files to be
      analysed and arguments defining exactly what to do.
+     [RB: I enjoy writing down why packages are important. 
+     I feel 'Most scientific tools are R packages'
+     is a more succint way of writing this] 
 
    - For more details about packages and in particular developing your own,
      see: `R packages <https://r-pkgs.org>`_
@@ -25,9 +68,19 @@ Packages
    
 .. objectives:: 
 
-   - Understand the basics of what an R package is
-   - Show how to check for R packages
-   - show how to install own packages on the different clusters
+   - Understand the basics of what an R package is [RB: I think this objective
+     is phrased broader than useful at this part of the course. I suggest
+     to rewrite it more to 'Load and use an R package']
+   - Show how to check for R packages [RB: I think the goal is that learners
+     can check if an R package is installed, else we could just show a YouTube
+     video. I suggest to rephrase to 'Check if an R package is installed']
+   - show how to install own packages on the different clusters 
+     [RB: I think the goal is that learners
+     can install their own packages on the different clusters,
+     else we could just show a YouTube video.
+     I suggest to rephrase to 'Install a custom R package'.
+     On the other hand, that goal seems to be too big in this point in time.
+     I think a goal like 'Use a pre-installed R package' would fit better]
 
 
 R packages: A short Primer
@@ -35,6 +88,12 @@ R packages: A short Primer
 
 What is a package, really?
 ##########################
+
+[RB: this feels way too detailed. The goal is how to use a package, not write
+one. This level of detail does not help learners use a package. If one
+desires this level of detail, in a first session,
+let the learners use a package, in a later session, let the users
+write a package]
 
 An R package is essentially a contained folder and file structure containing R
 code (and possibly C/C++ or other code) and other files relevant for the
@@ -105,6 +164,13 @@ us look at a very simple example
 Package states
 ##############
 
+[RB: this feels way too detailed. The goal is how to use a pre-installed
+package, not to understand the types and states of R packages. Sure,
+one needs to load an R package before using it and that is part of
+the objectives. But knowing if a package is source or bundled or
+binary is useless for a learner that tries to run his/her first R package
+on a cluster]
+
 An R packages can exist in five possible states
 
 - Source: "source code" or "source files". Development form.
@@ -153,9 +219,19 @@ Package libraries
     for someone to refer to dplyr, for example, as a library when it is
     actually a package (Wickham & Hadley, 2023).
 
+    [RB: this feels way too detailed. This session is about packages. Stating
+    that these are sometimes called 'libraries' too suffices. Even that I'd
+    suggest to remove, as it is not part of the teaching goal on how to use
+    R packages]
+
 We might want to know where the ``R`` interpreter will be searching for
 packages, i.e. where the libraries are located (could be several). The easiest
 way to check is probably starting the interpreter and running the ``libPaths()`` function.
+
+[RB: No, we don't need to know where the R interpreter looks for libraries:
+this session is about using pre-installed R packages. They Should Just Work.
+This session will not help the learners at all to use their first R package
+on a cluster]
 
 
 .. tabs::
@@ -219,11 +295,17 @@ Both UPPMAX and HPC2N offer a large amount of preinstalled packages.
 
 There are many different ways to check if the package you are after is already installed - chances are it is! The simplest way is probably to simply try loading the package from within ``R``
 
+[RB: I love having one simple way! Please keep!]
+
 .. code-block:: R
 
    library(package-name)
 
 Another option would be to create a dataframe of all the installed packages
+
+[RB: I think having one simple way is enough. I suggest to remove this fancy
+looking, non-Tidyverse style, complex code below]
+
 
 .. code-block:: R
 
@@ -236,9 +318,14 @@ Another option would be to create a dataframe of all the installed packages
    print(ip, row.names=FALSE)
 
 However, this might not be so helpful unless you do additional filtering.
+[RB: agree, hence remove this code and this additional statement]
+
 <br>
+
 Another simple option is to ``grep`` the library directory. For example, both when loading ``R_packages`` at UPPMAX and ``R-bundle-Bioconductor`` at HPC2N the environment variable ``R_LIBS_SITE`` will be set to the path of the package
 library.
+[RB: I think having one simple way is enough. I suggest to remove this fancy
+looking way that does not even use R]
 
 
 .. tabs::
@@ -288,7 +375,12 @@ library.
 Installing your own packages
 ----------------------------
 
-Sometimes you will need R packages that are not already installed. The solution
+Sometimes you will need R packages that are not already installed.
+[RB: the teaching goal is to use an existing R package. Both clusters
+have many pre-installed R packages, so running a pre-installed R package
+is an achievable first teaching goal, that I suggest to do first.]
+
+The solution
 to this is to install your own packages. These packages will usually come from
 CRAN (https://cran.r-project.org/) - the Comprehensive R Archive Network, or
 sometimes from other places, like GitHub or R-Forge
@@ -343,6 +435,9 @@ version 4.1.1:
 Automatical download and install from CRAN
 ##########################################
 
+[RB: all clusters have these packages pre-installed. This section can
+be removed]
+
 .. note:: 
 
     You find a list of packages in CRAN (https://cran.r-project.org/) and a list of repos here: https://cran.r-project.org/mirrors.html 
@@ -372,6 +467,8 @@ installed as well.
 Example
 *******
 
+[RB: I suggest to remove this section. Let's use pre-installed packages first]
+
 In this example, we will install the R package ``stringr`` and use the
 repository http://ftp.acc.umu.se/mirror/CRAN/ 
 
@@ -395,6 +492,8 @@ repository http://ftp.acc.umu.se/mirror/CRAN/
 
 Automatic download and install from GitHub
 ##########################################
+
+[RB: I suggest to remove this section. Let's use pre-installed packages first]
 
 If you want to install a package that is not on CRAN, but which do have a
 GitHub page, then there is an automatic way of installing, but you need to
@@ -437,6 +536,8 @@ Example
 Manual download and install
 ###########################
 
+[RB: I suggest to remove this section. Let's use pre-installed packages first]
+
 If the package is not on CRAN or you want the development version, or you for
 other reason want to install a package you downloaded, then this is how to
 install from the command line: 
@@ -477,6 +578,8 @@ dependencies yourself.
 Install own packages on Bianca
 ------------------------------
 
+[RB: I suggest to remove this section. Let's use pre-installed packages first]
+
 - If an R package is not not available on Bianca already (like Conda repositories) you may have to use the wharf to install the library/package
 - Typical workflow
 
@@ -490,6 +593,11 @@ Install own packages on Bianca
 
 Exercises
 ---------
+
+[RB: I miss an exercise about (1) loading the modules for R and R packages,
+(2) then using a pre-installed R package]
+
+[RB: I feel this exercise should either be removed or be optional]
 
 .. challenge:: Install a package with automatic download
 
